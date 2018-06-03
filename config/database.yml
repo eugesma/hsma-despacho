@@ -1,0 +1,24 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  # For details on connection pooling, see Rails configuration guide
+  # http://guides.rubyonrails.org/configuring.html#database-pooling
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+
+development:
+  <<: *default
+  database: hsma_development
+  username: hsma
+  password: 12345678
+
+test:
+  <<: *default
+  database: hsma_test
+  username: hsma
+  password: 12345678
+
+production:
+  <<: *default
+  database: hsma_production
+  username: hsma
+  password: <%= ENV['HSMA_DATABASE_PASSWORD'] %>
