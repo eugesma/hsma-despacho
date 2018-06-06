@@ -1,0 +1,37 @@
+<%= form_with(model: professional, local: true) do |form| %>
+  <% if professional.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(professional.errors.count, "error") %> prohibited this professional from being saved:</h2>
+
+      <ul>
+      <% professional.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :first_name %>
+    <%= form.text_field :first_name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :last_name %>
+    <%= form.text_field :last_name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :dni %>
+    <%= form.number_field :dni %>
+  </div>
+
+  <div class="field">
+    <%= form.label :enrollment %>
+    <%= form.text_field :enrollment %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
