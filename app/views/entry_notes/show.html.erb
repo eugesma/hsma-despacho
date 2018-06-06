@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Note number:</strong>
+  <%= @entry_note.note_number %>
+</p>
+
+<p>
+  <strong>Reference:</strong>
+  <%= @entry_note.reference %>
+</p>
+
+<p>
+  <strong>Entry date:</strong>
+  <%= @entry_note.entry_date %>
+</p>
+
+<p>
+  <strong>Out date:</strong>
+  <%= @entry_note.out_date %>
+</p>
+
+<%= link_to 'Edit', edit_entry_note_path(@entry_note) %> |
+<%= link_to 'Back', entry_notes_path %>

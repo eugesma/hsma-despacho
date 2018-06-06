@@ -1,0 +1,2 @@
+class EntryNote < ApplicationRecord
+end

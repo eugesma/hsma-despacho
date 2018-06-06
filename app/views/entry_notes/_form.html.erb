@@ -1,0 +1,37 @@
+<%= form_with(model: entry_note, local: true) do |form| %>
+  <% if entry_note.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(entry_note.errors.count, "error") %> prohibited this entry_note from being saved:</h2>
+
+      <ul>
+      <% entry_note.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :note_number %>
+    <%= form.number_field :note_number %>
+  </div>
+
+  <div class="field">
+    <%= form.label :reference %>
+    <%= form.text_area :reference %>
+  </div>
+
+  <div class="field">
+    <%= form.label :entry_date %>
+    <%= form.datetime_select :entry_date %>
+  </div>
+
+  <div class="field">
+    <%= form.label :out_date %>
+    <%= form.datetime_select :out_date %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
