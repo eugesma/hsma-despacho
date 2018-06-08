@@ -1,6 +1,8 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
+gem 'rolify'
+
 gem 'rails_admin', '~> 1.3'
 
 gem 'devise'
