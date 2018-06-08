@@ -25,6 +25,7 @@ class EntryNotesController < ApplicationController
   # POST /entry_notes.json
   def create
     @entry_note = EntryNote.new(entry_note_params)
+    @entry_note.author = current_user
 
     respond_to do |format|
       if @entry_note.save

@@ -1,6 +1,8 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
+gem 'devise'
+
 ruby '2.2.10'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
