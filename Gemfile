@@ -1,6 +1,8 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
+gem 'rails_admin', '~> 1.3'
+
 gem 'devise'
 
 ruby '2.2.10'
