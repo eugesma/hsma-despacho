@@ -20,3 +20,6 @@ $('#dialog').on('shown.bs.modal', function () {
 
 $('#entry_note_entry_date').val("<%= @entry_note.entry_date.strftime("%d/%m/%Y %H:%M %p") %>");
 $('#entry_note_out_date').val("<%= @entry_note.out_date.strftime("%d/%m/%Y %H:%M %p") %>");
+
+$('#entry_note_entry_date').datetimepicker({format: 'DD/MM/YYYY HH:mm'});
+$('#entry_note_out_date').datetimepicker({format: 'DD/MM/YYYY HH:mm'});
