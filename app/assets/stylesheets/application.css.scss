@@ -13,3 +13,10 @@
  *= require_tree .
  *= require_self
  */
+
+ @import 'bootstrap-sprockets';
+ @import 'bootstrap';
+ @import 'bootstrap-datetimepicker';
+
+ @import url('https://fonts.googleapis.com/css?family=Fira+Sans');
+ @import url('https://fonts.googleapis.com/css?family=Lato');

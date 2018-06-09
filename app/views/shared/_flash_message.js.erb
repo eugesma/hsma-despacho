@@ -1,0 +1,9 @@
+<% flash.each do |type, message| %>
+  $("#flash_messages").html("<div class='alert <%= bootstrap_class_for(type) %> alert-dismissible' role='alert'><button class='close' data-dismiss='alert'>×</button><%= message.html_safe %></div>")
+<% end %>
+
+window.setTimeout(function() {
+    $(".alert").fadeTo(500, 0).slideUp(500, function(){
+        $(this).remove();
+    });
+}, 2000);

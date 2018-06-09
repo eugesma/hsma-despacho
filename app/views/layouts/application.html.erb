@@ -7,14 +7,20 @@
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track' => 'reload' %>
     <%= csrf_meta_tags %>
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script><!-- Fix dropdown navbar -->
   </head>
   <body>
     <header>
       <%= render 'layouts/navigation' %>
     </header>
     <main role="main">
-       <%= render 'layouts/messages' %>
-       <%= yield %>
+      <%= render "layouts/flash_notices" %>
+      <% if user_signed_in? %>
+        <div class="well well-sm" id="page-header"><%= yield :page_header %></div>
+      <% end %>
+      <div class="container-fluid">
+        <%= yield %>
+      </div>
     </main>
   </body>
 </html>

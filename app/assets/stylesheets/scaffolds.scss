@@ -1,14 +1,29 @@
 body {
-  background-color: #fff;
+  &.sessions-body {
+     background-image: url('/assets/bg-sifaho.jpg');
+  }
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  background-color: #eee!important;
   color: #333;
-  margin: 33px;
-  font-family: verdana, arial, helvetica, sans-serif;
+  font-family: 'Lato', sans-serif;
+  // font-family: verdana, arial, helvetica, sans-serif;
   font-size: 13px;
   line-height: 18px;
 }
 
+
+h1, h2, h3, h4, h5{
+  font-family: 'Fira Sans', sans-serif;
+}
+
 p, ol, ul, td {
-  font-family: verdana, arial, helvetica, sans-serif;
+  font-family: 'Lato', sans-serif;
+  // font-family: verdana, arial, helvetica, sans-serif;
   font-size: 13px;
   line-height: 18px;
 }
@@ -21,15 +36,6 @@ pre {
 
 a {
   color: #000;
-
-  &:visited {
-    color: #666;
-  }
-
-  &:hover {
-    color: #fff;
-    background-color: #000;
-  }
 }
 
 th {

@@ -1,0 +1,4 @@
+<%= render 'shared/flash_message' %>
+
+$('#dialog').modal('toggle');
+$('#entry_notes').prepend('<%= j render (@entry_note) %>')

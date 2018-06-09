@@ -10,8 +10,19 @@
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
 //
-//= require jquery
 //= require rails-ujs
+//= require jquery
+//= require jquery-ui
 //= require turbolinks
-//= require bootstrap-sprockets
 //= require_tree .
+//= require moment
+//= require bootstrap-datetimepicker
+//= require bootstrap-sprockets
+//= require bootstrap
+
+// Se oculta el flash message
+window.setTimeout(function() {
+    $(".alert").fadeTo(500, 0).slideUp(500, function(){
+        $(this).remove();
+    });
+}, 2000);

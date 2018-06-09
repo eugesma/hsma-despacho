@@ -1,0 +1,28 @@
+<tr id="entry_note_<%= entry_note.id %>">
+  <td><%= entry_note.note_number %></td>
+  <td><%= entry_note.reference %></td>
+  <td>
+    <%= entry_note.entry_date.strftime("%d/%m/%y %H:%M") %>
+  </td>
+  <td>
+    <%= entry_note.out_date.strftime("%d/%m/%y %H:%M") %>
+  </td>
+  <td>
+    <%= entry_note.author.email %>
+  </td>
+  <td>
+    <%= link_to entry_note_path(entry_note), remote:true,
+          class: 'btn btn-default btn-xs', title: 'Ver detalles', data: { toggle: 'tooltip', placement: 'top' } do %>
+      <%= content_tag(:span, '', class: 'glyphicon glyphicon-eye-open') %>
+    <% end %>
+    <%= link_to edit_entry_note_path(entry_note), remote: true,
+          class: 'btn btn-warning btn-xs', title: 'Editar', data: { toggle: 'tooltip', placement: 'top' } do %>
+      <%= content_tag(:span, '', class: 'glyphicon glyphicon-edit') %>
+    <% end %>
+    <%= link_to entry_note_path(entry_note), remote: true, class: 'btn btn-danger btn-xs',
+          title: 'Borrar', method: :delete, data: { toggle: 'tooltip', placement: 'top',
+          confirm: "Desea eliminar la nota entrante número #{entry_note.note_number}?"} do %>
+      <%= content_tag(:span, '', class: 'glyphicon glyphicon-trash') %>
+    <% end %>
+  </td>
+</tr>

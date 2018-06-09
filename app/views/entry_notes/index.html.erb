@@ -1,35 +1,13 @@
-<p id="notice"><%= notice %></p>
+<% content_for :page_header do %>
+  <h3>Notas entrantes
+  <%= link_to new_entry_note_path, remote: true, class: 'btn btn-primary btn-md' do %>
+    <%= content_tag(:span, '', class: 'glyphicon glyphicon-plus') %>
+    Nueva nota entrante
+  <% end %>
+  </h3>
+<% end %>
 
-<h1>Entry Notes</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>Note number</th>
-      <th>Reference</th>
-      <th>Entry date</th>
-      <th>Out date</th>
-      <th>Autor</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @entry_notes.each do |entry_note| %>
-      <tr>
-        <td><%= entry_note.note_number %></td>
-        <td><%= entry_note.reference %></td>
-        <td><%= entry_note.entry_date %></td>
-        <td><%= entry_note.out_date %></td>
-        <td><%= entry_note.author.email %></td>
-        <td><%= link_to 'Show', entry_note %></td>
-        <td><%= link_to 'Edit', edit_entry_note_path(entry_note) %></td>
-        <td><%= link_to 'Destroy', entry_note, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Entry Note', new_entry_note_path %>
+<%= render(
+  partial: 'entry_notes/list',
+  locals: { entry_notes: @entry_notes }
+) %>
