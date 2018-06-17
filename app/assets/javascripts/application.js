@@ -11,6 +11,18 @@
 // about supported directives.
 //
 //= require rails-ujs
-//= require activestorage
+//= require jquery
+//= require jquery-ui
 //= require turbolinks
 //= require_tree .
+//= require moment
+//= require bootstrap-datetimepicker
+//= require bootstrap-sprockets
+//= require bootstrap
+
+// Se oculta el flash message
+window.setTimeout(function() {
+    $(".alert").fadeTo(500, 0).slideUp(500, function(){
+        $(this).remove();
+    });
+}, 2000);

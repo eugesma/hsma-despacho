@@ -1,6 +1,25 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
+# Use will_paginate for limit the post per page
+gem 'will_paginate', '~> 3.1.0'
+gem 'will_paginate-bootstrap'
+# Use momentjs and bootstrap3-datettimepicker for datetimepicker
+gem 'momentjs-rails', '>= 2.9.0'
+gem 'bootstrap3-datetimepicker-rails', '~> 4.17.47'
+# Use chosen-rails for autocomplete on select
+gem 'chosen-rails'
+# Use simple_form for do forms more easily
+gem 'simple_form'
+
+gem 'bootstrap-sass'
+
+gem 'rolify'
+
+gem 'rails_admin', '~> 1.3'
+
+gem 'devise'
+
 ruby '2.3.5'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
@@ -48,6 +67,7 @@ group :development do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
+  gem 'rails_layout'
 end
 
 group :test do

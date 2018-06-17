@@ -1,0 +1,40 @@
+<div class="row">
+  <div class="col-md-6">
+    <p>
+      <h5><strong>Numero de nota:</strong></h5>
+      <%= @entry_note.note_number %>
+    </p>
+
+    <p>
+      <h5><strong>Referencia:</strong></h5>
+      <%= @entry_note.reference %>
+    </p>
+
+    <p>
+      <h5><strong>Autor:</strong></h5>
+      <%= @entry_note.author.email %>
+    </p>
+  </div>
+
+  <div class="col-md-6">
+    <p>
+      <h5><strong>Fecha de entrada:</strong></h5>
+      <%= @entry_note.entry_date.strftime("%d/%m/%y %H:%M") %>
+    </p>
+
+    <p>
+      <h5><strong>Fecha de salida:</strong></h5>
+      <%= @entry_note.out_date.strftime("%d/%m/%y %H:%M") %>
+    </p>
+
+    <p>
+      <h5><strong>Fecha creada:</strong></h5>
+      <%= @entry_note.created_at.strftime("%d/%m/%y %H:%M") %>
+    </p>
+
+    <p>
+      <h5><strong>Fecha modificada:</strong></h5>
+      <%= @entry_note.updated_at.strftime("%d/%m/%y %H:%M") %>
+    </p>
+  </div>
+</div>

@@ -1,0 +1,12 @@
+<div class="authform">
+  <%= form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => { :method => :post, :role => 'form'}) do |f| %>
+    <h3>Olvidaste tu contraseña?</h3>
+    <p>Te enviaremos instrucciones de restablecimiento de contraseña.</p>
+    <%= devise_error_messages! %>
+    <div class="form-group">
+      <%= f.label :email %>
+      <%= f.email_field :email, :autofocus => true, class: 'form-control' %>
+    </div>
+     <%= f.submit 'Restablecer contraseña', :class => 'button right' %>
+  <% end %>
+</div>

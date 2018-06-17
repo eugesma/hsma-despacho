@@ -4,12 +4,19 @@ class EntryNotesController < ApplicationController
   # GET /entry_notes
   # GET /entry_notes.json
   def index
-    @entry_notes = EntryNote.all
+    @entry_notes = EntryNote.paginate(:page => params[:page], :per_page => 8)
+    respond_to do |format|
+      format.html
+      format.js
+    end
   end
 
   # GET /entry_notes/1
   # GET /entry_notes/1.json
   def show
+    respond_to do |format|
+      format.js
+    end
   end
 
   # GET /entry_notes/new
@@ -25,14 +32,15 @@ class EntryNotesController < ApplicationController
   # POST /entry_notes.json
   def create
     @entry_note = EntryNote.new(entry_note_params)
+    @entry_note.author = current_user
 
     respond_to do |format|
-      if @entry_note.save
-        format.html { redirect_to @entry_note, notice: 'Entry note was successfully created.' }
-        format.json { render :show, status: :created, location: @entry_note }
+      if @entry_note.save!
+        flash.now[:success] = "La nota entrante número "+@entry_note.note_number.to_s+" se ha creado correctamente."
+        format.js
       else
-        format.html { render :new }
-        format.json { render json: @entry_note.errors, status: :unprocessable_entity }
+        flash.now[:error] = "La nota entrante no se ha podido crear."
+        format.js
       end
     end
   end
@@ -41,12 +49,12 @@ class EntryNotesController < ApplicationController
   # PATCH/PUT /entry_notes/1.json
   def update
     respond_to do |format|
-      if @entry_note.update(entry_note_params)
-        format.html { redirect_to @entry_note, notice: 'Entry note was successfully updated.' }
-        format.json { render :show, status: :ok, location: @entry_note }
+      if @entry_note.update_attributes(entry_note_params)
+        flash.now[:success] = "La nota entrante número "+@entry_note.note_number.to_s+" se ha modificado correctamente."
+        format.js
       else
-        format.html { render :edit }
-        format.json { render json: @entry_note.errors, status: :unprocessable_entity }
+        flash.now[:error] = "La nota entrante número "+@entry_note.note_number.to_s+" no se ha podido modificar."
+        format.js
       end
     end
   end
@@ -54,10 +62,11 @@ class EntryNotesController < ApplicationController
   # DELETE /entry_notes/1
   # DELETE /entry_notes/1.json
   def destroy
+    @number = @entry_note.note_number
     @entry_note.destroy
     respond_to do |format|
-      format.html { redirect_to entry_notes_url, notice: 'Entry note was successfully destroyed.' }
-      format.json { head :no_content }
+      flash.now[:success] = "La nota entrante número "+@number.to_s+" se ha eliminado correctamente."
+      format.js
     end
   end
 

@@ -1,15 +1,26 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Hsma</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= content_for?(:title) ? yield(:title) : "Hsma" %></title>
+    <meta name="description" content="<%= content_for?(:description) ? yield(:description) : "Hsma" %>">
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track' => 'reload' %>
     <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
-
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script><!-- Fix dropdown navbar -->
   </head>
-
   <body>
-    <%= yield %>
+    <header>
+      <%= render 'layouts/navigation' %>
+    </header>
+    <main role="main">
+      <%= render "layouts/flash_notices" %>
+      <% if user_signed_in? %>
+        <div class="well well-sm" id="page-header"><%= yield :page_header %></div>
+      <% end %>
+      <div class="container-fluid">
+        <%= yield %>
+      </div>
+    </main>
   </body>
 </html>
