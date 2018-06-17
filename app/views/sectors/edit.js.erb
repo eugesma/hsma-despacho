@@ -1,0 +1,19 @@
+// Add the dialog title
+$('#dialog h3').html("<i class=' glyphicon glyphicon-pencil'></i>  Editando sector");
+
+// Render the edit form
+$('.modal-body').html('<%= j render("form") %>');
+
+// Add form button
+$('.modal-footer').html(
+  "<button type='button' class='btn btn-default pull-left' data-dismiss='modal'>Volver</button>"+
+  "<button type='submit' name='commit' class='btn btn-primary pull-right' form='edit_entry_note_<%=@sector.id%>' value='Guardar cambios'>Guardar cambios</button>"
+);
+
+// Show the dynamic dialog
+$('#dialog').modal("show");
+
+// Set focus to the first element
+$('#dialog').on('shown.bs.modal', function () {
+  $('.first_input').focus()
+})

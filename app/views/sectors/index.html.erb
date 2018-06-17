@@ -1,33 +1,13 @@
-<p id="notice"><%= notice %></p>
+<% content_for :page_header do %>
+  <h3>Sectores
+  <%= link_to new_sector_path, remote: true, class: 'btn btn-primary btn-md' do %>
+    <%= content_tag(:span, '', class: 'glyphicon glyphicon-plus') %>
+    Nuevo sector
+  <% end %>
+  </h3>
+<% end %>
 
-<h1>Sectors</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>Sector name</th>
-      <th>Description</th>
-      <th>Professional</th>
-      <th>Entry note</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @sectors.each do |sector| %>
-      <tr>
-        <td><%= sector.sector_name %></td>
-        <td><%= sector.description %></td>
-        <td><%= sector.professional %></td>
-        <td><%= sector.entry_note %></td>
-        <td><%= link_to 'Show', sector %></td>
-        <td><%= link_to 'Edit', edit_sector_path(sector) %></td>
-        <td><%= link_to 'Destroy', sector, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Sector', new_sector_path %>
+<%= render(
+  partial: 'sectors/list',
+  locals: { sectors: @sectors }
+) %>

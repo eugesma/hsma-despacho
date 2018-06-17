@@ -1,0 +1,25 @@
+<tr id="sector_<%= sector.id %>">
+  <td><%= sector.sector_name %></td>
+  <td><%= sector.description %></td>
+  <td>
+    <%= sector.created_at.strftime("%d/%m/%y %H:%M") %>
+  </td>
+  <td>
+    <%= sector.updated_at.strftime("%d/%m/%y %H:%M") %>
+  </td>
+  <td>
+    <%= link_to sector_path(sector), remote:true,
+          class: 'btn btn-default btn-xs', title: 'Ver detalles', data: { toggle: 'tooltip', placement: 'top' } do %>
+      <%= content_tag(:span, '', class: 'glyphicon glyphicon-eye-open') %>
+    <% end %>
+    <%= link_to edit_sector_path(sector), remote: true,
+          class: 'btn btn-warning btn-xs', title: 'Editar', data: { toggle: 'tooltip', placement: 'top' } do %>
+      <%= content_tag(:span, '', class: 'glyphicon glyphicon-edit') %>
+    <% end %>
+    <%= link_to sector_path(sector), remote: true, class: 'btn btn-danger btn-xs',
+          title: 'Borrar', method: :delete, data: { toggle: 'tooltip', placement: 'top',
+          confirm: "Desea eliminar la nota entrante número #{sector.sector_name}?"} do %>
+      <%= content_tag(:span, '', class: 'glyphicon glyphicon-trash') %>
+    <% end %>
+  </td>
+</tr>

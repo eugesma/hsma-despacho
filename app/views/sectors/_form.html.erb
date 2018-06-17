@@ -1,37 +1,13 @@
-<%= form_with(model: sector, local: true) do |form| %>
-  <% if sector.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(sector.errors.count, "error") %> prohibited this sector from being saved:</h2>
+<%= simple_form_for @sector, remote: true, html: {class: "form-inline"} do |f| %>
+  <%= f.error_notification %>
+  <div class='row'>
+    <div class='col-md-6'>
+      <%= f.input :sector_name, required: true, label: 'Nombre' %>
 
-      <ul>
-      <% sector.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
+      <%= f.input :description, required: true, label: 'Descripción', as: :text,
+          :input_html => { :cols => 46  , :rows => 2 } %>
     </div>
-  <% end %>
-
-  <div class="field">
-    <%= form.label :sector_name %>
-    <%= form.text_field :sector_name %>
-  </div>
-
-  <div class="field">
-    <%= form.label :description %>
-    <%= form.text_field :description %>
-  </div>
-
-  <div class="field">
-    <%= form.label :professional_id %>
-    <%= form.text_field :professional_id %>
-  </div>
-
-  <div class="field">
-    <%= form.label :entry_note_id %>
-    <%= form.text_field :entry_note_id %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit %>
+    <div class='col-md-6'>
+    </div>
   </div>
 <% end %>

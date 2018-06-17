@@ -5,11 +5,19 @@ class SectorsController < ApplicationController
   # GET /sectors.json
   def index
     @sectors = Sector.all
+    @sectors = Sector.paginate(:page => params[:page], :per_page => 8)
+    respond_to do |format|
+      format.html
+      format.js
+    end
   end
 
   # GET /sectors/1
   # GET /sectors/1.json
   def show
+    respond_to do |format|
+      format.js
+    end
   end
 
   # GET /sectors/new
@@ -27,12 +35,12 @@ class SectorsController < ApplicationController
     @sector = Sector.new(sector_params)
 
     respond_to do |format|
-      if @sector.save
-        format.html { redirect_to @sector, notice: 'Sector was successfully created.' }
-        format.json { render :show, status: :created, location: @sector }
+      if @sector.save!
+        flash.now[:success] = "El sector "+@sector.sector_name+" se ha creado correctamente."
+        format.js
       else
-        format.html { render :new }
-        format.json { render json: @sector.errors, status: :unprocessable_entity }
+        flash.now[:error] = "El sector "+@sector.sector_name+"no se ha podido crear."
+        format.js
       end
     end
   end
@@ -41,12 +49,12 @@ class SectorsController < ApplicationController
   # PATCH/PUT /sectors/1.json
   def update
     respond_to do |format|
-      if @sector.update(sector_params)
-        format.html { redirect_to @sector, notice: 'Sector was successfully updated.' }
-        format.json { render :show, status: :ok, location: @sector }
+      if @sector.update_attributes(sector_params)
+        flash.now[:success] = "El sector "+@sector.sector_name+" se ha modificado correctamente."
+        format.js
       else
-        format.html { render :edit }
-        format.json { render json: @sector.errors, status: :unprocessable_entity }
+        flash.now[:error] = "El sector "+@sector.sector_name+" no se ha podido modificar."
+        format.js
       end
     end
   end
@@ -54,10 +62,11 @@ class SectorsController < ApplicationController
   # DELETE /sectors/1
   # DELETE /sectors/1.json
   def destroy
+    @sector_name = @sector.sector_name
     @sector.destroy
     respond_to do |format|
-      format.html { redirect_to sectors_url, notice: 'Sector was successfully destroyed.' }
-      format.json { head :no_content }
+      flash.now[:success] = "La nota entrante número "+@sector_name+" se ha eliminado correctamente."
+      format.js
     end
   end
 
