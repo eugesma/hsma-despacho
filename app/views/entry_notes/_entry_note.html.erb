@@ -1,5 +1,7 @@
 <tr id="entry_note_<%= entry_note.id %>">
   <td><%= entry_note.note_number %></td>
+  <th><%= entry_note.origin.sector_name %></th>
+  <th><%= entry_note.destination.sector_name %></th>
   <td><%= entry_note.reference %></td>
   <td>
     <%= entry_note.entry_date.strftime("%d/%m/%y %H:%M") %>
