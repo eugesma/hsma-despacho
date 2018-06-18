@@ -37,4 +37,13 @@
       <%= @entry_note.updated_at.strftime("%d/%m/%y %H:%M") %>
     </p>
   </div>
+  <div class=col-md-12>
+  <% if @entry_note.image.attached? %>
+    <p>
+      <strong>Imagen adjunta:</strong>
+      <br>
+      <%= image_tag @entry_note.image.variant(resize: "300x100") %>
+    </p>
+  <% end %>
+  </div>
 </div>

@@ -10,6 +10,13 @@
     <%= entry_note.out_date.strftime("%d/%m/%y %H:%M") %>
   </td>
   <td>
+    <% if entry_note.image.attached? %>
+      <span class="glyphicon glyphicon-ok"></span>
+      <% else %>
+      <span class="glyphicon glyphicon-remove"></span>
+    <% end %>
+  </td>
+  <td>
     <%= entry_note.author.email %>
   </td>
   <td>
