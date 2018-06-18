@@ -13,6 +13,8 @@
 //= require rails-ujs
 //= require jquery
 //= require jquery-ui
+//= require jquery_ujs
+//= require chosen-jquery
 //= require turbolinks
 //= require_tree .
 //= require moment

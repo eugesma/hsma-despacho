@@ -1,5 +1,5 @@
 // Add the dialog title
-$('#dialog h3').html("<i class='glyphicon glyphicon-plus'></i>  Nueva nota entrante");
+$('#dialog h3').html("<i class='glyphicon glyphicon-plus'></i>  Nuevo sector");
 
 // Render the new form
 $('.modal-body').html('<%= j render("form") %>');
@@ -7,7 +7,7 @@ $('.modal-body').html('<%= j render("form") %>');
 // Add form button
 $('.modal-footer').html(
   "<button type='button' class='btn btn-default pull-left' data-dismiss='modal'>Volver</button>"+
-  "<button type='submit' name='commit' class='btn btn-primary pull-right' form='new_entry_note'>Cargar nota</button>"
+  "<button type='submit' name='commit' class='btn btn-primary pull-right' form='new_sector'>Cargar sector</button>"
 );
 
 // Show the dynamic dialog
@@ -17,5 +17,3 @@ $('#dialog').modal("show");
 $('#dialog').on('shown.bs.modal', function () {
   $('.first_input').focus();
 })
-
-<%= render 'form_function' %>
