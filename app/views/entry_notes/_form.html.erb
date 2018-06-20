@@ -51,6 +51,21 @@
                                   html5: false
                                   %><br><br>
     </div>
-    <%= f.file_field :image, label: "Adjuntar imagen" %><br>
+    <div class="container">
+      <div class="col-md-6">
+          <div class="form-group">
+              <label>Cargar imagen</label><br>
+              <div class="input-group">
+                  <span class="input-group-btn">
+                      <span class="btn btn-default btn-file">
+                          Buscar… <input type="file" id="imgInp">
+                      </span>
+                  </span>
+                  <input type="text" class="form-control" readonly>
+              </div>
+              <img id='img-upload'/>
+          </div>
+      </div>
+    </div>
   </div>
 <% end %>
