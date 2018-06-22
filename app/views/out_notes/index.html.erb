@@ -1,0 +1,37 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Out Notes</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Note number</th>
+      <th>Reference</th>
+      <th>Zonal pass</th>
+      <th>Subse number</th>
+      <th>Entry date</th>
+      <th>Out date</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @out_notes.each do |out_note| %>
+      <tr>
+        <td><%= out_note.note_number %></td>
+        <td><%= out_note.reference %></td>
+        <td><%= out_note.zonal_pass %></td>
+        <td><%= out_note.subse_number %></td>
+        <td><%= out_note.entry_date %></td>
+        <td><%= out_note.out_date %></td>
+        <td><%= link_to 'Show', out_note %></td>
+        <td><%= link_to 'Edit', edit_out_note_path(out_note) %></td>
+        <td><%= link_to 'Destroy', out_note, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Out Note', new_out_note_path %>

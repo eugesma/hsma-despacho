@@ -6,4 +6,5 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable
 
   has_many :entry_notes, foreign_key: "author_id"
+  has_many :out_notes, foreign_key: "author_id"
 end

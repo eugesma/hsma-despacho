@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_06_18_002856) do
+ActiveRecord::Schema.define(version: 2018_06_22_201847) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -49,6 +49,23 @@ ActiveRecord::Schema.define(version: 2018_06_18_002856) do
     t.index ["author_id"], name: "index_entry_notes_on_author_id"
     t.index ["destination_id"], name: "index_entry_notes_on_destination_id"
     t.index ["origin_id"], name: "index_entry_notes_on_origin_id"
+  end
+
+  create_table "out_notes", force: :cascade do |t|
+    t.integer "note_number"
+    t.text "reference"
+    t.integer "zonal_pass"
+    t.integer "subse_number"
+    t.datetime "entry_date"
+    t.datetime "out_date"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "author_id"
+    t.bigint "origin_id"
+    t.bigint "destination_id"
+    t.index ["author_id"], name: "index_out_notes_on_author_id"
+    t.index ["destination_id"], name: "index_out_notes_on_destination_id"
+    t.index ["origin_id"], name: "index_out_notes_on_origin_id"
   end
 
   create_table "roles", force: :cascade do |t|

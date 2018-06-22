@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  note_number: 1
+  reference: MyText
+  zonal_pass: 1
+  subse_number: 1
+  entry_date: 2018-06-22 17:18:47
+  out_date: 2018-06-22 17:18:47
+
+two:
+  note_number: 1
+  reference: MyText
+  zonal_pass: 1
+  subse_number: 1
+  entry_date: 2018-06-22 17:18:47
+  out_date: 2018-06-22 17:18:47

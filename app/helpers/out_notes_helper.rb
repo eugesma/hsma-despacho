@@ -1,0 +1,2 @@
+module OutNotesHelper
+end
