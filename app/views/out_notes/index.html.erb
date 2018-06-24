@@ -1,16 +1,16 @@
 <% content_for :page_title do %>
-  Sectores
+  Notas salientes
 <% end %>
 <% content_for :page_nav do %>
   <li role="presentation">
-    <%= link_to new_sector_path, remote: true do %>
+    <%= link_to new_out_note_path, remote: true do %>
       <%= content_tag(:span, '', class: 'glyphicon glyphicon-plus') %>
-      Nuevo
+      Nueva
     <% end %>
   </li>
 <% end %>
 
 <%= render(
-  partial: 'sectors/list',
-  locals: { sectors: @sectors }
+  partial: 'out_notes/list',
+  locals: { out_notes: @out_notes }
 ) %>

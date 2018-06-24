@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_06_18_002856) do
+ActiveRecord::Schema.define(version: 2018_06_22_201847) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -51,6 +51,23 @@ ActiveRecord::Schema.define(version: 2018_06_18_002856) do
     t.index ["origin_id"], name: "index_entry_notes_on_origin_id"
   end
 
+  create_table "out_notes", force: :cascade do |t|
+    t.integer "note_number"
+    t.text "reference"
+    t.integer "zonal_pass"
+    t.integer "subse_number"
+    t.datetime "entry_date"
+    t.datetime "out_date"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "author_id"
+    t.bigint "origin_id"
+    t.bigint "destination_id"
+    t.index ["author_id"], name: "index_out_notes_on_author_id"
+    t.index ["destination_id"], name: "index_out_notes_on_destination_id"
+    t.index ["origin_id"], name: "index_out_notes_on_origin_id"
+  end
+
   create_table "roles", force: :cascade do |t|
     t.string "name"
     t.string "resource_type"
@@ -71,7 +88,7 @@ ActiveRecord::Schema.define(version: 2018_06_18_002856) do
   end
 
   create_table "users", force: :cascade do |t|
-    t.string "email", default: "", null: false
+    t.string "username", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
@@ -83,8 +100,8 @@ ActiveRecord::Schema.define(version: 2018_06_18_002856) do
     t.inet "last_sign_in_ip"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+    t.index ["username"], name: "index_users_on_username", unique: true
   end
 
   create_table "users_roles", id: false, force: :cascade do |t|

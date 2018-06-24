@@ -1,0 +1,37 @@
+<tr id="out_note_<%= out_note.id %>">
+  <td><%= out_note.note_number %></td>
+  <th><%= out_note.origin.sector_name %></th>
+  <th><%= out_note.destination.sector_name %></th>
+  <td><%= out_note.reference %></td>
+  <td>
+    <%= out_note.out_date.strftime("%d/%m/%y %H:%M") %>
+  </td>
+  <td>
+    <%= out_note.out_date.strftime("%d/%m/%y %H:%M") %>
+  </td>
+  <td>
+    <% if out_note.image.attached? %>
+      <span class="glyphicon glyphicon-ok"></span>
+      <% else %>
+      <span class="glyphicon glyphicon-remove"></span>
+    <% end %>
+  </td>
+  <td>
+    <%= out_note.author.email %>
+  </td>
+  <td>
+    <%= link_to out_note_path(out_note), remote:true,
+          class: 'btn btn-default btn-xs', title: 'Ver detalles', data: { toggle: 'tooltip', placement: 'top' } do %>
+      <%= content_tag(:span, '', class: 'glyphicon glyphicon-eye-open') %>
+    <% end %>
+    <%= link_to edit_out_note_path(out_note), remote: true,
+          class: 'btn btn-warning btn-xs', title: 'Editar', data: { toggle: 'tooltip', placement: 'top' } do %>
+      <%= content_tag(:span, '', class: 'glyphicon glyphicon-edit') %>
+    <% end %>
+    <%= link_to out_note_path(out_note), remote: true, class: 'btn btn-danger btn-xs',
+          title: 'Borrar', method: :delete, data: { toggle: 'tooltip', placement: 'top',
+          confirm: "Desea eliminar la nota entrante número #{out_note.note_number}?"} do %>
+      <%= content_tag(:span, '', class: 'glyphicon glyphicon-trash') %>
+    <% end %>
+  </td>
+</tr>

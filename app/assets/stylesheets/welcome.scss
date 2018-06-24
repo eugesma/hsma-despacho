@@ -10,19 +10,11 @@ li .well strong{
   font-family: 'Fira Sans', sans-serif;
   font-size: 15px;
 }
-#page-header{
-  padding: 0px 0px 0px 16em;
-  position: relative;
-  z-index: 0;
-  margin: 0% -1.1% 1% -10%;
-  background-color: #7c9ed4;
-  border-color: #7c9ed4;
-  border-radius: 0;
-  color: white;
-  h3{
-    margin-top: 0px;
-    margin-bottom: 0px;
-  }
+#page_title{
+  font-family: 'Fira Sans', sans-serif;
+  font-size: 20px;
+  margin-top: -7px;
+  margin-bottom: -3px;
 }
 #flash_messages{
   position: absolute;
@@ -34,4 +26,11 @@ li .well strong{
   padding-top: 0px;
   padding-bottom: 0px;
   margin-bottom: -10px;
+}
+.nav-tabs > li > a{
+  border: 1px solid white!important;
+  color: white;
+}
+.nav-tabs > li > a:hover{
+  color:black;
 }

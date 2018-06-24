@@ -1,12 +1,16 @@
 <% if current_user.present? %>
-  <li>
-    <%= link_to entry_notes_url do %>
-      Entrantes
-    <% end %>
+  <li class="<%= active_class(entry_notes_path) %>">
+    <%= link_to 'Entrantes', entry_notes_path %>
   </li>
-  <li>
-    <%= link_to sectors_url do %>
-      Sectores
-    <% end %>
+  <li class="<%= active_class(out_notes_path) %>">
+    <%= link_to 'Salientes', out_notes_path %>
   </li>
+  <li class="<%= active_class(sectors_path) %>">
+    <%= link_to 'Sectores', sectors_path %>
+  </li>
+  <% if current_user.has_role? :admin %>
+    <li>
+      <%= link_to 'Administración', rails_admin_url %>
+    </li>
+  <% end %>
 <% end %>

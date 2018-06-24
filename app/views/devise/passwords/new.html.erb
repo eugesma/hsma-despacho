@@ -4,8 +4,8 @@
     <p>Te enviaremos instrucciones de restablecimiento de contraseña.</p>
     <%= devise_error_messages! %>
     <div class="form-group">
-      <%= f.label :email %>
-      <%= f.email_field :email, :autofocus => true, class: 'form-control' %>
+      <%= f.label :username %>
+      <%= f.text_field :username, :autofocus => true, class: 'form-control' %>
     </div>
      <%= f.submit 'Restablecer contraseña', :class => 'button right' %>
   <% end %>
