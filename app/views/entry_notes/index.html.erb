@@ -1,12 +1,14 @@
-<% content_for :page_header do %>
-  <h3>Notas entrantes
-  <%= link_to new_entry_note_path, remote: true, class: 'btn btn-primary btn-md' do %>
-    <%= content_tag(:span, '', class: 'glyphicon glyphicon-plus') %>
-    Nueva nota entrante
-  <% end %>
-  </h3>
+<% content_for :page_title do %>
+  Notas entrantes
 <% end %>
-
+<% content_for :page_nav do %>
+  <li role="presentation">
+    <%= link_to new_entry_note_path, remote: true do %>
+      <%= content_tag(:span, '', class: 'glyphicon glyphicon-plus') %>
+      Nueva
+    <% end %>
+  </li>
+<% end %>
 <%= render(
   partial: 'entry_notes/list',
   locals: { entry_notes: @entry_notes }

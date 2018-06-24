@@ -1,0 +1,49 @@
+<div class="row">
+  <div class="col-md-6">
+    <p>
+      <h5><strong>Numero de nota:</strong></h5>
+      <%= @out_note.note_number %>
+    </p>
+
+    <p>
+      <h5><strong>Referencia:</strong></h5>
+      <%= @out_note.reference %>
+    </p>
+
+    <p>
+      <h5><strong>Autor:</strong></h5>
+      <%= @out_note.author.email %>
+    </p>
+  </div>
+
+  <div class="col-md-6">
+    <p>
+      <h5><strong>Fecha de entrada:</strong></h5>
+      <%= @out_note.entry_date.strftime("%d/%m/%y %H:%M") %>
+    </p>
+
+    <p>
+      <h5><strong>Fecha de salida:</strong></h5>
+      <%= @out_note.out_date.strftime("%d/%m/%y %H:%M") %>
+    </p>
+
+    <p>
+      <h5><strong>Fecha creada:</strong></h5>
+      <%= @out_note.created_at.strftime("%d/%m/%y %H:%M") %>
+    </p>
+
+    <p>
+      <h5><strong>Fecha modificada:</strong></h5>
+      <%= @out_note.updated_at.strftime("%d/%m/%y %H:%M") %>
+    </p>
+  </div>
+  <div class=col-md-12>
+  <% if @out_note.image.attached? %>
+    <p>
+      <strong>Imagen adjunta:</strong>
+      <br>
+      <%= image_tag @out_note.image.variant(resize: "300x100") %>
+    </p>
+  <% end %>
+  </div>
+</div>

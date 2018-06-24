@@ -2,8 +2,8 @@
 <html>
   <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><%= content_for?(:title) ? yield(:title) : "Hsma" %></title>
-    <meta name="description" content="<%= content_for?(:description) ? yield(:description) : "Hsma" %>">
+    <title><%= content_for?(:title) ? yield(:title) : "HSMA Despacho" %></title>
+    <meta name="description" content="<%= content_for?(:description) ? yield(:description) : "Despacho del hospital" %>">
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track' => 'reload' %>
     <%= csrf_meta_tags %>
@@ -15,10 +15,13 @@
     </header>
     <main role="main">
       <%= render "layouts/flash_notices" %>
-      <% if user_signed_in? %>
-        <div class="well well-sm" id="page-header"><%= yield :page_header %></div>
-      <% end %>
       <div class="container-fluid">
+        <% if user_signed_in? %>
+          <ul class="nav nav-tabs">
+            <li role="presentation" class="active" id="page_title"><a href=""><%= content_for :page_title %></a></li>
+            <%= content_for :page_nav %>
+          </ul>
+        <% end %>
         <%= yield %>
       </div>
     </main>

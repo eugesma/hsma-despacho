@@ -4,17 +4,25 @@ class OutNotesController < ApplicationController
   # GET /out_notes
   # GET /out_notes.json
   def index
-    @out_notes = OutNote.all
+    @out_notes = OutNote.paginate(:page => params[:page], :per_page => 8)
+    respond_to do |format|
+      format.html
+      format.js
+    end
   end
 
   # GET /out_notes/1
   # GET /out_notes/1.json
   def show
+    respond_to do |format|
+      format.js
+    end
   end
 
   # GET /out_notes/new
   def new
     @out_note = OutNote.new
+    @sectors = Sector.all
   end
 
   # GET /out_notes/1/edit
@@ -25,14 +33,15 @@ class OutNotesController < ApplicationController
   # POST /out_notes.json
   def create
     @out_note = OutNote.new(out_note_params)
+    @out_note.author = current_user
 
     respond_to do |format|
-      if @out_note.save
-        format.html { redirect_to @out_note, notice: 'Out note was successfully created.' }
-        format.json { render :show, status: :created, location: @out_note }
+      if @out_note.save!
+        flash.now[:success] = "La nota saliente número "+@out_note.note_number.to_s+" se ha creado correctamente."
+        format.js
       else
-        format.html { render :new }
-        format.json { render json: @out_note.errors, status: :unprocessable_entity }
+        flash.now[:error] = "La nota saliente no se ha podido crear."
+        format.js
       end
     end
   end
@@ -41,12 +50,12 @@ class OutNotesController < ApplicationController
   # PATCH/PUT /out_notes/1.json
   def update
     respond_to do |format|
-      if @out_note.update(out_note_params)
-        format.html { redirect_to @out_note, notice: 'Out note was successfully updated.' }
-        format.json { render :show, status: :ok, location: @out_note }
+      if @out_note.update_attributes(out_note_params)
+        flash.now[:success] = "La nota saliente número "+@out_note.note_number.to_s+" se ha modificado correctamente."
+        format.js
       else
-        format.html { render :edit }
-        format.json { render json: @out_note.errors, status: :unprocessable_entity }
+        flash.now[:error] = "La nota saliente número "+@out_note.note_number.to_s+" no se ha podido modificar."
+        format.js
       end
     end
   end
@@ -54,10 +63,11 @@ class OutNotesController < ApplicationController
   # DELETE /out_notes/1
   # DELETE /out_notes/1.json
   def destroy
+    @number = @out_note.note_number
     @out_note.destroy
     respond_to do |format|
-      format.html { redirect_to out_notes_url, notice: 'Out note was successfully destroyed.' }
-      format.json { head :no_content }
+      flash.now[:success] = "La nota saliente número "+@number.to_s+" se ha eliminado correctamente."
+      format.js
     end
   end
 
@@ -69,6 +79,6 @@ class OutNotesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def out_note_params
-      params.require(:out_note).permit(:note_number, :reference, :zonal_pass, :subse_number, :entry_date, :out_date)
+      params.require(:out_note).permit(:note_number, :destination_id, :origin_id, :reference, :zonal_pass, :subse_number, :entry_date, :out_date, :image)
     end
 end

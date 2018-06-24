@@ -28,3 +28,9 @@ window.setTimeout(function() {
         $(this).remove();
     });
 }, 2000);
+
+$(document).on('turbolinks:load', function() {
+
+  $('li.active').removeClass('active');
+  $('a[href="' + location.pathname + '"]').closest('li').addClass('active'); 
+});
