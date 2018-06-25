@@ -7,6 +7,14 @@
 # Dir[Rails.root.join('lib/components/**/*.rb')].each { |f| require f }
 #
 # Use this setup block to configure all options available in SimpleForm.
+module LabelRequiredExt
+  def required_field?
+    options[:label_required] || super
+  end
+end
+
+SimpleForm::Components::Labels.prepend(LabelRequiredExt)
+
 SimpleForm.setup do |config|
   # Wrappers are used by the form builder to generate a
   # complete input. You can remove any component from the
@@ -123,14 +131,14 @@ SimpleForm.setup do |config|
   # config.generate_additional_classes_for = [:wrapper, :label, :input]
 
   # Whether attributes are required by default (or not). Default is true.
-  # config.required_by_default = true
+  config.required_by_default = true
 
   # Tell browsers whether to use the native HTML5 validations (novalidate form option).
   # These validations are enabled in SimpleForm's internal config but disabled by default
   # in this configuration, which is recommended due to some quirks from different browsers.
   # To stop SimpleForm from generating the novalidate option, enabling the HTML5 validations,
   # change this configuration to true.
-  config.browser_validations = false
+  config.browser_validations = true
 
   # Collection of methods to detect if a file type was given.
   # config.file_methods = [ :mounted_as, :file?, :public_filename, :attached? ]

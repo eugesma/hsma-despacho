@@ -1,6 +1,6 @@
 <%= simple_form_for @entry_note, remote: true, html: {class: "form-inline"} do |f| %>
   <%= f.error_notification %>
-  <%= f.input :note_number, placeholder: '1234', required: true, label: 'Número de nota',
+  <%= f.input :note_number, placeholder: '1234', label: 'Número de nota',
     input_html: { min: '0', max:'9999' } %><br><br>
   <div class='row'>
       <div class='col-md-6'>
@@ -9,7 +9,8 @@
                           label_method: :sector_name,
                           value_method: :id,
                           collection: @sectors,
-                          include_blank: false,
+                          include_blank: true,
+                          required: true,
                           input_html: { class: 'chosen-select', id: 'origin_id' },
                           prompt: 'Seleccione un sector o cree uno'
         %>
@@ -28,7 +29,7 @@
       <%= f.hint 'No seleccione ningún sector para crear uno nuevo.', id: 'origin-hint', style: "display: none" %>
     </div>
     <div class='col-md-12'>
-    <%= f.input :reference, required: true, label: 'Referencia', as: :text,
+    <%= f.input :reference, label: 'Referencia', as: :text,
         :input_html => { :cols => 46  , :rows => 2 } %><br><br>
     </div>
   </div>
@@ -37,7 +38,7 @@
       <%= f.input :entry_date, label: 'Fecha de entrada',
                                   as: :string,
                                   :placeholder => "Seleccionar fecha",
-                                  input_html: {class: "form-control", required: true,
+                                  input_html: { class: "form-control",
                                   value: "#{@entry_note.entry_date unless @entry_note.new_record?}"},
                                   html5: false
                                   %><br><br>
@@ -46,7 +47,7 @@
       <%= f.input :out_date, label: 'Fecha de salida',
                                   as: :string,
                                   :placeholder => "Seleccionar fecha",
-                                  input_html: {class: "form-control", required: true,
+                                  input_html: { class: "form-control",
                                   value: "#{@entry_note.out_date unless @entry_note.new_record?}"},
                                   html5: false
                                   %><br><br>

@@ -1,0 +1,17 @@
+.nav-tabs > li > a{
+  border: 1px solid white!important;
+  color: white;
+}
+.nav-tabs > li > a:hover{
+  color:black;
+}
+.dropdown-menu > li > a{
+  color: #848484!important;
+  background-color: #272727!important;
+}
+.dropdown-menu > li > a:hover{
+  color: white!important;
+}
+.navbar-nav > li > .dropdown-menu{
+  background-color: #272727!important;
+}
