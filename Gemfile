@@ -1,6 +1,8 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
+# To store files in s3 amazon
+gem 'aws-sdk', '~> 2'
 # Use tu rezize images
 gem 'image_processing', '~> 1.2'
 # Use will_paginate for limit the post per page
