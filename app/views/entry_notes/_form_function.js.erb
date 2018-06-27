@@ -11,70 +11,23 @@ $('.chosen-select').chosen({
     allow_single_deselect: true,
     no_results_text: 'No se encontró el resultado',
     width: '230px'});
+    
+function readURL(input) {
 
-  $(document).on('change', '.btn-file :file', function() {
+  if (input.files && input.files[0]) {
+    var reader = new FileReader();
+
+    reader.onload = function(e) {
+      $('#img-upload').attr('src', e.target.result);
+    }
+
+    reader.readAsDataURL(input.files[0]);
+  }
+}
+
+$("#imgInp").change(function() {
   var input = $(this),
     label = input.val().replace(/\\/g, '/').replace(/.*\//, '');
-  input.trigger('fileselect', [label]);
-  });
-
-  $('.btn-file :file').on('fileselect', function(event, label) {
-
-      var input = $(this).parents('.input-group').find(':text'),
-          log = label;
-
-      if( input.length ) {
-          input.val(log);
-      } else {
-          if( log ) alert(log);
-      }
-
-  });
-  function readURL(input) {
-      if (input.files && input.files[0]) {
-          var reader = new FileReader();
-
-          reader.onload = function (e) {
-              $('#img-upload').attr('src', e.target.result);
-          }
-
-          reader.readAsDataURL(input.files[0]);
-      }
-  }
-
-  $("#imgInp").change(function(){
-    readURL(this);
-	});
-
-
-// $('#origin_id').change(function () {
-//   if($('#origin_id option:selected').val() == 0){
-//     document.getElementById('form-origin').style.display="block";
-//     document.getElementById('origin-hint').style.display="none";
-//     document.getElementById('prescription_origin_attributes_first_name').required = true;
-//     document.getElementById('prescription_origin_attributes_last_name').required = true;
-//     document.getElementById('prescription_origin_attributes_dni').required = true;
-//   }else{
-//     document.getElementById('form-origin').style.display="none";
-//     document.getElementById('origin-hint').style.display="block";
-//     document.getElementById('prescription_origin_attributes_first_name').required = false;
-//     document.getElementById('prescription_origin_attributes_last_name').required = false;
-//     document.getElementById('prescription_origin_attributes_dni').required = false;
-//   }
-// });
-
-// $('#destination_id').change(function () {
-//   if($('#destination_id option:selected').val() == 0){
-//     document.getElementById('form-destination').style.display="block";
-//     document.getElementById('destination-hint').style.display="none";
-//     document.getElementById('prescription_destination_attributes_first_name').required = true;
-//     document.getElementById('prescription_destination_attributes_last_name').required = true;
-//     document.getElementById('prescription_destination_attributes_dni').required = true;
-//   }else{
-//     document.getElementById('form-destination').style.display="none";
-//     document.getElementById('destination-hint').style.display="block";
-//     document.getElementById('prescription_destination_attributes_first_name').required = false;
-//     document.getElementById('prescription_destination_attributes_last_name').required = false;
-//     document.getElementById('prescription_destination_attributes_dni').required = false;
-//   }
-// });
+  document.getElementById('file-name').value = label;
+  readURL(this);
+});

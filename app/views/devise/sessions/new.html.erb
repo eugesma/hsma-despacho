@@ -5,6 +5,7 @@ body {
 </style>
 <div class="authform">
   <%= form_for(resource, :as => resource_name, :url => session_path(resource_name), :html => { :role => 'form'}) do |f| %>
+    <%= image_tag("LogoHSMA.png", size: "70x70", alt: "Logo HSMA") %>
     <h3>Iniciar sesión</h3>
     <%= devise_error_messages! %>
     <div class="form-group">
@@ -21,7 +22,6 @@ body {
       <%= f.label 'Contraseña' %>
       <%= f.password_field :password, class: 'form-control' %>
     </div>
-      <%= f.submit 'Iniciar sesión', :class => 'button right' %>
       <% if devise_mapping.rememberable? -%>
         <div class="checkbox" style="width:150px">
           <label>
@@ -29,5 +29,6 @@ body {
           </label>
         </div>
       <% end -%>
+      <%= f.submit 'Iniciar sesión', class: 'btn btn-success btn-md', id: 'login-btn' %>
   <% end %>
 </div>
