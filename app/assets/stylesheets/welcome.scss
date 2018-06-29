@@ -30,3 +30,23 @@ li .well strong{
 #login-btn{
   width: 100%;
 }
+.form-filter{
+  padding: 0px 0px 0px 0px!important;
+  margin: 0px 15px 0px 15px!important;
+}
+.nav-tabs > li > a:active{
+  color:black!important;
+}
+#filter{
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  -o-user-select: none;
+  user-select: none;
+}
+.filterrific_sort_column {
+  color:black;
+}
+#filter-panel{
+  margin-bottom: 0px!important;
+}

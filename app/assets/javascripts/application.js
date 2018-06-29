@@ -15,6 +15,9 @@
 //= require jquery-ui
 //= require jquery_ujs
 //= require chosen-jquery
+//= require filterrific/filterrific-jquery
+//= require highcharts
+//= require chartkick
 //= require turbolinks
 //= require_tree .
 //= require moment
@@ -32,5 +35,5 @@ window.setTimeout(function() {
 $(document).on('turbolinks:load', function() {
 
   $('li.active').removeClass('active');
-  $('a[href="' + location.pathname + '"]').closest('li').addClass('active'); 
+  $('a[href="' + location.pathname + '"]').closest('li').addClass('active');
 });

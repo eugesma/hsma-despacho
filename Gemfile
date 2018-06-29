@@ -1,6 +1,15 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
+
+# To group by date
+gem 'groupdate'
+gem 'active_median'
+# Use chartkick and highcharts-rails to perform charts
+gem 'chartkick'
+gem 'highcharts-rails'
+# Use filterrific to search, filter and sort lists
+gem 'filterrific'
 # Use tu rezize images
 gem 'image_processing', '~> 1.2'
 # Use will_paginate for limit the post per page
