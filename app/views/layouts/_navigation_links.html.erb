@@ -10,7 +10,10 @@
   </li>
   <% if current_user.has_role? :admin %>
     <li>
-      <%= link_to 'Administración', rails_admin_url %>
+      <%= link_to rails_admin_path do %>
+        <%= content_tag(:span, '', class: 'glyphicon glyphicon-sunglasses') %>
+        Administración
+      <% end %>
     </li>
   <% end %>
 <% end %>

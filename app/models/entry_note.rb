@@ -19,7 +19,8 @@ class EntryNote < ApplicationRecord
       :sorted_by,
       :search_query,
       :entry_date_at,
-      :out_date_at
+      :out_date_at,
+      :with_note_number,
     ]
   )
 
@@ -83,6 +84,10 @@ class EntryNote < ApplicationRecord
 
   scope :out_date_at, lambda { |reference_time|
     where('entry_notes.out_date >= ?', reference_time)
+  }
+
+  scope :with_note_number, lambda { |number|
+    where('entry_notes.note_number = ?', number)
   }
 
   # Método para establecer las opciones del select input del filtro
