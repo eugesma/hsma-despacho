@@ -8,7 +8,67 @@
       Nueva
     <% end %>
   </li>
+  <li role="presentation">
+    <a href="javascript:void(0);" data-toggle="collapse" data-target="#filter">
+      <%= content_tag(:span, '', class: 'glyphicon glyphicon-filter') %>
+      Filtrar
+    </a>
+  </li>
 <% end %>
+
+<%#
+  Filterrific adds the `form_for_filterrific` view helper:
+  * adds dom id 'filterrific_filter'
+  * applies javascript behaviors:
+      * AJAX form submission on change
+      * AJAX spinner while AJAX request is being processed
+  * sets form_for options like :url, :method and input name prefix
+%>
+<div class="panel panel-default" id="filter-panel">
+  <div class="panel-collapse collapse" id="filter">
+    <div class="panel-body">
+      <%= form_for_filterrific @filterrific, html: {id: "filterrific"} do |f| %>
+        <div class="col-md-2 col-sm-3">
+          <label>Buscar</label>
+          <%# give the search field the 'filterrific-periodically-observed' class for live updates %>
+          <%= f.text_field(
+            :search_query,
+            class: 'filterrific-periodically-observed form-control',
+            placeholder: 'Origen o destino'
+          ) %>
+        </div>
+        <div class="col-md-2 col-sm-3">
+          <label>Buscar</label>
+          <%= f.number_field :with_note_number, placeholder: 'Número de nota', label: 'Número de nota',
+          min: '0', max:'9999', class: 'form-control filterrific-periodically-observed' %>
+        </div>
+        <div class="col-md-2 col-sm-3">
+          <label>Ordenar por</label>
+          <%= f.select(:sorted_by, @filterrific.select_options[:sorted_by],{}, {class: 'form-control'}) %>
+        </div>
+        <div class="col-md-2 col-sm-3">
+           <label>Entradas desde</label>
+           <%= f.text_field(:entry_date_at, class: 'form-control filterrific-periodically-observed',
+              id: "datepicker1", placeholder: "Una fecha", data: { date_format: 'DD/MM/YYYY hh:mm A/PM'}) %>
+        </div>
+        <div class="col-md-2 col-sm-3">
+           <label>Recibidas desde</label>
+           <%= f.text_field(:out_date_at, class: 'form-control filterrific-periodically-observed',
+              id: "datepicker2", placeholder: "Una fecha", data: { date_format: 'DD/MM/YYYY hh:mm A/PM'}) %>
+        </div>
+        <div class="col-md-2 col-sm-3 pull-right">
+          <label>Reset</label>
+          <button type="button" class="btn btn-default btn-md" title="Reiniciar filtro"
+          data-toggle="tooltip" data-placement="bottom" onclick="document.getElementById('filterrific').reset();">
+            <%= content_tag(:span, '', class: 'glyphicon glyphicon-refresh') %>
+          </button>
+          <%# add an automated spinner to your form when the list is refreshed %>
+          <%= render_filterrific_spinner %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
 
 <%= render(
   partial: 'out_notes/list',

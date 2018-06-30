@@ -101,8 +101,4 @@ class EntryNote < ApplicationRecord
       ['Fecha salida(asc)', 'fecha_salida_asc']
     ]
   end
-
-  def origin_name
-    self.origin.sector_name
-  end
 end

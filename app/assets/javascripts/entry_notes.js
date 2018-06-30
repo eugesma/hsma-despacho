@@ -1,7 +1,3 @@
-$('#filter').on('hidden.bs.collapse', function (e) {
-    alert('Event fired on #' + e.currentTarget.id);
-})
-
 $(function () {
     $('#datepicker1').datetimepicker();
     $('#datepicker2').datetimepicker({

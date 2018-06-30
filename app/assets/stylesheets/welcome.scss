@@ -50,3 +50,7 @@ li .well strong{
 #filter-panel{
   margin-bottom: 0px!important;
 }
+.nav-tabs > li > a:focus{
+  background-color: transparent!important;
+  color: white;
+}

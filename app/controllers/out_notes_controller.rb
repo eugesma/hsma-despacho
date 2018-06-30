@@ -4,11 +4,31 @@ class OutNotesController < ApplicationController
   # GET /out_notes
   # GET /out_notes.json
   def index
-    @out_notes = OutNote.paginate(:page => params[:page], :per_page => 8)
+    @filterrific = initialize_filterrific(
+      OutNote,
+      params[:filterrific],
+      select_options: {
+        sorted_by: EntryNote.options_for_sorted_by
+      },
+      persistence_id: false,
+      default_filter_params: {sorted_by: 'created_at_desc'},
+      available_filters: [
+        :sorted_by,
+        :search_query,
+        :entry_date_at,
+        :out_date_at,
+        :with_note_number,
+      ],
+    ) or return
+    @out_notes = @filterrific.find.page(params[:page]).per_page(10)
     respond_to do |format|
       format.html
       format.js
     end
+    rescue ActiveRecord::RecordNotFound => e
+      # There is an issue with the persisted param_set. Reset it.
+      puts "Had to reset filterrific params: #{ e.message }"
+      redirect_to(reset_filterrific_url(format: :html)) and return
   end
 
   # GET /out_notes/1
