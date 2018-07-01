@@ -17,13 +17,14 @@
 //= require chosen-jquery
 //= require filterrific/filterrific-jquery
 //= require highcharts
+//= require Chart.bundle
 //= require chartkick
 //= require turbolinks
-//= require_tree .
 //= require moment
 //= require bootstrap-datetimepicker
 //= require bootstrap-sprockets
 //= require bootstrap
+//= require_tree .
 
 // Se oculta el flash message
 window.setTimeout(function() {
