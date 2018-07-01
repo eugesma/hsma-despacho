@@ -1,0 +1,46 @@
+<!--  Panel Prescripciones del día -->
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title">Notas entrantes</h3>
+  </div>
+  <div class="panel-body">
+  </div>
+  <!--  Panel notas entrantes mes actual -->
+  <div class="panel-heading">
+    <h3 class="panel-title">Notas entrantes <small>Mes actual</small>
+    </h3>
+  </div>
+  <div class="panel-body">
+  </div>
+  <!--  Panel últimas notas entrantes -->
+  <% if @last_entry_notes.present? %>
+    <div class="panel-heading">
+      <h3 class="panel-title">Últimas notas entrantes
+      </h3>
+    </div>
+    <div class="panel-body body-table">
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th>Número</th>
+            <th>Origen</th>
+            <th>Destino</th>
+            <th>Fecha entrada</th>
+            <th>Fecha salida</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @last_entry_notes.each do |len|%>
+            <tr>
+              <td><%= len.note_number %></td>
+              <td><%= len.origin.sector_name %></td>
+              <td><%= len.destination.sector_name %></td>
+              <td><%= len.entry_date.strftime("%d/%m/%y %H:%M") %></td>
+              <td><%= len.out_date.strftime("%d/%m/%y %H:%M") %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  <% end %>
+</div>

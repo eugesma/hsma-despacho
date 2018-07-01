@@ -4,7 +4,6 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 # To group by date
 gem 'groupdate'
-gem 'active_median'
 # Use chartkick and highcharts-rails to perform charts
 gem 'chartkick'
 gem 'highcharts-rails'
