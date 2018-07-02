@@ -1,9 +1,11 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-
+# To show bootstrap modals in data-confirm
+gem 'data-confirm-modal'
 # To group by date
 gem 'groupdate'
+# To get the median of value
 gem 'active_median'
 # Use chartkick and highcharts-rails to perform charts
 gem 'chartkick'

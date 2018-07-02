@@ -15,13 +15,15 @@ $('#dialog').modal("show");
 
 // Set focus to the first element
 $('#dialog').on('shown.bs.modal', function () {
-  $('.first_input').focus()
-})
+  $('#entry_note_note_number').focus();
+});
+
+$('#dialog').on('hidden.bs.modal', function () {
+  console.log("Hola");
+  $('.modal-body').html('');
+});
 
 <%= render 'form_function' %>
 
-$('#entry_note_entry_date').val("<%= @entry_note.entry_date.strftime("%d/%m/%Y %H:%M %p") %>");
-$('#entry_note_out_date').val("<%= @entry_note.out_date.strftime("%d/%m/%Y %H:%M %p") %>");
-
-$('#entry_note_entry_date').datetimepicker({format: 'DD/MM/YYYY HH:mm'});
-$('#entry_note_out_date').datetimepicker({format: 'DD/MM/YYYY HH:mm'});
+$('#entry_note_entry_date').val("<%= @entry_note.entry_date.strftime('%d/%m/%Y') %>");
+$('#entry_note_out_date').val("<%= @entry_note.out_date.strftime('%d/%m/%Y') %>");

@@ -22,15 +22,16 @@
                         label_method: :sector_name,
                         value_method: :id,
                         collection: @sectors,
-                        include_blank: false,
+                        include_blank: true,
+                        required: true,
                         input_html: { class: 'chosen-select', id: 'destination_id' },
                         prompt: 'Seleccione un sector o cree uno'
       %><br><br>
       <%= f.hint 'No seleccione ningún sector para crear uno nuevo.', id: 'origin-hint', style: "display: none" %>
     </div>
-    <div class='col-md-12'>
+    <div class='form-group col-md-12'>
     <%= f.input :reference, label: 'Referencia', as: :text,
-        :input_html => { :cols => 46  , :rows => 2 } %><br><br>
+        :input_html => { class: "form-control", :cols => 60, :rows => 2 } %><br><br>
     </div>
   </div>
   <div class='row'>
@@ -38,7 +39,7 @@
       <%= f.input :entry_date, label: 'Fecha de entrada',
                                   as: :string,
                                   :placeholder => "Seleccionar fecha",
-                                  input_html: { class: "form-control",
+                                  input_html: { class: "form-control", autocomplete: 'off', required: true,
                                   value: "#{@entry_note.entry_date unless @entry_note.new_record?}"},
                                   html5: false
                                   %><br><br>
@@ -47,10 +48,9 @@
       <%= f.input :out_date, label: 'Fecha de salida',
                                   as: :string,
                                   :placeholder => "Seleccionar fecha",
-                                  input_html: { class: "form-control",
+                                  input_html: { class: "form-control", autocomplete: 'off', required: true,
                                   value: "#{@entry_note.out_date unless @entry_note.new_record?}"},
-                                  html5: false,
-                                  required: true
+                                  html5: false
                                   %><br><br>
     </div>
   </div>

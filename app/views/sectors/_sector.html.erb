@@ -16,10 +16,5 @@
           class: 'btn btn-warning btn-xs', title: 'Editar', data: { toggle: 'tooltip', placement: 'top' } do %>
       <%= content_tag(:span, '', class: 'glyphicon glyphicon-edit') %>
     <% end %>
-    <%= link_to sector_path(sector), remote: true, class: 'btn btn-danger btn-xs',
-          title: 'Borrar', method: :delete, data: { toggle: 'tooltip', placement: 'top',
-          confirm: "Desea eliminar la nota entrante número #{sector.sector_name}?"} do %>
-      <%= content_tag(:span, '', class: 'glyphicon glyphicon-trash') %>
-    <% end %>
   </td>
 </tr>

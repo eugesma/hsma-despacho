@@ -22,9 +22,10 @@
 //= require turbolinks
 //= require moment
 //= require bootstrap-datetimepicker
-//= require bootstrap-sprockets
 //= require bootstrap
+//= require bootstrap-sprockets
 //= require_tree .
+//= require data-confirm-modal
 
 // Se oculta el flash message
 window.setTimeout(function() {
@@ -32,9 +33,3 @@ window.setTimeout(function() {
         $(this).remove();
     });
 }, 2000);
-
-$(document).on('turbolinks:load', function() {
-
-  $('li.active').removeClass('active');
-  $('a[href="' + location.pathname + '"]').closest('li').addClass('active');
-});

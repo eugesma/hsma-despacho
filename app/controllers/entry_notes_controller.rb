@@ -47,6 +47,7 @@ class EntryNotesController < ApplicationController
 
   # GET /entry_notes/1/edit
   def edit
+    @sectors = Sector.all
   end
 
   # POST /entry_notes

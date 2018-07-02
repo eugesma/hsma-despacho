@@ -1,12 +1,11 @@
 var dateNow = new Date();
 $(function () {
     $('#entry_note_entry_date').datetimepicker({
-      format: 'DD/MM/YYYY HH:mm',
-      defaultDate: dateNow
+      format: 'DD/MM/YYYY',
     });
     $('#entry_note_out_date').datetimepicker({
-      format: 'DD/MM/YYYY HH:mm',
-      useCurrent: false //Important! See issue #1075
+      format: 'DD/MM/YYYY',
+      useCurrent: false, //Important! See issue #1075
     });
     $("#entry_note_entry_date").on("dp.change", function (e) {
         $('#entry_note_out_date').data("DateTimePicker").minDate(e.date);
@@ -29,7 +28,6 @@ function readURL(input) {
     reader.onload = function(e) {
       $('#img-upload').attr('src', e.target.result);
     }
-
     reader.readAsDataURL(input.files[0]);
   }
 }
