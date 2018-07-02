@@ -4,8 +4,18 @@
     <h3 class="panel-title">Notas salientes</h3>
   </div>
   <div class="panel-body">
-    <%= line_chart charts_by_day_out_notes_path, download: "Notas Salientes por dia HSMA", label: "Cantidad", colors: ["rgba(190,0,0, 0.6)"], title:"Salientes por día" %>
-    <%= column_chart charts_by_month_out_notes_path, download: "Notas Entrantes por mes HSMA", label: "Cantidad", colors: ["rgba(190,0,0, 0.6)"], title:"Salientes por mes" %>
+    <%= line_chart charts_by_day_out_notes_path,
+      download: "Notas Salientes por dia HSMA",
+      label: "Cantidad",
+      colors: ["rgba(190,0,0, 0.6)"],
+      title:"Salientes por día",
+      library: {  animation: { duration: 500, easing: "linear" } }%>
+    <%= column_chart charts_by_month_out_notes_path,
+      download: "Notas Entrantes por mes HSMA",
+      label: "Cantidad",
+      colors: ["rgba(190,0,0, 0.6)"],
+      title:"Salientes por mes",
+      library: {  animation: { duration: 500, easing: "linear" } } %>
   </div>
   <!--  Panel últimas notas salientes -->
   <% if @last_out_notes.present? %>

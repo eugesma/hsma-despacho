@@ -44,17 +44,17 @@
         </div>
         <div class="col-md-2 col-sm-3">
           <label>Ordenar por</label>
-          <%= f.select(:sorted_by, @filterrific.select_options[:sorted_by],{}, {class: 'form-control'}) %>
+          <%= f.select(:sorted_by, @filterrific.select_options[:sorted_by],{}, {class: 'form-control filterrific-periodically-observed'}) %>
         </div>
         <div class="col-md-2 col-sm-3">
            <label>Entradas desde</label>
            <%= f.text_field(:entry_date_at, class: 'form-control filterrific-periodically-observed',
-              id: "datepicker1", placeholder: "Una fecha", data: { date_format: 'DD/MM/YYYY hh:mm A/PM'}) %>
+              id: "datepicker2", placeholder: "Una fecha", data: { date_format: 'DD/MM/YYYY hh:mm A/PM'}) %>
         </div>
         <div class="col-md-2 col-sm-3">
            <label>Recibidas desde</label>
            <%= f.text_field(:out_date_at, class: 'form-control filterrific-periodically-observed',
-              id: "datepicker2", placeholder: "Una fecha", data: { date_format: 'DD/MM/YYYY hh:mm A/PM'}) %>
+              id: "datepicker3", placeholder: "Una fecha", data: { date_format: 'DD/MM/YYYY hh:mm A/PM'}) %>
         </div>
         <div class="col-md-2 col-sm-3 pull-right">
           <label>Reset</label>

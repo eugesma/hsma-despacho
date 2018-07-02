@@ -9,8 +9,4 @@ $(function () {
     $("#datepicker2").on("dp.change", function (e) {
         $('#datepicker1').data("DateTimePicker").maxDate(e.date);
     });
-    $('#author_id').chosen({
-        allow_single_deselect: true,
-        no_results_text: 'No se encontró el resultado',
-        width: '200px'});
 });

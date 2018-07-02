@@ -4,8 +4,16 @@
     <h3 class="panel-title">Notas entrantes</h3>
   </div>
   <div class="panel-body">
-    <%= line_chart charts_by_day_entry_notes_path, download: "Notas Entrantes por dia HSMA", label: "Cantidad", title: "Entrantes por día" %>
-    <%= column_chart charts_by_month_entry_notes_path, download: "Notas Entrantes por mes HSMA", label: "Cantidad", title: "Entrantes por mes" %>
+    <%= line_chart charts_by_day_entry_notes_path,
+      download: "Notas Entrantes por dia HSMA",
+      label: "Cantidad",
+      title: "Entrantes por día",
+      library: {  animation: { duration: 500, easing: "linear"} } %>
+    <%= column_chart charts_by_month_entry_notes_path,
+      download: "Notas Entrantes por mes HSMA",
+      label: "Cantidad",
+      title: "Entrantes por mes",
+      library: {  animation: { duration: 500, easing: "linear"} } %>
   </div>
   <!--  Panel últimas notas entrantes -->
   <% if @last_entry_notes.present? %>

@@ -94,6 +94,7 @@ class EntryNote < ApplicationRecord
   # Es llamado por el controlador como parte de `initialize_filterrific`.
   def self.options_for_sorted_by
     [
+      ['Creación (desc)', 'created_at_desc'],
       ['Numero (asc)', 'numero_asc'],
       ['Origen (a-z)', 'origen_asc'],
       ['Destino (a-z)', 'destino_asc'],
