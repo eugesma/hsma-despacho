@@ -14,11 +14,20 @@
       label: "Cantidad",
       title: "Entrantes por mes",
       library: {  animation: { duration: 500, easing: "linear"} } %>
+
+    <%= pie_chart charts_by_sector_entry_notes_path,
+      download: "Notas Entrantes por sector/origen",
+      legend:  "right",
+      title: "Notas entrantes por sector/origen",
+      library: {  animation: { duration: 500, easing: "linear"} } %>
   </div>
   <!--  Panel últimas notas entrantes -->
   <% if @last_entry_notes.present? %>
     <div class="panel-heading">
       <h3 class="panel-title">Últimas notas entrantes
+        <%= link_to entry_notes_path, class: 'btn btn-default btn-xs pull-right' do %>
+          Ver más
+        <% end %>
       </h3>
     </div>
     <div class="panel-body body-table">
@@ -30,6 +39,7 @@
             <th>Destino</th>
             <th>Fecha entrada</th>
             <th>Fecha salida</th>
+            <th colspan="1"></th>
           </tr>
         </thead>
         <tbody>
@@ -40,6 +50,11 @@
               <td><%= len.destination.sector_name %></td>
               <td><%= len.entry_date.strftime("%d/%m/%y %H:%M") %></td>
               <td><%= len.out_date.strftime("%d/%m/%y %H:%M") %></td>
+              <td>
+                <%= link_to entry_notes_url(filterrific: {:with_note_number => len.note_number}), class: 'btn btn-default btn-xs' do %>
+                  <%= content_tag(:span, '', class: 'glyphicon glyphicon-option-horizontal') %>
+                <% end %>
+              </td>
             </tr>
           <% end %>
         </tbody>

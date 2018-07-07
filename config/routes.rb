@@ -13,5 +13,8 @@ Rails.application.routes.draw do
 
     get "by-day-out-notes"
     get "by-month-out-notes"
+
+    get "by-sector-entry-notes"
+    get "by-sector-out-notes"
   end
 end
