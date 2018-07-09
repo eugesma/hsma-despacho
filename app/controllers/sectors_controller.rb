@@ -15,6 +15,7 @@ class SectorsController < ApplicationController
   # GET /sectors/1
   # GET /sectors/1.json
   def show
+    authorize @sector
     respond_to do |format|
       format.js
     end
@@ -22,17 +23,20 @@ class SectorsController < ApplicationController
 
   # GET /sectors/new
   def new
+    authorize Sector
     @sector = Sector.new
   end
 
   # GET /sectors/1/edit
   def edit
+    authorize @sector
   end
 
   # POST /sectors
   # POST /sectors.json
   def create
     @sector = Sector.new(sector_params)
+    authorize @sector
 
     respond_to do |format|
       if @sector.save!
@@ -48,6 +52,8 @@ class SectorsController < ApplicationController
   # PATCH/PUT /sectors/1
   # PATCH/PUT /sectors/1.json
   def update
+    authorize @sector
+
     respond_to do |format|
       if @sector.update_attributes(sector_params)
         flash.now[:success] = "El sector "+@sector.sector_name+" se ha modificado correctamente."
@@ -62,6 +68,7 @@ class SectorsController < ApplicationController
   # DELETE /sectors/1
   # DELETE /sectors/1.json
   def destroy
+    authorize @sector
     @sector_name = @sector.sector_name
     @sector.destroy
     respond_to do |format|

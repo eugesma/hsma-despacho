@@ -2,12 +2,14 @@
   Sectores
 <% end %>
 <% content_for :page_nav do %>
-  <li role="presentation">
-    <%= link_to new_sector_path, remote: true do %>
-      <%= content_tag(:span, '', class: 'glyphicon glyphicon-plus') %>
-      Nuevo
-    <% end %>
-  </li>
+  <% if policy(Sector).new? %>
+    <li role="presentation">
+      <%= link_to new_sector_path, remote: true do %>
+        <%= content_tag(:span, '', class: 'glyphicon glyphicon-plus') %>
+        Nuevo
+      <% end %>
+    </li>
+  <% end %>
 <% end %>
 
 <%= render(

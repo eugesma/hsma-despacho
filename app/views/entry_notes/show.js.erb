@@ -7,9 +7,11 @@ $('.modal-body').html('<%= j render("show") %>');
 // Add form button
 $('.modal-footer').html(
   "<button type='button' class='btn btn-default pull-left' data-dismiss='modal'>Volver</button>"+
-  '<%= link_to edit_entry_note_path(@entry_note), remote: true, class: "btn btn-warning btn-md" do %>'+
-    '<%= content_tag(:span, "", class: "glyphicon glyphicon-edit") %>'+
-    ' Editar nota'+
+  '<% if policy(@entry_note).edit? %>'+
+    '<%= link_to edit_entry_note_path(@entry_note), remote: true, class: "btn btn-warning btn-md" do %>'+
+      '<%= content_tag(:span, "", class: "glyphicon glyphicon-edit") %>'+
+      ' Editar nota'+
+    '<% end %>'+
   '<% end %>'
 );
 

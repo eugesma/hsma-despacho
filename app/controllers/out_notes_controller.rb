@@ -34,6 +34,7 @@ class OutNotesController < ApplicationController
   # GET /out_notes/1
   # GET /out_notes/1.json
   def show
+    authorize @out_note
     respond_to do |format|
       format.js
     end
@@ -41,12 +42,14 @@ class OutNotesController < ApplicationController
 
   # GET /out_notes/new
   def new
+    authorize OutNote
     @out_note = OutNote.new
     @sectors = Sector.all
   end
 
   # GET /out_notes/1/edit
   def edit
+    authorize @out_note
     @sectors = Sector.all
   end
 
@@ -55,6 +58,7 @@ class OutNotesController < ApplicationController
   def create
     @out_note = OutNote.new(out_note_params)
     @out_note.author = current_user
+    authorize @out_note
 
     respond_to do |format|
       if @out_note.save!
@@ -70,6 +74,8 @@ class OutNotesController < ApplicationController
   # PATCH/PUT /out_notes/1
   # PATCH/PUT /out_notes/1.json
   def update
+    authorize @out_note
+
     respond_to do |format|
       if @out_note.update_attributes(out_note_params)
         flash.now[:success] = "La nota saliente número "+@out_note.note_number.to_s+" se ha modificado correctamente."
@@ -84,6 +90,7 @@ class OutNotesController < ApplicationController
   # DELETE /out_notes/1
   # DELETE /out_notes/1.json
   def destroy
+    authorize @out_note
     @number = @out_note.note_number
     @out_note.destroy
     respond_to do |format|

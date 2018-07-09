@@ -28,8 +28,10 @@
 //= require data-confirm-modal
 
 // Se oculta el flash message
-window.setTimeout(function() {
-    $(".alert").fadeTo(500, 0).slideUp(500, function(){
-        $(this).remove();
-    });
-}, 2000);
+$(document).on('turbolinks:load', function() {
+  window.setTimeout(function() {
+      $(".alert").fadeTo(500, 0).slideUp(500, function(){
+          $(this).remove();
+      });
+  }, 2000);
+});

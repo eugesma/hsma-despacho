@@ -34,6 +34,7 @@ class EntryNotesController < ApplicationController
   # GET /entry_notes/1
   # GET /entry_notes/1.json
   def show
+    authorize @entry_note
     respond_to do |format|
       format.js
     end
@@ -41,12 +42,14 @@ class EntryNotesController < ApplicationController
 
   # GET /entry_notes/new
   def new
+    authorize EntryNote
     @entry_note = EntryNote.new
     @sectors = Sector.all
   end
 
   # GET /entry_notes/1/edit
   def edit
+    authorize @entry_note
     @sectors = Sector.all
   end
 
@@ -55,6 +58,7 @@ class EntryNotesController < ApplicationController
   def create
     @entry_note = EntryNote.new(entry_note_params)
     @entry_note.author = current_user
+    authorize @entry_note
 
     respond_to do |format|
       if @entry_note.save!
@@ -70,6 +74,8 @@ class EntryNotesController < ApplicationController
   # PATCH/PUT /entry_notes/1
   # PATCH/PUT /entry_notes/1.json
   def update
+    authorize @entry_note
+
     respond_to do |format|
       if @entry_note.update_attributes(entry_note_params)
         flash.now[:success] = "La nota entrante número "+@entry_note.note_number.to_s+" se ha modificado correctamente."
@@ -84,6 +90,7 @@ class EntryNotesController < ApplicationController
   # DELETE /entry_notes/1
   # DELETE /entry_notes/1.json
   def destroy
+    authorize @entry_note
     @number = @entry_note.note_number
     @entry_note.destroy
     respond_to do |format|

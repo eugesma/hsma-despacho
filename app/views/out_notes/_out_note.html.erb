@@ -24,15 +24,19 @@
           class: 'btn btn-default btn-xs', title: 'Ver detalles', data: { toggle: 'tooltip', placement: 'top' } do %>
       <%= content_tag(:span, '', class: 'glyphicon glyphicon-eye-open') %>
     <% end %>
-    <%= link_to edit_out_note_path(out_note), remote: true,
-          class: 'btn btn-warning btn-xs', title: 'Editar', data: { toggle: 'tooltip', placement: 'top' } do %>
-      <%= content_tag(:span, '', class: 'glyphicon glyphicon-edit') %>
+    <% if policy(out_note).edit? %>
+      <%= link_to edit_out_note_path(out_note), remote: true,
+            class: 'btn btn-warning btn-xs', title: 'Editar', data: { toggle: 'tooltip', placement: 'top' } do %>
+        <%= content_tag(:span, '', class: 'glyphicon glyphicon-edit') %>
+      <% end %>
     <% end %>
-    <%= link_to out_note_path(out_note), remote: true, class: 'btn btn-danger btn-xs',
-          title: 'Borrar', method: :delete, data: { toggle: 'tooltip', placement: 'top',
-          confirm: "Desea eliminar la nota entrante número #{out_note.note_number}?",
-          verify: "#{out_note.note_number}", verify_text: "Escriba #{out_note.note_number} para confirmar" } do %>
-      <%= content_tag(:span, '', class: 'glyphicon glyphicon-trash') %>
+    <% if policy(out_note).destroy? %>
+      <%= link_to out_note_path(out_note), remote: true, class: 'btn btn-danger btn-xs',
+            title: 'Borrar', method: :delete, data: { toggle: 'tooltip', placement: 'top',
+            confirm: "Desea eliminar la nota entrante número #{out_note.note_number}?",
+            verify: "#{out_note.note_number}", verify_text: "Escriba #{out_note.note_number} para confirmar" } do %>
+        <%= content_tag(:span, '', class: 'glyphicon glyphicon-trash') %>
+      <% end %>
     <% end %>
   </td>
 </tr>

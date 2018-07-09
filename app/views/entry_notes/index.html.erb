@@ -3,12 +3,14 @@
 <% end %>
 
 <% content_for :page_nav do %>
-  <li role="presentation">
-    <%= link_to new_entry_note_path, remote: true do %>
-      <%= content_tag(:span, '', class: 'glyphicon glyphicon-plus') %>
-      Nueva
-    <% end %>
-  </li>
+  <% if policy(EntryNote).new? %>
+    <li role="presentation">
+      <%= link_to new_entry_note_path, remote: true do %>
+        <%= content_tag(:span, '', class: 'glyphicon glyphicon-plus') %>
+        Nueva
+      <% end %>
+    </li>
+  <% end %>
   <li role="presentation">
     <a href="javascript:void(0);" data-toggle="collapse" data-target="#filter">
       <%= content_tag(:span, '', class: 'glyphicon glyphicon-filter') %>
