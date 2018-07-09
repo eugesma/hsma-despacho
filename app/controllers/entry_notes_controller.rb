@@ -4,6 +4,7 @@ class EntryNotesController < ApplicationController
   # GET /entry_notes
   # GET /entry_notes.json
   def index
+    authorize EntryNote
     @filterrific = initialize_filterrific(
       EntryNote,
       params[:filterrific],
@@ -21,6 +22,7 @@ class EntryNotesController < ApplicationController
       ],
     ) or return
     @entry_notes = @filterrific.find.page(params[:page]).per_page(10)
+
     respond_to do |format|
       format.html
       format.js

@@ -1,21 +1,11 @@
-class OutNotePolicy < ApplicationPolicy
-  def index
-    true
-  end
-
+class OutNotePolicy < CommonPolicy
   def create?
-    (record.author == user) && (user.has_role? :dispatcher)
-  end
-
-  def new?
-    (user.has_role? :dispatcher) || (user.has_role? :admin)
-  end
-
-  def update?
-    (record.author == user) || (user.has_role? :admin)
+    super unless user.has_role? :admin
+    return true
   end
 
   def destroy?
-    (record.author == user) || (user.has_role? :admin)
+    super unless user.has_role? :admin
+    return true
   end
 end
