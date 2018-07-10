@@ -1,5 +1,5 @@
 class OutNotesController < ApplicationController
-  before_action :set_out_note, only: [:show, :edit, :update, :destroy]
+  before_action :set_out_note, only: [:show, :edit, :update, :destroy, :delete]
 
   # GET /out_notes
   # GET /out_notes.json
@@ -95,6 +95,15 @@ class OutNotesController < ApplicationController
     @out_note.destroy
     respond_to do |format|
       flash.now[:success] = "La nota saliente número "+@number.to_s+" se ha eliminado correctamente."
+      format.js
+    end
+  end
+
+  # GET /out_note/1/delete
+  def delete
+    authorize @out_note
+
+    respond_to do |format|
       format.js
     end
   end

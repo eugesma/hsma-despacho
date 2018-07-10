@@ -9,18 +9,22 @@
       label: "Cantidad",
       colors: ["rgba(190,0,0, 0.6)"],
       title:"Salientes por día",
-      library: {  animation: { duration: 500, easing: "linear" } }%>
+      adapter: "highcharts" %>
+
     <%= column_chart charts_by_month_out_notes_path,
       download: "Notas Entrantes por mes HSMA",
       label: "Cantidad",
       colors: ["rgba(190,0,0, 0.6)"],
       title:"Salientes por mes",
-      library: {  animation: { duration: 500, easing: "linear" } } %>
+      adapter: "chartjs" %>
+
     <%= pie_chart charts_by_sector_out_notes_path,
       download: "Notas Salientes por sector/origen",
       legend:  "right",
       title: "Notas salientes por sector/origen",
-      library: {  animation: { duration: 500, easing: "linear"} } %>
+      label: "Cantidad",
+      messages: {empty: "No hay notas entrantes por sector"},
+      adapter: "highcharts" %>
   </div>
   <!--  Panel últimas notas salientes -->
   <% if @last_out_notes.present? %>

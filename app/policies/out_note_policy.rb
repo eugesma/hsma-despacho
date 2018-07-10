@@ -8,4 +8,9 @@ class OutNotePolicy < CommonPolicy
     super unless user.has_role? :admin
     return true
   end
+
+  def delete?
+    super unless user.has_role? :admin
+    return true
+  end
 end

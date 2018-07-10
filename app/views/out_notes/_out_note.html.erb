@@ -30,11 +30,9 @@
         <%= content_tag(:span, '', class: 'glyphicon glyphicon-edit') %>
       <% end %>
     <% end %>
-    <% if policy(out_note).destroy? %>
-      <%= link_to out_note_path(out_note), remote: true, class: 'btn btn-danger btn-xs',
-            title: 'Borrar', method: :delete, data: { toggle: 'tooltip', placement: 'top',
-            confirm: "Desea eliminar la nota entrante número #{out_note.note_number}?",
-            verify: "#{out_note.note_number}", verify_text: "Escriba #{out_note.note_number} para confirmar" } do %>
+    <% if policy(out_note).delete? %>
+      <%= link_to delete_out_note_path(out_note), remote: true,
+            class: 'btn btn-danger btn-xs', title: 'Borrar', data: { toggle: 'tooltip', placement: 'top' } do %>
         <%= content_tag(:span, '', class: 'glyphicon glyphicon-trash') %>
       <% end %>
     <% end %>

@@ -18,5 +18,11 @@
         <%= content_tag(:span, '', class: 'glyphicon glyphicon-edit') %>
       <% end %>
     <% end %>
+    <% if policy(sector).delete? %>
+      <%= link_to delete_sector_path(sector), remote: true,
+            class: 'btn btn-danger btn-xs', title: 'Borrar', data: { toggle: 'tooltip', placement: 'top' } do %>
+        <%= content_tag(:span, '', class: 'glyphicon glyphicon-trash') %>
+      <% end %>
+    <% end %>
   </td>
 </tr>

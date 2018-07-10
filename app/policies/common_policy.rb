@@ -18,4 +18,8 @@ class CommonPolicy < ApplicationPolicy
   def destroy?
     record.author == user
   end
+
+  def delete?
+    record.author == user
+  end
 end

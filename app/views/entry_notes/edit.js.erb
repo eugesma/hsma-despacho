@@ -18,11 +18,6 @@ $('#dialog').on('shown.bs.modal', function () {
   $('#entry_note_note_number').focus();
 });
 
-$('#dialog').on('hidden.bs.modal', function () {
-  console.log("Hola");
-  $('.modal-body').html('');
-});
-
 <%= render 'form_function' %>
 
 $('#entry_note_entry_date').val("<%= @entry_note.entry_date.strftime('%d/%m/%Y') %>");

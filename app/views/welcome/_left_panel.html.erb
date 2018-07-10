@@ -8,18 +8,24 @@
       download: "Notas Entrantes por dia HSMA",
       label: "Cantidad",
       title: "Entrantes por día",
-      library: {  animation: { duration: 500, easing: "linear"} } %>
+      messages: {empty: "No hay notas entrantes en estas semanas"},
+      adapter: "highcharts" %>
+
     <%= column_chart charts_by_month_entry_notes_path,
       download: "Notas Entrantes por mes HSMA",
       label: "Cantidad",
       title: "Entrantes por mes",
-      library: {  animation: { duration: 500, easing: "linear"} } %>
+      colors: ["rgb(130,165,239, 0.6)"],
+      messages: {empty: "No hay notas entrantes en este mes"},
+      adapter: "chartjs" %>
 
     <%= pie_chart charts_by_sector_entry_notes_path,
       download: "Notas Entrantes por sector/origen",
       legend:  "right",
       title: "Notas entrantes por sector/origen",
-      library: {  animation: { duration: 500, easing: "linear" } } %>
+      label: "Cantidad",
+      messages: {empty: "No hay notas entrantes por sector"},
+      adapter: "highcharts" %>
 
   </div>
   <!--  Panel últimas notas entrantes -->

@@ -8,28 +8,28 @@
     input_html: { min: '0', max:'9999' } %><br><br>
   <div class='row'>
       <div class='col-md-6'>
+        <%= f.label 'Origen' %>
         <%= f.input :origin_id,
-                          label: 'Origen',
+                          label: false,
                           label_method: :sector_name,
                           value_method: :id,
                           collection: @sectors,
                           include_blank: false,
                           input_html: { class: 'chosen-select', id: 'origin_id' },
-                          prompt: 'Seleccione un sector o cree uno'
+                          prompt: 'Seleccione un origen'
         %>
-        <%= f.hint 'No seleccione ningún sector para crear uno nuevo.', id: 'origin-hint', style: "display: none" %>
       </div>
       <div class='col-md-6'>
+      <%= f.label 'Destino' %>
       <%= f.input :destination_id,
-                        label: 'Destino',
+                        label: false,
                         label_method: :sector_name,
                         value_method: :id,
                         collection: @sectors,
                         include_blank: false,
                         input_html: { class: 'chosen-select', id: 'destination_id' },
-                        prompt: 'Seleccione un sector o cree uno'
+                        prompt: 'Seleccione un destino'
       %><br><br>
-      <%= f.hint 'No seleccione ningún sector para crear uno nuevo.', id: 'origin-hint', style: "display: none" %>
     </div>
     <div class='col-md-12'>
     <%= f.input :reference, required: true, label: 'Referencia', as: :text,

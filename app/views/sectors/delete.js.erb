@@ -1,0 +1,14 @@
+// Add the dialog title
+$('#dialog h3').html("<i class=' glyphicon glyphicon-trash'></i>  Borrando sector");
+
+// Render the edit form
+$('.modal-body').html('Esta seguro que desea eliminar el sector <%= @sector.sector_name %>?');
+
+// Add form button
+$('.modal-footer').html(
+  "<button type='button' class='btn btn-default pull-left' data-dismiss='modal'>Volver</button>"+
+  "<a data-remote='true' data-method='delete' href='/sectors/<%= @sector.id %>>' data-dismiss='modal' class='btn commit btn-danger pull-right' rel='nofollow'>Confirmar</a>"
+);
+
+// Show the dynamic dialog
+$('#dialog').modal("show");

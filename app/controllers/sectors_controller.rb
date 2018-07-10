@@ -1,5 +1,5 @@
 class SectorsController < ApplicationController
-  before_action :set_sector, only: [:show, :edit, :update, :destroy]
+  before_action :set_sector, only: [:show, :edit, :update, :destroy, :delete]
 
   # GET /sectors
   # GET /sectors.json
@@ -73,6 +73,15 @@ class SectorsController < ApplicationController
     @sector.destroy
     respond_to do |format|
       flash.now[:success] = "La nota entrante número "+@sector_name+" se ha eliminado correctamente."
+      format.js
+    end
+  end
+
+  # GET /sector/1/delete
+  def delete
+    authorize @sector
+
+    respond_to do |format|
       format.js
     end
   end

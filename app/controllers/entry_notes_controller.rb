@@ -1,5 +1,5 @@
 class EntryNotesController < ApplicationController
-  before_action :set_entry_note, only: [:show, :edit, :update, :destroy]
+  before_action :set_entry_note, only: [:show, :edit, :update, :destroy, :delete]
 
   # GET /entry_notes
   # GET /entry_notes.json
@@ -97,6 +97,15 @@ class EntryNotesController < ApplicationController
     @entry_note.destroy
     respond_to do |format|
       flash.now[:success] = "La nota entrante número "+@number.to_s+" se ha eliminado correctamente."
+      format.js
+    end
+  end
+
+  # GET /entry_note/1/delete
+  def delete
+    authorize @entry_note
+
+    respond_to do |format|
       format.js
     end
   end

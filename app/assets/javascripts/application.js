@@ -25,7 +25,6 @@
 //= require bootstrap
 //= require bootstrap-sprockets
 //= require_tree .
-//= require data-confirm-modal
 
 // Se oculta el flash message
 $(document).on('turbolinks:load', function() {

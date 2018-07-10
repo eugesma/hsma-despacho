@@ -39,3 +39,24 @@ $("#imgInp").change(function() {
   document.getElementById('file-name').value = label;
   readURL(this);
 });
+
+$('#new_out_note').submit(function() {
+  if($("#origin_id option:selected").val() == 0){
+    // Additional code here to light up the input or display error message
+    document.getElementsByClassName("out_note_origin_id")[0].style.boxShadow = "0 0 5px red";
+    if($("#destination_id option:selected").val() == 0){
+      document.getElementsByClassName("out_note_destination_id")[0].style.boxShadow = "0 0 5px red";
+    }else {
+      document.getElementsByClassName("out_note_destination_id")[0].style.boxShadow = "0 0 5px green";
+    }
+    return false;
+  }else{
+    document.getElementsByClassName("out_note_origin_id")[0].style.boxShadow = "0 0 5px green";
+    if($("#destination_id option:selected").val() == 0){
+      document.getElementsByClassName("out_note_destination_id")[0].style.boxShadow = "0 0 5px red";
+      return false;
+    }else{
+      return true;
+    }
+  }
+});
