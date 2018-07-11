@@ -4,12 +4,32 @@ class SectorsController < ApplicationController
   # GET /sectors
   # GET /sectors.json
   def index
-    @sectors = Sector.all
-    @sectors = Sector.paginate(:page => params[:page], :per_page => 8)
+    authorize Sector
+    @filterrific = initialize_filterrific(
+      Sector,
+      params[:filterrific],
+      select_options: {
+        sorted_by: Sector.options_for_sorted_by
+      },
+      persistence_id: false,
+      default_filter_params: {sorted_by: 'fecha_creado_desc'},
+      available_filters: [
+        :sorted_by,
+        :search_query,
+        :created_at,
+        :updated_at,
+      ],
+    ) or return
+    @sectors = @filterrific.find.page(params[:page]).per_page(10)
+
     respond_to do |format|
       format.html
       format.js
     end
+    rescue ActiveRecord::RecordNotFound => e
+      # There is an issue with the persisted param_set. Reset it.
+      puts "Had to reset filterrific params: #{ e.message }"
+      redirect_to(reset_filterrific_url(format: :html)) and return
   end
 
   # GET /sectors/1

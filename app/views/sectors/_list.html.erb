@@ -3,11 +3,11 @@
     <table class="table table-hover table-striped">
       <thead>
         <tr>
-          <th>Nomobre</th>
+          <th><%= filterrific_sorting_link(@filterrific, :nombre) %></th>
           <th>Descripción</th>
-          <th>Fecha creado</th>
-          <th>Fecha modficado</th>
-          <th colspan="2">Acciones</th>
+          <th><%= filterrific_sorting_link(@filterrific, :fecha_creado) %></th>
+          <th><%= filterrific_sorting_link(@filterrific, :fecha_modificado) %></th>
+          <th colspan="3">Acciones</th>
         </tr>
       </thead>
       <tbody id=sectors>
