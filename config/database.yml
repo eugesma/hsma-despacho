@@ -20,5 +20,5 @@ test:
 production:
   <<: *default
   database: hsma_production
-  username: hsma
-  password: <%= ENV['HSMA_DATABASE_PASSWORD'] %>
+  username: sifaho
+  password: <%= ENV['SIFAHO_DATABASE_PASSWORD'] %>

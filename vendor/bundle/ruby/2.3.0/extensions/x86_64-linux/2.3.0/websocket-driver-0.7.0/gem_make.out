@@ -1,0 +1,15 @@
+current directory: /var/www/hsma/hsma-despacho/vendor/bundle/ruby/2.3.0/gems/websocket-driver-0.7.0/ext/websocket-driver
+/home/sifaho/.rvm/rubies/ruby-2.3.5/bin/ruby -r ./siteconf20180711-3507-1mixget.rb extconf.rb
+creating Makefile
+
+current directory: /var/www/hsma/hsma-despacho/vendor/bundle/ruby/2.3.0/gems/websocket-driver-0.7.0/ext/websocket-driver
+make "DESTDIR=" clean
+
+current directory: /var/www/hsma/hsma-despacho/vendor/bundle/ruby/2.3.0/gems/websocket-driver-0.7.0/ext/websocket-driver
+make "DESTDIR="
+compiling websocket_mask.c
+linking shared-object websocket_mask.so
+
+current directory: /var/www/hsma/hsma-despacho/vendor/bundle/ruby/2.3.0/gems/websocket-driver-0.7.0/ext/websocket-driver
+make "DESTDIR=" install
+/usr/bin/install -m 0755 websocket_mask.so ./.gem.20180711-3507-dmzpnn
