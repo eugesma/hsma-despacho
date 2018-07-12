@@ -1,0 +1,4 @@
+<%= render 'shared/flash_message' %>
+
+$('#dialog').modal('toggle');
+$('#out_note_<%= @out_note.id %>').replaceWith('<%= j render (@out_note) %>')
