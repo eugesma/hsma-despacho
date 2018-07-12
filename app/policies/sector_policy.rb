@@ -1,7 +1,6 @@
 class SectorPolicy < CommonPolicy
   def create?
-    super unless user.has_role? :admin
-    return true
+    user.has_role? :admin || (user.has_role? :dispatcher)
   end
 
   def destroy?
@@ -9,8 +8,7 @@ class SectorPolicy < CommonPolicy
   end
 
   def delete?
-    super unless user.has_role? :admin
-    return true
+    user.has_role? :admin
   end
 
   def update?

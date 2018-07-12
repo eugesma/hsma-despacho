@@ -56,14 +56,24 @@
                                   %><br><br>
     </div>
   </div>
+  <% if !@out_note.new_record? %>
+    <% if @out_note.image.attached? %>
+      <p>
+        <label>Imagen adjunta:</label>
+        <br>
+        <%= image_tag @out_note.image.variant(resize: "300x100") %>
+      </p>
+    <% end %>
+  <% end %>
+
   <div class="container">
     <div class="col-md-3">
         <div class="form-group">
-            <label>Cargar imagen</label><br>
+            <label><%= @out_note.new_record? ? "Cargar imagen" : "Cambiar imagen" %></label><br>
             <div class="input-group">
                 <span class="input-group-btn">
                     <span class="btn btn-default btn-file">
-                        Buscar… <%= f.input :image, as: :file, label: false, input_html: { id: "imgInp"} %>
+                        Buscar… <%= f.input :image, as: :file, label: false, input_html: { id: "imgInp", data: { max_file_size: 5.megabytes }} %>
                     </span>
                 </span>
                 <input type="text" id="file-name" class="form-control" readonly>
