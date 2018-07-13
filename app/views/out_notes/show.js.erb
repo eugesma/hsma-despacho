@@ -7,6 +7,12 @@ $('.modal-body').html('<%= j render("show") %>');
 // Add form button
 $('.modal-footer').html(
   "<button type='button' class='btn btn-default pull-left' data-dismiss='modal'>Volver</button>"+
+  '<% if @out_note.image.attached? %>'+
+    '<%= link_to rails_blob_path(@out_note.image, disposition: "attachment"), class: "btn btn-default btn-md" do %>'+
+      '<%= content_tag(:span, "", class: "glyphicon glyphicon-download-alt") %>'+
+      ' Descargar imagen'+
+    '<% end %>'+
+  '<% end %>'+
   '<% if policy(@out_note).edit? %>'+
     '<%= link_to edit_out_note_path(@out_note), remote: true, class: "btn btn-warning btn-md" do %>'+
       '<%= content_tag(:span, "", class: "glyphicon glyphicon-edit") %>'+

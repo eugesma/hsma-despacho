@@ -1,4 +1,5 @@
 class EntryNote < ApplicationRecord
+  # Validaciones
   validates_presence_of :author
   validates_presence_of :reference
   validates_presence_of :note_number
@@ -7,7 +8,7 @@ class EntryNote < ApplicationRecord
   validates_presence_of :out_date
   validates_presence_of :entry_date
 
-
+  # Relaciones
   belongs_to :author, class_name: 'User'
   belongs_to :origin, class_name: 'Sector', foreign_key: 'origin_id'
   belongs_to :destination, class_name: 'Sector', foreign_key: 'destination_id'
