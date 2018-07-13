@@ -62,3 +62,9 @@ li .well strong{
   width: auto;
   min-width: 300px;
 }
+.ref-col{
+  max-width: 50px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
