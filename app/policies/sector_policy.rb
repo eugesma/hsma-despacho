@@ -1,6 +1,6 @@
 class SectorPolicy < CommonPolicy
   def create?
-    user.has_role? :admin || (user.has_role? :dispatcher)
+    (user.has_role? :admin) || (user.has_role? :dispatcher)
   end
 
   def destroy?
