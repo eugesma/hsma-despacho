@@ -2,10 +2,10 @@
   <%= f.error_notification %>
   <%= f.input :note_number, placeholder: '1234', required: true, label: 'Número de nota',
     input_html: { min: '0', max:'9999' } %><br>
-  <%= f.input :zonal_pass, placeholder: '1234', required: true, label: 'Pase zonal',
+  <%= f.input :zonal_pass, placeholder: '1234', required: false, label: 'Pase zonal',
     input_html: { min: '0', max:'9999' } %><br>
-  <%= f.input :subse_number, placeholder: '1234', required: true, label: 'Número de subsecretaria',
-    input_html: { min: '0', max:'9999' } %><br><br>
+  <%= f.input :subse_number, placeholder: '1234', required: false, label: 'Número de subsecretaria',
+    input_html: { min: '0', max:'99999' } %><br><br>
   <div class='row'>
       <div class='col-md-6'>
         <%= f.label 'Origen' %>

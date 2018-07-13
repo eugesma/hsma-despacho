@@ -2,7 +2,6 @@ class OutNote < ApplicationRecord
   validates_presence_of :author
   validates_presence_of :reference
   validates_presence_of :note_number
-  validates_presence_of :zonal_pass
   validates_presence_of :destination
   validates_presence_of :origin
 
