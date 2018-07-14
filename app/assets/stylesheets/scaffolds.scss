@@ -1,8 +1,8 @@
 body {
   &.sessions-body {
-     background-image: url('/assets/bg-sifaho.jpg');
+     background-image: url("<%= asset_path('bg-sifaho.jpg') %>");
   }
-  background-image: url('/assets/despacho-bg.jpg');
+  background-image: url("<%= asset_path('despacho-bg.jpg') %>");
   background-repeat: no-repeat;
   background-attachment: fixed;
   -webkit-background-size: cover;
