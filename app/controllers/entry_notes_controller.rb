@@ -1,5 +1,5 @@
 class EntryNotesController < ApplicationController
-  before_action :set_entry_note, only: [:show, :edit, :update, :destroy, :delete]
+  before_action :set_entry_note, only: [:show, :edit, :update, :destroy, :delete, :show_image]
 
   # GET /entry_notes
   # GET /entry_notes.json
@@ -105,6 +105,13 @@ class EntryNotesController < ApplicationController
   def delete
     authorize @entry_note
 
+    respond_to do |format|
+      format.js
+    end
+  end
+
+  # GET /entry_note/1/show_image
+  def show_image
     respond_to do |format|
       format.js
     end

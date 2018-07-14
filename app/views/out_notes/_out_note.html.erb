@@ -11,8 +11,12 @@
   </td>
   <td>
     <% if out_note.image.attached? %>
-      <span class="glyphicon glyphicon-ok"></span>
-      <% else %>
+      <%= link_to show_image_out_note_path(out_note), remote: true,
+            class: 'btn btn-default btn-xs', title: 'Ver imagen adjunta',
+            data: { toggle: 'tooltip', placement: 'top' }, style: "margin-left: -5px" do %>
+        <%= content_tag(:span, '', class: 'glyphicon glyphicon-ok') %>
+      <% end %>
+    <% else %>
       <span class="glyphicon glyphicon-remove"></span>
     <% end %>
   </td>

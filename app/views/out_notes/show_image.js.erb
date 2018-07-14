@@ -1,0 +1,23 @@
+// Add the dialog title
+$('#dialog h3').html("<i class='glyphicon glyphicon-eye-open'></i>  Viendo imagen adjunta");
+
+// Render the image
+$('.modal-body').html(
+  '<% if @out_note.image.attached? %>'+
+    '<%= image_tag @out_note.image %>'+
+  '<% end %>'
+);
+
+// Add form button
+$('.modal-footer').html(
+  "<button type='button' class='btn btn-default pull-left' data-dismiss='modal'>Volver</button>"+
+  '<% if @out_note.image.attached? %>'+
+    '<%= link_to rails_blob_path(@out_note.image, disposition: "attachment"), class: "btn btn-primary btn-md" do %>'+
+      '<%= content_tag(:span, "", class: "glyphicon glyphicon-download-alt") %>'+
+      ' Descargar imagen'+
+    '<% end %>'+
+  '<% end %>'
+);
+
+// Show the dynamic dialog
+$('#dialog').modal("show");

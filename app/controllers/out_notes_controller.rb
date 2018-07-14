@@ -1,5 +1,5 @@
 class OutNotesController < ApplicationController
-  before_action :set_out_note, only: [:show, :edit, :update, :destroy, :delete]
+  before_action :set_out_note, only: [:show, :edit, :update, :destroy, :delete, :show_image]
 
   # GET /out_notes
   # GET /out_notes.json
@@ -103,6 +103,13 @@ class OutNotesController < ApplicationController
   def delete
     authorize @out_note
 
+    respond_to do |format|
+      format.js
+    end
+  end
+
+  # GET /out_notes/1
+  def show_image
     respond_to do |format|
       format.js
     end
