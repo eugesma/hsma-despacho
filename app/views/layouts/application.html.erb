@@ -18,6 +18,11 @@
       <%= render "layouts/flash_notices" %>
       <div class="container-fluid">
         <% if user_signed_in? %>
+          <style>
+            body {
+               background-image: url("<%= asset_path('despacho-bg.jpg') %>");
+            }
+          </style>
           <ul class="nav nav-tabs">
             <li role="presentation" class="" id="page_title"><a href=""><%= content_for :page_title %></a></li>
             <%= content_for :page_nav %>
