@@ -35,9 +35,9 @@
           <label>Buscar</label>
           <%# give the search field the 'filterrific-periodically-observed' class for live updates %>
           <%= f.text_field(
-            :search_query,
+            :search_text,
             class: 'filterrific-periodically-observed form-control',
-            placeholder: 'Origen o destino'
+            placeholder: 'Un texto'
           ) %>
         </div>
         <div class="col-md-2 col-sm-3">
@@ -55,16 +55,14 @@
               id: "datepicker1", placeholder: "Una fecha", data: { date_format: 'DD/MM/YYYY'}) %>
         </div>
         <div class="col-md-2 col-sm-3">
-           <label>Recibidas desde</label>
+           <label>Salidas desde</label>
            <%= f.text_field(:out_date_at, class: 'form-control filterrific-periodically-observed',
               id: "datepicker2", placeholder: "Una fecha", data: { date_format: 'DD/MM/YYYY'}) %>
         </div>
         <div class="col-md-2 col-sm-3 pull-right">
-          <label>Reset</label>
-          <button type="button" class="btn btn-default btn-md" title="Reiniciar filtro"
-          data-toggle="tooltip" data-placement="bottom" onclick="document.getElementById('filterrific').reset();">
+          <%= link_to reset_filterrific_url, class: "btn btn-default btn-md pull-right" do %>
             <%= content_tag(:span, '', class: 'glyphicon glyphicon-refresh') %>
-          </button>
+          <% end %>
           <%# add an automated spinner to your form when the list is refreshed %>
           <%= render_filterrific_spinner %>
         </div>

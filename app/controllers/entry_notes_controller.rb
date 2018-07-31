@@ -15,7 +15,7 @@ class EntryNotesController < ApplicationController
       default_filter_params: {sorted_by: 'created_at_desc'},
       available_filters: [
         :sorted_by,
-        :search_query,
+        :search_text,
         :entry_date_at,
         :out_date_at,
         :with_note_number,

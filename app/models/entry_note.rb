@@ -1,4 +1,5 @@
 class EntryNote < ApplicationRecord
+  include PgSearch
   # Validaciones
   validates_presence_of :author
   validates_presence_of :reference
@@ -18,38 +19,23 @@ class EntryNote < ApplicationRecord
     default_filter_params: { sorted_by: 'created_at_desc' },
     available_filters: [
       :sorted_by,
-      :search_query,
+      :search_text,
       :entry_date_at,
       :out_date_at,
       :with_note_number,
     ]
   )
 
-  # define ActiveRecord scopes for
-  # :search_query, :sorted_by, :date_received_at
-  scope :search_query, lambda { |query|
-    #Se retorna nil si no hay texto en la query
-    return nil  if query.blank?
-
-    # Se pasa a minusculas para busqueda en postgresql
-    # Luego se dividen las palabras en claves individuales
-    terms = query.downcase.split(/\s+/)
-
-    # Remplaza "*" con "%" para busquedas abiertas con LIKE
-    # Agrega '%', remueve los '%' duplicados
-    terms = terms.map { |e|
-      (e.gsub('*', '%') + '%').gsub(/%+/, '%')
-    }
-
-    # Cantidad de condiciones.
-    num_or_conds = 2
-    where(
-      terms.map { |term|
-        "(LOWER(origins.sector_name) LIKE ? OR LOWER(destinations.sector_name) LIKE ?)"
-      }.join(' AND '),
-      *terms.map { |e| [e] * num_or_conds }.flatten
-    ).joins("INNER JOIN sectors AS origins ON origins.id = entry_notes.origin_id").joins("INNER JOIN sectors AS destinations ON destinations.id = entry_notes.destination_id")
-  }
+  pg_search_scope :search_text,
+  against: :reference,
+  :associated_against => {
+    :origin => :sector_name,
+    :destination => :sector_name
+  },
+  :using => {
+    :tsearch => {:prefix => true}
+  },
+  :ignoring => :accents
 
   scope :sorted_by, lambda { |sort_option|
     # extract the sort direction from the param value.

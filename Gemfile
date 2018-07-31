@@ -1,6 +1,8 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
+# For full text search
+gem 'pg_search'
 # To group by date
 gem 'groupdate'
 # To get the median of value
