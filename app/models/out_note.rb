@@ -9,9 +9,9 @@ class OutNote < ApplicationRecord
 
   # Relaciones
   belongs_to :author, class_name: 'User'
-  belongs_to :origin, class_name: 'Sector', foreign_key: 'origin_id'
-  belongs_to :destination, class_name: 'Sector', foreign_key: 'destination_id'
-  has_one_attached :image
+  belongs_to :origin, class_name: 'Sector', foreign_key: 'origin_id', counter_cache: true
+  belongs_to :destination, class_name: 'Sector', foreign_key: 'destination_id', counter_cache: true
+  has_many_attached :files
 
   filterrific(
     default_filter_params: { sorted_by: 'created_at_desc' },

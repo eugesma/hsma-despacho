@@ -2,11 +2,17 @@
   <td><%= sector.sector_name %></td>
   <td class="ref-col"><%= sector.description %></td>
   <td>
-    <%= sector.created_at.strftime("%d/%m/%y %H:%M") %>
+    <span class="label label-<%= sector.count_entry_label %>">
+      <%= sector.entry_notes_count %>
+    </span>
   </td>
   <td>
-    <%= sector.updated_at.strftime("%d/%m/%y %H:%M") %>
+    <span class="label label-<%= sector.count_out_label %>">
+      <%= sector.out_notes_count %>
+    </span>
   </td>
+  <td><%= sector.created_at.strftime("%d/%m/%y %H:%M") %></td>
+  <td><%= sector.updated_at.strftime("%d/%m/%y %H:%M") %><td>
   <td>
     <%= link_to sector_path(sector), remote:true,
           class: 'btn btn-default btn-xs', title: 'Ver detalles', data: { toggle: 'tooltip', placement: 'top' } do %>

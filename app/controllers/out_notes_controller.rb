@@ -123,6 +123,8 @@ class OutNotesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def out_note_params
-      params.require(:out_note).permit(:note_number, :destination_id, :origin_id, :reference, :zonal_pass, :subse_number, :entry_date, :out_date, :image)
+      params.require(:out_note).permit(:note_number, :destination_id, :origin_id,
+                                       :reference, :zonal_pass, :subse_number,
+                                       :entry_date, :out_date, files:[])
     end
 end

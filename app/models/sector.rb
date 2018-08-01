@@ -4,10 +4,10 @@ class Sector < ApplicationRecord
   validates_presence_of :sector_name
 
   # Relaciones
-  has_many :origins, class_name: 'EntryNote', foreign_key: 'origin_id'
-  has_many :destinations, class_name: 'EntryNote', foreign_key: 'destination_id'
-  has_many :origins, class_name: 'OutNote', foreign_key: 'origin_id', :dependent => :destroy
-  has_many :destinations, class_name: 'OutNote', foreign_key: 'destination_id', :dependent => :delete_all
+  has_many :origin_entries, class_name: 'EntryNote', foreign_key: 'origin_id'
+  has_many :destination_entries, class_name: 'EntryNote', foreign_key: 'destination_id'
+  has_many :origin_outs, class_name: 'OutNote', foreign_key: 'origin_id', :dependent => :destroy
+  has_many :destination_outs, class_name: 'OutNote', foreign_key: 'destination_id', :dependent => :delete_all
 
   filterrific(
     default_filter_params: { sorted_by: 'created_at_desc' },
@@ -34,6 +34,12 @@ class Sector < ApplicationRecord
     when /^fecha_modificado_/
       # Ordenamiento por fecha de modicicaion en la BD
       order("sectors.updated_at #{ direction }")
+    when /^entrantes_/
+      # Ordenamiento por cantidad de notas entrantes
+      order("sectors.entry_notes_count #{ direction }")
+    when /^salientes_/
+      # Ordenamiento por cantidad de notas salientes
+      order("sectors.out_notes_count #{ direction }")
     when /^nombre_/
       # Ordenamiento por nombre de sector
       order("LOWER(sectors.sector_name) #{ direction }")
@@ -59,5 +65,13 @@ class Sector < ApplicationRecord
       ['Nombre (asc)', 'nombre_asc'],
       ['Modificacion (a-z)', 'fecha_modificado_asc'],
     ]
+  end
+
+  def count_entry_label
+    if self.entry_notes_count > 0; return 'success'; else; return 'default'; end
+  end
+
+  def count_out_label
+    if self.out_notes_count > 0; return 'success'; else; return 'default'; end
   end
 end

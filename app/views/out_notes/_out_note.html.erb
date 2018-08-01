@@ -10,7 +10,7 @@
     <%= out_note.out_date.strftime("%d/%m/%Y") %>
   </td>
   <td>
-    <% if out_note.image.attached? %>
+    <% if out_note.files.attached? %>
       <%= link_to show_image_out_note_path(out_note), remote: true,
             class: 'btn btn-default btn-xs', title: 'Ver imagen adjunta',
             data: { toggle: 'tooltip', placement: 'top' }, style: "margin-left: -5px" do %>

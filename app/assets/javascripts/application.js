@@ -21,6 +21,7 @@
 //= require chartkick
 //= require turbolinks
 //= require moment
+//= require activestorage
 //= require bootstrap-datetimepicker
 //= require bootstrap
 //= require bootstrap-sprockets
