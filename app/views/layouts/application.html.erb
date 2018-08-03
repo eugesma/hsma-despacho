@@ -2,8 +2,8 @@
 <html>
   <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><%= content_for?(:title) ? yield(:title) : "Despacho HSMA" %></title>
-    <meta name="description" content="<%= content_for?(:description) ? yield(:description) : "Despacho del hospital" %>">
+    <title><%= content_for?(:title) ? yield(:title) : "Despacho Zona IV" %></title>
+    <meta name="description" content="<%= content_for?(:description) ? yield(:description) : "Despacho de Zona Sanitaria IV" %>">
     <%= favicon_link_tag 'despacho-fav.png' %>
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track' => 'reload' %>
@@ -20,7 +20,7 @@
         <% if user_signed_in? %>
           <style>
             body {
-               background-image: url("<%= asset_path('despacho-bg.jpg') %>");
+               background-image: url("<%= asset_path('zonaIV-bg.jpg') %>");
             }
           </style>
           <ul class="nav nav-tabs">
