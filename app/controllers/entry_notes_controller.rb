@@ -1,5 +1,5 @@
 class EntryNotesController < ApplicationController
-  before_action :set_entry_note, only: [:show, :edit, :update, :destroy, :delete]
+  before_action :set_entry_note, only: [:show, :edit, :update, :destroy, :delete, :show_image]
 
   # GET /entry_notes
   # GET /entry_notes.json
@@ -15,7 +15,7 @@ class EntryNotesController < ApplicationController
       default_filter_params: {sorted_by: 'created_at_desc'},
       available_filters: [
         :sorted_by,
-        :search_query,
+        :search_text,
         :entry_date_at,
         :out_date_at,
         :with_note_number,
@@ -110,6 +110,13 @@ class EntryNotesController < ApplicationController
     end
   end
 
+  # GET /entry_note/1/show_image
+  def show_image
+    respond_to do |format|
+      format.js
+    end
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_entry_note
@@ -118,6 +125,7 @@ class EntryNotesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def entry_note_params
-      params.require(:entry_note).permit(:note_number, :destination_id, :origin_id, :reference, :entry_date, :out_date, :image)
+      params.require(:entry_note).permit(:note_number, :destination_id, :origin_id,
+                                         :reference, :entry_date, :out_date, files:[])
     end
 end

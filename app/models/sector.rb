@@ -1,45 +1,28 @@
 class Sector < ApplicationRecord
-  has_many :origins, class_name: 'EntryNote', foreign_key: 'origin_id'
-  has_many :destinations, class_name: 'EntryNote', foreign_key: 'destination_id'
+  include PgSearch
+  # Validaciones
+  validates_presence_of :sector_name
 
-  has_many :origins, class_name: 'OutNote', foreign_key: 'origin_id', :dependent => :destroy
-  has_many :destinations, class_name: 'OutNote', foreign_key: 'destination_id', :dependent => :delete_all
+  # Relaciones
+  has_many :origin_entries, class_name: 'EntryNote', foreign_key: 'origin_id'
+  has_many :destination_entries, class_name: 'EntryNote', foreign_key: 'destination_id'
+  has_many :origin_outs, class_name: 'OutNote', foreign_key: 'origin_id', :dependent => :destroy
+  has_many :destination_outs, class_name: 'OutNote', foreign_key: 'destination_id', :dependent => :delete_all
 
   filterrific(
     default_filter_params: { sorted_by: 'created_at_desc' },
     available_filters: [
       :sorted_by,
-      :search_query,
+      :search_name,
       :created_at,
       :updated_at,
     ]
   )
 
-  # define ActiveRecord scopes for
-  # :search_query, :sorted_by, :date_received_at
-  scope :search_query, lambda { |query|
-    #Se retorna nil si no hay texto en la query
-    return nil  if query.blank?
-
-    # Se pasa a minusculas para busqueda en postgresql
-    # Luego se dividen las palabras en claves individuales
-    terms = query.downcase.split(/\s+/)
-
-    # Remplaza "*" con "%" para busquedas abiertas con LIKE
-    # Agrega '%', remueve los '%' duplicados
-    terms = terms.map { |e|
-      (e.gsub('*', '%') + '%').gsub(/%+/, '%')
-    }
-
-    # Cantidad de condiciones.
-    num_or_conds = 1
-    where(
-      terms.map { |term|
-        "(LOWER(sectors.sector_name) LIKE ?)"
-      }.join(' AND '),
-      *terms.map { |e| [e] * num_or_conds }.flatten
-    )
-  }
+  pg_search_scope :search_name,
+  against: :name,
+  :using => { :tsearch => {:prefix => true} },
+  :ignoring => :accents
 
   scope :sorted_by, lambda { |sort_option|
     # extract the sort direction from the param value.
@@ -51,6 +34,12 @@ class Sector < ApplicationRecord
     when /^fecha_modificado_/
       # Ordenamiento por fecha de modicicaion en la BD
       order("sectors.updated_at #{ direction }")
+    when /^entrantes_/
+      # Ordenamiento por cantidad de notas entrantes
+      order("sectors.entry_notes_count #{ direction }")
+    when /^salientes_/
+      # Ordenamiento por cantidad de notas salientes
+      order("sectors.out_notes_count #{ direction }")
     when /^nombre_/
       # Ordenamiento por nombre de sector
       order("LOWER(sectors.sector_name) #{ direction }")
@@ -76,5 +65,13 @@ class Sector < ApplicationRecord
       ['Nombre (asc)', 'nombre_asc'],
       ['Modificacion (a-z)', 'fecha_modificado_asc'],
     ]
+  end
+
+  def count_entry_label
+    if self.entry_notes_count > 0; return 'success'; else; return 'default'; end
+  end
+
+  def count_out_label
+    if self.out_notes_count > 0; return 'success'; else; return 'default'; end
   end
 end

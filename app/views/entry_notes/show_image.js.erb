@@ -1,0 +1,25 @@
+// Add the dialog title
+$('#dialog h3').html("<i class='glyphicon glyphicon-eye-open'></i>  Viendo archivos adjuntos");
+
+// Render the image
+$('.modal-body').html(
+  '<% @entry_note.files.each do |file| %>'+
+    '<% if file.variable? %>'+
+      '<%= link_to image_tag(file.variant(resize: "400x400")), rails_blob_path(file, disposition: :attachment) %>'+
+    '<% elsif file.previewable? %>'+
+      '<%= link_to image_tag(file.preview(resize: "400x400")), file, target: :_blank %>'+
+    '<% elsif file.image? %>'+
+      '<%= link_to image_tag(file), rails_blob_path(file, disposition: :attachment) %>'+
+    '<% else %>'+
+      '<%= link_to file.filename, rails_blob_path(file, disposition: :attachment) %>'+
+    '<% end %>'+
+  '<% end %>'
+);
+
+// Add form button
+$('.modal-footer').html(
+  "<button type='button' class='btn btn-default pull-left' data-dismiss='modal'>Volver</button>"
+);
+
+// Show the dynamic dialog
+$('#dialog').modal("show");

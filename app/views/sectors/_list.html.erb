@@ -5,6 +5,8 @@
         <tr>
           <th><%= filterrific_sorting_link(@filterrific, :nombre) %></th>
           <th>Descripción</th>
+          <th><%= filterrific_sorting_link(@filterrific, :entrantes) %></th>
+          <th><%= filterrific_sorting_link(@filterrific, :salientes) %></th>
           <th><%= filterrific_sorting_link(@filterrific, :fecha_creado) %></th>
           <th><%= filterrific_sorting_link(@filterrific, :fecha_modificado) %></th>
           <th colspan="3">Acciones</th>
@@ -15,7 +17,7 @@
       </tbody>
     </table>
   </div>
-</div>
-<div id="page_links">
+  <div id="page_links">
     <%= paginate @sector %>
+  </div>
 </div>

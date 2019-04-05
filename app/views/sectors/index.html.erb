@@ -34,7 +34,7 @@
           <label>Buscar</label>
           <%# give the search field the 'filterrific-periodically-observed' class for live updates %>
           <%= f.text_field(
-            :search_query,
+            :search_name,
             class: 'filterrific-periodically-observed form-control',
             placeholder: 'Nombre de sector'
           ) %>
@@ -54,11 +54,9 @@
               id: "datepicker6", placeholder: "Una fecha", data: { date_format: 'DD/MM/YYYY'}) %>
         </div>
         <div class="col-md-2 col-sm-3 pull-right">
-          <label>Reset</label>
-          <button type="button" class="btn btn-default btn-md" title="Reiniciar filtro"
-          data-toggle="tooltip" data-placement="bottom" onclick="document.getElementById('filterrific').reset();">
+          <%= link_to reset_filterrific_url, class: "btn btn-default btn-md pull-right" do %>
             <%= content_tag(:span, '', class: 'glyphicon glyphicon-refresh') %>
-          </button>
+          <% end %>
           <%# add an automated spinner to your form when the list is refreshed %>
           <%= render_filterrific_spinner %>
         </div>

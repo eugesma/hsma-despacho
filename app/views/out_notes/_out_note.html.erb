@@ -2,7 +2,7 @@
   <td><%= out_note.note_number %></td>
   <th><%= out_note.origin.sector_name %></th>
   <th><%= out_note.destination.sector_name %></th>
-  <td><%= out_note.reference %></td>
+  <td class="ref-col"><%= out_note.reference %></td>
   <td>
     <%= out_note.out_date.strftime("%d/%m/%Y") %>
   </td>
@@ -10,9 +10,13 @@
     <%= out_note.out_date.strftime("%d/%m/%Y") %>
   </td>
   <td>
-    <% if out_note.image.attached? %>
-      <span class="glyphicon glyphicon-ok"></span>
-      <% else %>
+    <% if out_note.files.attached? %>
+      <%= link_to show_image_out_note_path(out_note), remote: true,
+            class: 'btn btn-default btn-xs', title: 'Ver imagen adjunta',
+            data: { toggle: 'tooltip', placement: 'top' }, style: "margin-left: -5px" do %>
+        <%= content_tag(:span, '', class: 'glyphicon glyphicon-ok') %>
+      <% end %>
+    <% else %>
       <span class="glyphicon glyphicon-remove"></span>
     <% end %>
   </td>

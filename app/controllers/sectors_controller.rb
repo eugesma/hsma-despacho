@@ -15,7 +15,7 @@ class SectorsController < ApplicationController
       default_filter_params: {sorted_by: 'fecha_creado_desc'},
       available_filters: [
         :sorted_by,
-        :search_query,
+        :search_name,
         :created_at,
         :updated_at,
       ],

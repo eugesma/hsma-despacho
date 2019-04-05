@@ -1,0 +1,38 @@
+current directory: /var/www/hsma/hsma-despacho/vendor/bundle/ruby/2.3.0/gems/msgpack-1.2.4/ext/msgpack
+/home/sifaho/.rvm/rubies/ruby-2.3.5/bin/ruby -r ./siteconf20180711-3507-48ubml.rb extconf.rb
+checking for ruby/st.h... yes
+checking for st.h... yes
+checking for rb_str_replace() in ruby.h... yes
+checking for rb_intern_str() in ruby.h... yes
+checking for rb_sym2str() in ruby.h... yes
+checking for rb_str_intern() in ruby.h... yes
+checking for rb_block_lambda() in ruby.h... yes
+checking for rb_hash_dup() in ruby.h... yes
+checking for rb_hash_clear() in ruby.h... yes
+creating Makefile
+
+current directory: /var/www/hsma/hsma-despacho/vendor/bundle/ruby/2.3.0/gems/msgpack-1.2.4/ext/msgpack
+make "DESTDIR=" clean
+
+current directory: /var/www/hsma/hsma-despacho/vendor/bundle/ruby/2.3.0/gems/msgpack-1.2.4/ext/msgpack
+make "DESTDIR="
+compiling unpacker_class.c
+unpacker_class.c:219:14: warning: ‘Unpacker_peek_next_type’ defined but not used [-Wunused-function]
+ static VALUE Unpacker_peek_next_type(VALUE self)
+              ^
+compiling buffer.c
+compiling unpacker_ext_registry.c
+compiling rbinit.c
+compiling packer.c
+compiling extension_value_class.c
+compiling rmem.c
+compiling packer_class.c
+compiling unpacker.c
+compiling buffer_class.c
+compiling factory_class.c
+compiling packer_ext_registry.c
+linking shared-object msgpack/msgpack.so
+
+current directory: /var/www/hsma/hsma-despacho/vendor/bundle/ruby/2.3.0/gems/msgpack-1.2.4/ext/msgpack
+make "DESTDIR=" install
+/usr/bin/install -m 0755 msgpack.so ./.gem.20180711-3507-11wuaqz/msgpack
