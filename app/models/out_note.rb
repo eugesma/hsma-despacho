@@ -1,5 +1,8 @@
 class OutNote < ApplicationRecord
   include PgSearch
+
+  enum order_type: { nota: 0, pase: 1 }
+  
   # Validaciones
   validates_presence_of :author
   validates_presence_of :reference
