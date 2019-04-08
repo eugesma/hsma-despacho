@@ -10,9 +10,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_08_01_151434) do
+ActiveRecord::Schema.define(version: 2019_04_08_120234) do
 
   # These are extensions that must be enabled in order to support this database
+  enable_extension "pg_trgm"
   enable_extension "plpgsql"
   enable_extension "unaccent"
 
@@ -47,6 +48,8 @@ ActiveRecord::Schema.define(version: 2018_08_01_151434) do
     t.bigint "author_id"
     t.bigint "origin_id"
     t.bigint "destination_id"
+    t.integer "zonal_pass"
+    t.integer "subse_number"
     t.index ["author_id"], name: "index_entry_notes_on_author_id"
     t.index ["destination_id"], name: "index_entry_notes_on_destination_id"
     t.index ["origin_id"], name: "index_entry_notes_on_origin_id"
@@ -69,15 +72,6 @@ ActiveRecord::Schema.define(version: 2018_08_01_151434) do
     t.index ["origin_id"], name: "index_out_notes_on_origin_id"
   end
 
-  create_table "pg_search_documents", force: :cascade do |t|
-    t.text "content"
-    t.string "searchable_type"
-    t.bigint "searchable_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["searchable_type", "searchable_id"], name: "index_pg_search_documents_on_searchable_type_and_searchable_id"
-  end
-
   create_table "roles", force: :cascade do |t|
     t.string "name"
     t.string "resource_type"
@@ -90,7 +84,6 @@ ActiveRecord::Schema.define(version: 2018_08_01_151434) do
 
   create_table "sectors", force: :cascade do |t|
     t.string "sector_name"
-    t.string "description"
     t.bigint "entry_note_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

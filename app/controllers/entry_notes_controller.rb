@@ -126,6 +126,7 @@ class EntryNotesController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def entry_note_params
       params.require(:entry_note).permit(:note_number, :destination_id, :origin_id,
+                                          :zonal_pass, :subse_number,
                                          :reference, :entry_date, :out_date, files:[])
     end
 end

@@ -1,7 +1,21 @@
 <%= simple_form_for @entry_note, remote: true, html: {class: "form-inline"} do |f| %>
   <%= f.error_notification %>
-  <%= f.input :note_number, placeholder: '1234', label: 'Número de nota',
-    input_html: { min: '0', max:'9999' } %><br><br>
+  <div class="row">
+    <div class="col-md-12">
+      <div class="col-md-4">
+        <%= f.input :note_number, label: 'N° de nota',
+          input_html: { min: '0', max:'9999' } %>
+      </div>
+      <div class="col-md-4">  
+        <%= f.input :zonal_pass, required: false, label: 'N° de pase zonal',
+          input_html: { min: '0', max:'9999' } %>
+      </div>
+      <div class="col-md-4">
+        <%= f.input :subse_number, required: false, label: 'N° de subse',
+          input_html: { min: '0', max:'99999' } %>
+      </div>
+    </div>
+  </div>
   <div class='row'>
       <div class='col-md-6'>
         <%= f.label 'Origen' %>

@@ -1,4 +1,5 @@
 <% content_for :page_title do %>
+  <span class="glyphicon glyphicon-th"></span>
   Sectores
 <% end %>
 <% content_for :page_nav do %>
@@ -18,14 +19,6 @@
   </li>
 <% end %>
 
-<%#
-  Filterrific adds the `form_for_filterrific` view helper:
-  * adds dom id 'filterrific_filter'
-  * applies javascript behaviors:
-      * AJAX form submission on change
-      * AJAX spinner while AJAX request is being processed
-  * sets form_for options like :url, :method and input name prefix
-%>
 <div class="panel panel-default" id="filter-panel">
   <div class="panel-collapse collapse" id="filter">
     <div class="panel-body">
