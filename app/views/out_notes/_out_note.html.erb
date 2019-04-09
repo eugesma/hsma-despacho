@@ -1,8 +1,8 @@
 <tr id="out_note_<%= out_note.id %>">
   <td><%= out_note.nota? ? out_note.note_number : out_note.zonal_pass %></td>
   <td><%= out_note.order_type.humanize %></td>
-  <th><%= out_note.origin.sector_name %></th>
-  <th><%= out_note.destination.sector_name %></th>
+  <td class="ref-col"><%= out_note.origin.sector_name %></td>
+  <td class="ref-col"><%= out_note.destination.sector_name %></td>
   <td class="ref-col"><%= out_note.reference %></td>
   <td>
     <%= out_note.out_date.strftime("%d/%m/%Y") %>
