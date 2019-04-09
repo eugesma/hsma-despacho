@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_04_08_120234) do
+ActiveRecord::Schema.define(version: 2019_04_08_135325) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_trgm"
@@ -50,6 +50,7 @@ ActiveRecord::Schema.define(version: 2019_04_08_120234) do
     t.bigint "destination_id"
     t.integer "zonal_pass"
     t.integer "subse_number"
+    t.integer "order_type", default: 0
     t.index ["author_id"], name: "index_entry_notes_on_author_id"
     t.index ["destination_id"], name: "index_entry_notes_on_destination_id"
     t.index ["origin_id"], name: "index_entry_notes_on_origin_id"
@@ -59,7 +60,6 @@ ActiveRecord::Schema.define(version: 2019_04_08_120234) do
     t.integer "note_number"
     t.text "reference"
     t.integer "zonal_pass"
-    t.integer "subse_number"
     t.datetime "entry_date"
     t.datetime "out_date"
     t.datetime "created_at", null: false
@@ -67,6 +67,7 @@ ActiveRecord::Schema.define(version: 2019_04_08_120234) do
     t.bigint "author_id"
     t.bigint "origin_id"
     t.bigint "destination_id"
+    t.integer "order_type", default: 0
     t.index ["author_id"], name: "index_out_notes_on_author_id"
     t.index ["destination_id"], name: "index_out_notes_on_destination_id"
     t.index ["origin_id"], name: "index_out_notes_on_origin_id"

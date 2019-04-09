@@ -1,17 +1,17 @@
 <% if current_user.present? %>
-  <li class="<%= active_class(entry_notes_path) %>">
+  <li class="<%= active_class('entry_notes') %>">
     <%= link_to entry_notes_path do %>
       <span class="glyphicon glyphicon-log-in"></span>
       Entrantes
     <% end %>
   </li>
-  <li class="<%= active_class(out_notes_path) %>">
+  <li class="<%= active_class('out_notes') %>">
     <%= link_to out_notes_path do %>
       <span class="glyphicon glyphicon-log-out"></span>
       Salientes
     <% end %>
   </li>
-  <li class="<%= active_class(sectors_path) %>">
+  <li class="<%= active_class('sectors') %>">
     <%= link_to sectors_path do %>
       <span class="glyphicon glyphicon-th"></span>
       Sectores

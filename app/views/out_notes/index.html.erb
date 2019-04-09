@@ -1,32 +1,4 @@
-<% content_for :page_title do %>
-  <span class="glyphicon glyphicon-log-out"></span>
-  Notas salientes
-<% end %>
-<% content_for :page_nav do %>
-  <% if policy(OutNote).new? %>
-    <li role="presentation">
-      <%= link_to new_out_note_path, remote: true do %>
-        <%= content_tag(:span, '', class: 'glyphicon glyphicon-plus') %>
-        Nueva
-      <% end %>
-    </li>
-  <% end %>
-  <li role="presentation">
-    <a href="javascript:void(0);" data-toggle="collapse" data-target="#filter">
-      <%= content_tag(:span, '', class: 'glyphicon glyphicon-filter') %>
-      Filtrar
-    </a>
-  </li>
-<% end %>
-
-<%#
-  Filterrific adds the `form_for_filterrific` view helper:
-  * adds dom id 'filterrific_filter'
-  * applies javascript behaviors:
-      * AJAX form submission on change
-      * AJAX spinner while AJAX request is being processed
-  * sets form_for options like :url, :method and input name prefix
-%>
+<%= render "header" %>
 <div class="panel panel-default" id="filter-panel">
   <div class="panel-collapse collapse" id="filter">
     <div class="panel-body">

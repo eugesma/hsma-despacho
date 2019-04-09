@@ -1,0 +1,32 @@
+<% content_for :page_title do %>
+    <li role="presentation" class="<%= active_action('index') %> non-sel" id="page-title">
+      <%= link_to out_notes_path do %>
+        <span class="glyphicon glyphicon-log-out"></span>
+        Salientes
+      <% end %>
+    </li>
+<% end %>
+<% content_for :page_nav do %>
+  <% if policy(OutNote).new? %>
+    <li role="presentation" class="<%= active_action('new') %>">
+      <%= link_to new_out_note_path do %>
+        <%= content_tag(:span, '', class: 'glyphicon glyphicon-plus') %>
+        Nota
+      <% end %>
+    </li>
+  <% end %>
+  <% if policy(OutNote).new_pass? %>
+    <li role="presentation" class="<%= active_action('new_pass') %>">
+      <%= link_to new_pass_out_notes_path do %>
+        <%= content_tag(:span, '', class: 'glyphicon glyphicon-plus') %>
+        Pase
+      <% end %>
+    </li>
+  <% end %>
+  <li role="presentation">
+    <a href="javascript:void(0);" data-toggle="collapse" data-target="#filter">
+      <%= content_tag(:span, '', class: 'glyphicon glyphicon-filter') %>
+      Filtrar
+    </a>
+  </li>
+<% end %>

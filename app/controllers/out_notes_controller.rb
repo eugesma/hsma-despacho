@@ -36,6 +36,7 @@ class OutNotesController < ApplicationController
   def show
     authorize @out_note
     respond_to do |format|
+      format.html
       format.js
     end
   end
@@ -45,7 +46,16 @@ class OutNotesController < ApplicationController
     authorize OutNote
     @out_note = OutNote.new
     @sectors = Sector.all
+    @order_type = 'nota'
   end
+
+  # GET /out_notes/new_pass
+  def new_pass
+    authorize OutNote
+    @out_note = OutNote.new
+    @sectors = Sector.all
+    @order_type = 'pase'
+  end  
 
   # GET /out_notes/1/edit
   def edit
@@ -124,7 +134,7 @@ class OutNotesController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def out_note_params
       params.require(:out_note).permit(:note_number, :destination_id, :origin_id,
-                                       :reference, :zonal_pass, :subse_number,
+                                       :reference, :zonal_pass, :order_type,
                                        :entry_date, :out_date, files:[])
     end
 end

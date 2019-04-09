@@ -1,19 +1,11 @@
-<%= simple_form_for @entry_note do |f| %>
+<%= simple_form_for entry_note do |f| %>
   <%= f.error_notification %>
-  <%= f.input :order_type, :as => :hidden, :input_html => { value: 'nota' } %>
+  <%= f.input :order_type, :as => :hidden, :input_html => { value: 'pase' } %>
   <div class="row">
     <div class="col-md-12">
-      <div class="col-md-4">
-        <%= f.input :note_number, label: 'N° de nota', required: true,
-          input_html: { min: '0', max:'9999' } %>
-      </div>
       <div class="col-md-4">  
-        <%= f.input :zonal_pass, required: false, label: 'N° de pase zonal',
+        <%= f.input :zonal_pass, required: true, label: 'N° de pase zonal',
           input_html: { min: '0', max:'9999' } %>
-      </div>
-      <div class="col-md-4">
-        <%= f.input :subse_number, required: false, label: 'N° de subse',
-          input_html: { min: '0', max:'99999' } %>
       </div>
     </div>
   </div>
@@ -71,7 +63,6 @@
     <% if @entry_note.files.attached? %>
       <p>
         <label>Archivos adjuntos:</label>
-        <br>
         <% @entry_note.files.each do |file| %>
           <% if file.variable? %>
             <%= link_to image_tag(file.variant(resize: "100x100")), rails_blob_path(file, disposition: :attachment) %>

@@ -38,6 +38,7 @@ class EntryNotesController < ApplicationController
   def show
     authorize @entry_note
     respond_to do |format|
+      format.html
       format.js
     end
   end
@@ -47,7 +48,16 @@ class EntryNotesController < ApplicationController
     authorize EntryNote
     @entry_note = EntryNote.new
     @sectors = Sector.all
+    @order_type = 'nota'
   end
+
+  # GET /entry_notes/new_pass
+  def new_pass
+    authorize EntryNote
+    @entry_note = EntryNote.new
+    @sectors = Sector.all
+    @order_type = 'pase'
+  end  
 
   # GET /entry_notes/1/edit
   def edit
@@ -69,6 +79,30 @@ class EntryNotesController < ApplicationController
       else
         flash.now[:error] = "La nota entrante no se ha podido crear."
         format.js
+      end
+      if @entry_note.save!
+        begin
+          if @entry_note.nota?
+            flash[:success] = 'La nota se ha cargado correctamente'
+          elsif @entry_note.pase?
+            flash[:success] = 'El pase se ha cargado correctamente'
+          end
+        rescue ArgumentError => e
+          flash[:alert] = e.message
+        end
+        format.html { redirect_to @entry_note }
+      else
+        if entry_note_params[:order_type] == 'nota'
+          @order_type = 'nota'
+          @sectors = Sector.all
+          flash[:error] = "La nota no se ha podido cargar."
+          format.html { render :new }
+        elsif entry_note_params[:order_type] == 'pase'
+          @order_type = 'pase'
+          @sectors = Sector.all
+          flash[:error] = "El pase no se ha podido cargar."
+          format.html { render :new_pass }
+        end
       end
     end
   end
@@ -126,7 +160,7 @@ class EntryNotesController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def entry_note_params
       params.require(:entry_note).permit(:note_number, :destination_id, :origin_id,
-                                          :zonal_pass, :subse_number,
+                                          :zonal_pass, :subse_number, :order_type,
                                          :reference, :entry_date, :out_date, files:[])
     end
 end

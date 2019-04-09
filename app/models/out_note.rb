@@ -6,7 +6,6 @@ class OutNote < ApplicationRecord
   # Validaciones
   validates_presence_of :author
   validates_presence_of :reference
-  validates_presence_of :note_number
   validates_presence_of :destination
   validates_presence_of :origin
 

@@ -6,12 +6,18 @@ Rails.application.routes.draw do
       get 'show_image'
       get 'delete'
     end
+    collection do
+      get "new_pass"
+    end 
   end
   resources :out_notes do
     member do
       get 'show_image'
       get 'delete'
     end
+    collection do
+      get "new_pass"
+    end 
   end
   resources :sectors do
     member do

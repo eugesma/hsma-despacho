@@ -22,4 +22,8 @@ class OutNotePolicy < CommonPolicy
       super
     end
   end
+
+  def new_pass?
+    return  ( user.has_role? :admin )  || ( user.has_role? :admin )
+  end
 end

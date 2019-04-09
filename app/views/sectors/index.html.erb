@@ -1,6 +1,10 @@
 <% content_for :page_title do %>
-  <span class="glyphicon glyphicon-th"></span>
-  Sectores
+    <li role="presentation" class="<%= active_action('index') %> non-sel" id="page-title">
+      <%= link_to sectors_path do %>
+        <span class="glyphicon glyphicon-th"></span>
+        Sectores
+      <% end %>
+    </li>
 <% end %>
 <% content_for :page_nav do %>
   <% if policy(Sector).new? %>

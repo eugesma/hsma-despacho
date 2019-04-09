@@ -1,18 +1,15 @@
-<%= simple_form_for @out_note, remote: true, html: {} do |f| %>
+<%= simple_form_for @out_note do |f| %>
   <%= f.error_notification %>
+  <%= f.input :order_type, :as => :hidden, :input_html => { value: 'nota' } %>
   <div class="row">
     <div class="col-md-12">
       <div class="col-md-4">
-        <%= f.input :note_number, label: 'N° de nota',
+        <%= f.input :note_number, label: 'N° de nota', required: true,
           input_html: { min: '0', max:'9999' } %>
       </div>
       <div class="col-md-4">  
         <%= f.input :zonal_pass, required: false, label: 'N° de pase zonal',
           input_html: { min: '0', max:'9999' } %>
-      </div>
-      <div class="col-md-4">
-        <%= f.input :subse_number, required: false, label: 'N° de subse',
-          input_html: { min: '0', max:'99999' } %>
       </div>
     </div>
   </div>
@@ -20,57 +17,56 @@
       <div class='col-md-6'>
         <%= f.label 'Origen' %>
         <%= f.input :origin_id,
-                          label: false,
-                          label_method: :sector_name,
-                          value_method: :id,
-                          collection: @sectors,
-                          include_blank: false,
-                          input_html: { class: 'chosen-select', id: 'origin_id' },
-                          prompt: 'Seleccione un origen'
+          label: false,
+          label_method: :sector_name,
+          value_method: :id,
+          collection: @sectors,
+          include_blank: false,
+          input_html: { class: 'chosen-select', id: 'origin_id' },
+          prompt: 'Seleccione un origen'
         %>
       </div>
       <div class='col-md-6'>
       <%= f.label 'Destino' %>
       <%= f.input :destination_id,
-                        label: false,
-                        label_method: :sector_name,
-                        value_method: :id,
-                        collection: @sectors,
-                        include_blank: false,
-                        input_html: { class: 'chosen-select', id: 'destination_id' },
-                        prompt: 'Seleccione un destino'
-      %><br><br>
+        label: false,
+        label_method: :sector_name,
+        value_method: :id,
+        collection: @sectors,
+        include_blank: false,
+        input_html: { class: 'chosen-select', id: 'destination_id' },
+        prompt: 'Seleccione un destino'
+      %>
     </div>
     <div class='col-md-12'>
     <%= f.input :reference, required: true, label: 'Referencia', as: :text,
-        :input_html => { :cols => 46  , :rows => 2 } %><br><br>
+        :input_html => { :cols => 46  , :rows => 3 } %>
     </div>
   </div>
   <div class='row'>
     <div class='col-md-6'>
       <%= f.input :entry_date, label: 'Fecha de entrada',
-                                  as: :string,
-                                  :placeholder => "Seleccionar fecha",
-                                  input_html: {class: "form-control", autocomplete: 'off', required: true,
-                                  value: "#{@out_note.out_date unless @out_note.new_record?}"},
-                                  html5: false
-                                  %><br><br>
+        as: :string,
+        :placeholder => "Seleccionar fecha",
+        input_html: {class: "form-control", autocomplete: 'off', required: true,
+        value: "#{@out_note.out_date unless @out_note.new_record?}"},
+        html5: false
+        %>
     </div>
     <div class='col-md-6'>
       <%= f.input :out_date, label: 'Fecha de salida',
-                                  as: :string,
-                                  :placeholder => "Seleccionar fecha",
-                                  input_html: {class: "form-control", autocomplete: 'off', required: true,
-                                  value: "#{@out_note.out_date unless @out_note.new_record?}"},
-                                  html5: false
-                                  %><br><br>
+        as: :string,
+        :placeholder => "Seleccionar fecha",
+        input_html: {class: "form-control", autocomplete: 'off', required: true,
+        value: "#{@out_note.out_date unless @out_note.new_record?}"},
+        html5: false
+        %>
     </div>
   </div>
   <% if !@out_note.new_record? %>
     <% if @out_note.files.attached? %>
       <p>
         <label>Archivos adjuntos:</label>
-        <br>
         <% @out_note.files.each do |file| %>
           <% if file.variable? %>
             <%= link_to image_tag(file.variant(resize: "100x100")), rails_blob_path(file, disposition: :attachment) %>
