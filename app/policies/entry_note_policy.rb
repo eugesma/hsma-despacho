@@ -24,6 +24,10 @@ class EntryNotePolicy < CommonPolicy
   end
 
   def new_pass?
-    return  ( user.has_role? :admin )  || ( user.has_role? :admin )
+    if user.has_role? :admin
+      return true
+    else
+      super
+    end
   end
 end
