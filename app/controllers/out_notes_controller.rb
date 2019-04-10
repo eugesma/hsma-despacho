@@ -72,11 +72,28 @@ class OutNotesController < ApplicationController
 
     respond_to do |format|
       if @out_note.save!
-        flash.now[:success] = "La nota saliente número "+@out_note.note_number.to_s+" se ha creado correctamente."
-        format.js
+        begin
+          if @out_note.nota?
+            flash[:success] = 'La nota se ha cargado correctamente'
+          elsif @out_note.pase?
+            flash[:success] = 'El pase se ha cargado correctamente'
+          end
+        rescue ArgumentError => e
+          flash[:alert] = e.message
+        end
+        format.html { redirect_to @out_note }
       else
-        flash.now[:error] = "La nota saliente no se ha podido crear."
-        format.js
+        if out_note_params[:order_type] == 'nota'
+          @order_type = 'nota'
+          @sectors = Sector.all
+          flash[:error] = "La nota no se ha podido cargar."
+          format.html { render :new }
+        elsif out_note_params[:order_type] == 'pase'
+          @order_type = 'pase'
+          @sectors = Sector.all
+          flash[:error] = "El pase no se ha podido cargar."
+          format.html { render :new_pass }
+        end
       end
     end
   end

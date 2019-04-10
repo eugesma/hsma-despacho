@@ -74,13 +74,6 @@ class EntryNotesController < ApplicationController
 
     respond_to do |format|
       if @entry_note.save!
-        flash.now[:success] = "La nota entrante número "+@entry_note.note_number.to_s+" se ha creado correctamente."
-        format.js
-      else
-        flash.now[:error] = "La nota entrante no se ha podido crear."
-        format.js
-      end
-      if @entry_note.save!
         begin
           if @entry_note.nota?
             flash[:success] = 'La nota se ha cargado correctamente'
