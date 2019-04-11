@@ -15,6 +15,10 @@ class CommonPolicy < ApplicationPolicy
     (user.has_role? :dispatcher) || (user.has_role? :admin)
   end
 
+  def edit_pass?
+    (user.has_role? :dispatcher) || (user.has_role? :admin)
+  end
+
   def update?
     (record.author == user) || (user.has_role? :admin)
   end
