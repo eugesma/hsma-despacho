@@ -30,4 +30,12 @@ class OutNotePolicy < CommonPolicy
       super
     end
   end
+
+  def edit_pass?
+    if user.has_role? :admin
+      return true
+    else
+      super
+    end
+  end
 end

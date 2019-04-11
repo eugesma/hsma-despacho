@@ -5,6 +5,7 @@ Rails.application.routes.draw do
     member do
       get 'show_image'
       get 'delete'
+      get "edit_pass"
     end
     collection do
       get "new_pass"
@@ -14,9 +15,10 @@ Rails.application.routes.draw do
     member do
       get 'show_image'
       get 'delete'
+      get "edit_pass"
     end
     collection do
-      get "new_pass"
+    get "new_pass"
     end 
   end
   resources :sectors do

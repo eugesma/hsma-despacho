@@ -1,4 +1,4 @@
-<%= simple_form_for @entry_note do |f| %>
+<%= simple_form_for @entry_note, html: { id: :entry_note_form } do |f| %>
   <%= f.error_notification %>
   <%= f.input :order_type, :as => :hidden, :input_html => { value: 'nota' } %>
   <div class="row">
@@ -53,7 +53,7 @@
         as: :string,
         :placeholder => "Seleccionar fecha",
         input_html: { class: "form-control", autocomplete: 'off', required: true,
-        value: "#{@entry_note.entry_date unless @entry_note.new_record?}"},
+        value: "#{f.object.entry_date unless f.object.new_record?}"},
         html5: false
         %>
     </div>
@@ -62,7 +62,7 @@
         as: :string,
         :placeholder => "Seleccionar fecha",
         input_html: { class: "form-control", autocomplete: 'off', required: true,
-        value: "#{@entry_note.out_date unless @entry_note.new_record?}"},
+        value: "#{f.object.out_date unless f.object.new_record?}"},
         html5: false
         %>
     </div>

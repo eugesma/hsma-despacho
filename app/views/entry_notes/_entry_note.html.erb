@@ -25,14 +25,23 @@
     <%= entry_note.author.username %>
   </td>
   <td>
-    <%= link_to entry_note_path(entry_note), remote:true,
+    <%= link_to entry_note_path(entry_note),
           class: 'btn btn-default btn-xs', title: 'Ver detalles', data: { toggle: 'tooltip', placement: 'top' } do %>
       <%= content_tag(:span, '', class: 'glyphicon glyphicon-eye-open') %>
     <% end %>
-    <% if policy(entry_note).edit? %>
-      <%= link_to edit_entry_note_path(entry_note), remote: true,
-            class: 'btn btn-warning btn-xs', title: 'Editar', data: { toggle: 'tooltip', placement: 'top' } do %>
-        <%= content_tag(:span, '', class: 'glyphicon glyphicon-edit') %>
+    <% if entry_note.nota?%>
+      <% if policy(entry_note).edit? %>
+        <%= link_to edit_entry_note_path(entry_note),
+              class: 'btn btn-warning btn-xs', title: 'Editar', data: { toggle: 'tooltip', placement: 'top' } do %>
+          <%= content_tag(:span, '', class: 'glyphicon glyphicon-edit') %>
+        <% end %>
+      <% end %>
+    <% else %>
+      <% if policy(entry_note).edit_pass? %>
+        <%= link_to edit_pass_entry_note_path(entry_note),
+              class: 'btn btn-warning btn-xs', title: 'Editar', data: { toggle: 'tooltip', placement: 'top' } do %>
+          <%= content_tag(:span, '', class: 'glyphicon glyphicon-edit') %>
+        <% end %>
       <% end %>
     <% end %>
     <% if policy(entry_note).delete? %>

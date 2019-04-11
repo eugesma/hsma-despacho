@@ -1,5 +1,5 @@
 class EntryNotesController < ApplicationController
-  before_action :set_entry_note, only: [:show, :edit, :update, :destroy, :delete, :show_image]
+  before_action :set_entry_note, only: [:show, :edit, :update, :destroy, :delete, :show_image, :edit_pass]
 
   # GET /entry_notes
   # GET /entry_notes.json
@@ -65,6 +65,12 @@ class EntryNotesController < ApplicationController
     @sectors = Sector.all
   end
 
+  # GET /entry_notes/1/edit_pass
+  def edit_pass
+    authorize @entry_note
+    @sectors = Sector.all
+  end
+
   # POST /entry_notes
   # POST /entry_notes.json
   def create
@@ -104,14 +110,26 @@ class EntryNotesController < ApplicationController
   # PATCH/PUT /entry_notes/1.json
   def update
     authorize @entry_note
-
     respond_to do |format|
-      if @entry_note.update_attributes(entry_note_params)
-        flash.now[:success] = "La nota entrante número "+@entry_note.note_number.to_s+" se ha modificado correctamente."
-        format.js
+      if @entry_note.update(entry_note_params)
+        if @entry_note.nota?
+          flash[:success] = 'La nota se ha modificado correctamente'
+        elsif @entry_note.pase?
+          flash[:success] = 'El pase se ha modificado correctamente'
+        end
+        format.html { redirect_to @entry_note }
       else
-        flash.now[:error] = "La nota entrante número "+@entry_note.note_number.to_s+" no se ha podido modificar."
-        format.js
+        if @entry_note.nota?
+          @order_type = 'nota'
+          @sectors = Sector.all
+          flash[:error] = "La nota no se ha podido modificar."
+          format.html { render :edit }
+        elsif @entry_note.pase?
+          @sectors = Sector.all
+          @order_type = 'pase'
+          flash[:error] = "El pase no se ha podido modificar."
+          format.html { render :edit_pass }
+        end
       end
     end
   end
@@ -121,9 +139,10 @@ class EntryNotesController < ApplicationController
   def destroy
     authorize @entry_note
     @number = @entry_note.note_number
+    @order_type = @entry_note.order_type
     @entry_note.destroy
     respond_to do |format|
-      flash.now[:success] = "La nota entrante número "+@number.to_s+" se ha eliminado correctamente."
+      flash.now[:success] = @order_type.humanize+" entrante número "+@number.to_s+" se ha eliminado correctamente."
       format.js
     end
   end

@@ -1,5 +1,5 @@
 class OutNotesController < ApplicationController
-  before_action :set_out_note, only: [:show, :edit, :update, :destroy, :delete, :show_image]
+  before_action :set_out_note, only: [:show, :edit, :update, :destroy, :delete, :show_image, :edit_pass]
 
   # GET /out_notes
   # GET /out_notes.json
@@ -63,6 +63,12 @@ class OutNotesController < ApplicationController
     @sectors = Sector.all
   end
 
+  # GET /out_notes/1/edit_pass
+  def edit_pass
+    authorize @out_note
+    @sectors = Sector.all
+  end
+
   # POST /out_notes
   # POST /out_notes.json
   def create
@@ -102,14 +108,26 @@ class OutNotesController < ApplicationController
   # PATCH/PUT /out_notes/1.json
   def update
     authorize @out_note
-
     respond_to do |format|
-      if @out_note.update_attributes(out_note_params)
-        flash.now[:success] = "La nota saliente número "+@out_note.note_number.to_s+" se ha modificado correctamente."
-        format.js
+      if @out_note.update(out_note_params)
+        if @out_note.nota?
+          flash[:success] = 'La nota se ha modificado correctamente'
+        elsif @out_note.pase?
+          flash[:success] = 'El pase se ha modificado correctamente'
+        end
+        format.html { redirect_to @out_note }
       else
-        flash.now[:error] = "La nota saliente número "+@out_note.note_number.to_s+" no se ha podido modificar."
-        format.js
+        if @out_note.nota?
+          @order_type = 'nota'
+          @sectors = Sector.all
+          flash[:error] = "La nota no se ha podido modificar."
+          format.html { render :edit }
+        elsif @out_note.pase?
+          @sectors = Sector.all
+          @order_type = 'pase'
+          flash[:error] = "El pase no se ha podido modificar."
+          format.html { render :edit_pass }
+        end
       end
     end
   end
@@ -119,9 +137,10 @@ class OutNotesController < ApplicationController
   def destroy
     authorize @out_note
     @number = @out_note.note_number
+    @order_type = @out_note.order_type
     @out_note.destroy
     respond_to do |format|
-      flash.now[:success] = "La nota saliente número "+@number.to_s+" se ha eliminado correctamente."
+      flash.now[:success] = @order_type.humanize+" saliente número "+@number.to_s+" se ha eliminado correctamente."
       format.js
     end
   end

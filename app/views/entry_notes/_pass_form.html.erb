@@ -1,4 +1,4 @@
-<%= simple_form_for entry_note do |f| %>
+<%= simple_form_for entry_note, html: { id: :entry_note_form }  do |f| %>
   <%= f.error_notification %>
   <%= f.input :order_type, :as => :hidden, :input_html => { value: 'pase' } %>
   <div class="row">

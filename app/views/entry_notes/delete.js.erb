@@ -1,8 +1,8 @@
 // Add the dialog title
-$('#dialog h3').html("<i class=' glyphicon glyphicon-trash'></i>  Borrando nota entrante");
+$('#dialog h3').html("<i class=' glyphicon glyphicon-trash'></i>  Borrando <%= @entry_note.order_type %> entrante");
 
 // Render the edit form
-$('.modal-body').html('Esta seguro que desea eliminar la nota entrante número <%= @entry_note.note_number %>?');
+$('.modal-body').html('Esta seguro que desea eliminar <%= @entry_note.order_type %> entrante número <%= @entry_note.note_number %>?');
 
 // Add form button
 $('.modal-footer').html(

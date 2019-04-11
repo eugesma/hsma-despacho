@@ -1,0 +1,25 @@
+<%= render 'header' %>
+
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <div class="panel panel-warning">
+      <div class="panel-heading">
+        <h3 class="panel-title">
+          <%= content_tag(:span, '', class: 'glyphicon glyphicon-edit') %> Editando nota entrante
+          <%= link_to entry_notes_path, class: 'btn pull-right close-btn' do %>
+            <%= content_tag(:span, '', class: 'glyphicon glyphicon-remove') %>
+          <% end %>
+        </h3>
+      </div>
+      <div class="panel-body" id="panel-body-new">
+        <%= render 'form', entry_note: @entry_note %>
+      </div>
+      <div class="panel-footer text-right">
+        <%= link_to 'Volver', entry_notes_path, class: 'btn' %>
+        <button type='submit' name='commit' class='btn btn-primary' form='entry_note_form'>
+          <%= content_tag(:span, '', class: 'glyphicon glyphicon-check') %> Guardar cambios
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

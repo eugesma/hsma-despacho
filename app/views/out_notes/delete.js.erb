@@ -1,8 +1,8 @@
 // Add the dialog title
-$('#dialog h3').html("<i class=' glyphicon glyphicon-trash'></i>  Borrando nota saliente");
+$('#dialog h3').html("<i class=' glyphicon glyphicon-trash'></i>  Borrando <%= @out_note.order_type %> saliente");
 
 // Render the edit form
-$('.modal-body').html('Esta seguro que desea eliminar la nota saliente número <%= @out_note.note_number %>?');
+$('.modal-body').html('Esta seguro que desea eliminar <%= @out_note.order_type %> saliente número <%= @out_note.note_number %>?');
 
 // Add form button
 $('.modal-footer').html(
