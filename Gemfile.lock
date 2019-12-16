@@ -310,7 +310,7 @@ DEPENDENCIES
   momentjs-rails (>= 2.9.0)
   pg (>= 0.18, < 2.0)
   pg_search
-  puma (~> 3.12)
+  puma (~> 3.11)
   pundit
   rails (~> 5.2.0)
   rails_admin (~> 1.3)

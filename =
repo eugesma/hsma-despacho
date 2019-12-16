@@ -1,0 +1,2 @@
+ERROR: "bundle inject" was called with arguments ["activestorage", "", "5.2.1.1"]
+Usage: "bundle inject GEM VERSION"
