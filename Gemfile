@@ -26,8 +26,9 @@ gem 'bootstrap3-datetimepicker-rails', '~> 4.17.47'
 gem 'chosen-rails'
 # Use simple_form for do forms more easily
 gem 'simple_form'
-# Use bootstrap-sass for views
-gem 'bootstrap-sass'
+# Styles
+gem 'bootstrap', '~> 4.1.3'
+gem 'jquery-rails'
 # Use Pundit for permissions in classes
 gem 'pundit'
 # Use for make roles

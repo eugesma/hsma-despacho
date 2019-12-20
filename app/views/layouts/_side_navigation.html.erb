@@ -1,0 +1,16 @@
+    <!-- Sidebar -->
+    <div class="bg-dark" id="sidebar-wrapper">
+      <div class="sidebar-heading">    
+        <%= link_to root_path, data: { turbolinks: false }, class: "navbar-brand #{active_class('welcome')}" do %>
+          <%= image_tag('despacho.png')%>
+        <% end %> 
+      </div>
+      <div class="list-group list-group-flush">
+        <a href="#" class="list-group-item list-group-item-action bg-dark">Dashboard</a>
+        <a href="#" class="list-group-item list-group-item-action bg-dark">Shortcuts</a>
+        <a href="#" class="list-group-item list-group-item-action bg-dark">Overview</a>
+        <a href="#" class="list-group-item list-group-item-action bg-dark">Events</a>
+        <a href="#" class="list-group-item list-group-item-action bg-dark">Profile</a>
+        <a href="#" class="list-group-item list-group-item-action bg-dark">Status</a>
+      </div>
+    </div>

@@ -11,7 +11,6 @@
 // about supported directives.
 //
 //= require rails-ujs
-//= require jquery
 //= require jquery-ui
 //= require jquery_ujs
 //= require chosen-jquery
@@ -23,7 +22,8 @@
 //= require moment
 //= require activestorage
 //= require bootstrap-datetimepicker
-//= require bootstrap
+//= require jquery3
+//= require popper
 //= require bootstrap-sprockets
 //= require_tree .
 
@@ -34,4 +34,9 @@ $(document).on('turbolinks:load', function() {
           $(this).remove();
       });
   }, 2000);
+});
+
+$("#menu-toggle").click(function(e) {
+  e.preventDefault();
+  $("#wrapper").toggleClass("toggled");
 });

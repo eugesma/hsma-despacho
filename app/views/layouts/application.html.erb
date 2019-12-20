@@ -11,26 +11,28 @@
     <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script><!-- Fix dropdown navbar -->
   </head>
   <body>
-    <header>
-      <%= render 'layouts/navigation' %>
-    </header>
     <main role="main">
-      <%= render "layouts/flash_notices" %>
-      <div class="container-fluid">
-        <% if user_signed_in? %>
-          <style>
-            body {
-               background-image: url("<%= asset_path('despacho-bg.jpg') %>");
-            }
-          </style>
-          <ul class="nav nav-tabs">
-            <li role="presentation" class="" id="page_title"><%= content_for :page_title %></li>
-            <%= content_for :page_nav %>
-            <%= content_for :page_nav_form %>
-          </ul>
-        <% end %>
-        <%= yield %>
-        <%= render "shared/dialog" %>
+      <div class="d-flex" id="wrapper">
+        <!-- Sidebar -->
+        <%= render 'layouts/side_navigation' %>
+        
+        <!-- Page Content -->
+        <div id="page-content-wrapper">
+          <%= render 'layouts/navigation' %>
+
+          <div class="container-fluid">
+            <%= render "layouts/flash_notices" %>
+            <% if user_signed_in? %>
+              <style>
+                body {
+                  background-image: url("<%= asset_path('despacho-bg.jpg') %>");
+                }
+              </style>
+            <% end %>
+            <%= yield %>
+            <%= render "shared/dialog" %>
+          </div>
+        </div>
       </div>
     </main>
   </body>
