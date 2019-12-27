@@ -1,16 +1,22 @@
     <!-- Sidebar -->
-    <div class="bg-dark" id="sidebar-wrapper">
+    <div class="navbar-dark bg-dark" id="sidebar-wrapper">
       <div class="sidebar-heading">    
         <%= link_to root_path, data: { turbolinks: false }, class: "navbar-brand #{active_class('welcome')}" do %>
           <%= image_tag('despacho.png')%>
-        <% end %> 
+        <% end %>   
       </div>
       <div class="list-group list-group-flush">
-        <a href="#" class="list-group-item list-group-item-action bg-dark">Dashboard</a>
-        <a href="#" class="list-group-item list-group-item-action bg-dark">Shortcuts</a>
-        <a href="#" class="list-group-item list-group-item-action bg-dark">Overview</a>
-        <a href="#" class="list-group-item list-group-item-action bg-dark">Events</a>
-        <a href="#" class="list-group-item list-group-item-action bg-dark">Profile</a>
-        <a href="#" class="list-group-item list-group-item-action bg-dark">Status</a>
+        <%= link_to entry_notes_path, class: "list-group-item list-group-item-action bg-dark list-custom #{active_class('entry_notes')}" do %>
+          <%= fa_icon "inbox" %>
+          Entrantes
+        <% end %>
+        <%= link_to out_notes_path, class: "list-group-item list-group-item-action bg-dark list-custom #{active_class('out_notes')}" do %>
+          <%= fa_icon "share-square" %>
+          Salientes
+        <% end %>
+        <%= link_to sectors_path, class: "list-group-item list-group-item-action bg-dark list-custom #{active_class('sectors')}" do %>
+          <%= fa_icon "bezier-curve" %>
+          Sectores
+        <% end %>
       </div>
     </div>

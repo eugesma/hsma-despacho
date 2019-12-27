@@ -1,48 +1,50 @@
 <%= render "header" %>
-<div class="panel panel-default" id="filter-panel">
-  <div class="panel-collapse collapse" id="filter">
-    <div class="panel-body">
-      <%= form_for_filterrific @filterrific, html: {id: "filterrific"} do |f| %>
-        <div class="col-md-2 col-sm-3">
+<div class="card" id="filter-panel">
+  <div class="card-body">
+    <%= form_for_filterrific @filterrific, html: {id: "filterrific"} do |f| %>
+      <div class="row">
+        <div class="col-2">
           <label>Buscar</label>
           <%# give the search field the 'filterrific-periodically-observed' class for live updates %>
           <%= f.text_field(
             :search_text,
-            class: 'filterrific-periodically-observed form-control',
+            class: 'form-control',
             placeholder: 'Un texto'
           ) %>
         </div>
-        <div class="col-md-2 col-sm-3">
+        <div class="col-2">
           <label>Buscar</label>
           <%= f.number_field :with_note_number, placeholder: 'Número de nota', label: 'Número de nota',
-          min: '0', max:'9999', class: 'form-control filterrific-periodically-observed' %>
+          min: '0', max:'9999', class: 'form-control' %>
         </div>
-        <div class="col-md-2 col-sm-3">
+        <div class="col-2">
           <label>Ordenar por</label>
-          <%= f.select(:sorted_by, @filterrific.select_options[:sorted_by],{}, {class: 'form-control filterrific-periodically-observed'}) %>
+          <%= f.select(:sorted_by, @filterrific.select_options[:sorted_by],{}, {class: 'form-control'}) %>
         </div>
-        <div class="col-md-2 col-sm-3">
-           <label>Entradas desde</label>
-           <%= f.text_field(:entry_date_at, class: 'form-control filterrific-periodically-observed',
-              id: "datepicker2", placeholder: "Una fecha", data: { date_format: 'DD/MM/YYYY'}) %>
+        <div class="col-2">
+          <label>Entradas desde</label>
+          <%= f.text_field(:entry_date_at, class: 'form-control',
+            id: "datepicker2", placeholder: "Una fecha", data: { date_format: 'DD/MM/YYYY'}) %>
         </div>
-        <div class="col-md-2 col-sm-3">
-           <label>Salidas desde</label>
-           <%= f.text_field(:out_date_at, class: 'form-control filterrific-periodically-observed',
-              id: "datepicker3", placeholder: "Una fecha", data: { date_format: 'DD/MM/YYYY'}) %>
+        <div class="col-2">
+          <label>Salidas desde</label>
+          <%= f.text_field(:out_date_at, class: 'form-control',
+            id: "datepicker3", placeholder: "Una fecha", data: { date_format: 'DD/MM/YYYY'}) %>
         </div>
-        <div class="col-md-2 col-sm-3 pull-right">
+        <div class="col-2 pull-right">
           <%= link_to reset_filterrific_url, class: "btn btn-default btn-md pull-right" do %>
-            <%= content_tag(:span, '', class: 'glyphicon glyphicon-refresh') %>
+            <%= fa_icon "redo" %>
           <% end %>
-          <%# add an automated spinner to your form when the list is refreshed %>
-          <%= render_filterrific_spinner %>
+          <%= button_tag type: 'submit', class: "btn btn-info", id: "register-button", title: 'Filtrar', 
+            data: { toggle: 'tooltip', placement: 'top' }, 'data-disable-with' => "<i class='fa fa-spinner fa-spin'></i>".html_safe do %>
+            <%= fa_icon "filter" %>
+          <% end %>
         </div>
-      <% end %>
-    </div>
+      </div>
+    <% end %>
   </div>
 </div>
-
+<br>
 <%= render(
   partial: 'out_notes/list',
   locals: { out_notes: @out_notes }

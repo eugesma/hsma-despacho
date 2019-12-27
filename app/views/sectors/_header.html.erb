@@ -1,0 +1,16 @@
+<% content_for :page_nav do %>
+  <li class="nav-item <%= active_action('index') %> non-sel" id="page-title">
+    <%= link_to sectors_path, class: "nav-link" do %>
+      <%= fa_icon "bezier-curve" %>
+      Sectores
+    <% end %>
+  </li>
+  <% if policy(Sector).new? %>
+    <li class="nav-item">
+      <%= link_to new_sector_path, class: "nav-link" do %>
+        <%= fa_icon "plus" %>
+        Nuevo
+      <% end %>
+    </li>
+  <% end %>
+<% end %>

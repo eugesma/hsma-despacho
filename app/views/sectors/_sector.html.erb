@@ -14,19 +14,19 @@
   <td><%= sector.updated_at.strftime("%d/%m/%y %H:%M") %><td>
   <td>
     <%= link_to sector_path(sector), remote:true,
-          class: 'btn btn-default btn-xs', title: 'Ver detalles', data: { toggle: 'tooltip', placement: 'top' } do %>
-      <%= content_tag(:span, '', class: 'glyphicon glyphicon-eye-open') %>
+      class: 'btn btn-secondary btn-sm', title: 'Ver detalles', data: { toggle: 'tooltip', placement: 'top' } do %>
+      <%= fa_icon "eye" %>
     <% end %>
     <% if policy(sector).edit? %>
       <%= link_to edit_sector_path(sector), remote: true,
-            class: 'btn btn-warning btn-xs', title: 'Editar', data: { toggle: 'tooltip', placement: 'top' } do %>
-        <%= content_tag(:span, '', class: 'glyphicon glyphicon-edit') %>
+          class: 'btn btn-warning btn-sm', title: 'Editar', data: { toggle: 'tooltip', placement: 'top' } do %>
+        <%= fa_icon "edit" %>
       <% end %>
     <% end %>
     <% if policy(sector).delete? %>
       <%= link_to delete_sector_path(sector), remote: true,
-            class: 'btn btn-danger btn-xs', title: 'Borrar', data: { toggle: 'tooltip', placement: 'top' } do %>
-        <%= content_tag(:span, '', class: 'glyphicon glyphicon-trash') %>
+        class: 'btn btn-danger btn-sm', title: 'Borrar', data: { toggle: 'tooltip', placement: 'top' } do %>
+        <%= fa_icon "trash" %>
       <% end %>
     <% end %>
   </td>

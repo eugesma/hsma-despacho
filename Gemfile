@@ -3,6 +3,8 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.6.5'
 
+# To icons
+gem 'font_awesome5_rails'
 # For full text search
 gem 'pg_search'
 # To group by date

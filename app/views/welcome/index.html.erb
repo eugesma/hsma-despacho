@@ -1,19 +1,16 @@
-<% content_for :page_title do %>
-  <li role="presentation" class="<%= active_action('index') %> non-sel" id="page-title">
-    <%= link_to out_notes_path do %>
-      <span class="glyphicon glyphicon-home"></span>
+<% content_for :page_nav do %>
+  <li class="nav-item <%= active_action('index') %> non-sel" id="page-title">
+    <%= link_to out_notes_path, class: "nav-link" do %>
+      <%= fa_icon "home" %>
       Bienvenido a HSMA Despacho
     <% end %>
   </li>
 <% end %>
-<% content_for :page_nav do %>
-
-<% end %>
-<div cass="row">
-  <div class="col-md-6">
+<div class="row">
+  <div class="col-6">
     <%= render 'left_panel' %>
   </div>
-  <div class="col-md-6">
+  <div class="col-6">
     <%= render 'right_panel' %>
   </div>
 </div>

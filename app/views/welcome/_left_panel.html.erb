@@ -1,9 +1,9 @@
 <!--  Panel Prescripciones del día -->
-<div class="panel panel-default">
-  <div class="panel-heading">
-    <h3 class="panel-title">Notas entrantes</h3>
+<div class="card">
+  <div class="card-header">
+    <h3 class="title">Notas entrantes</h3>
   </div>
-  <div class="panel-body">
+  <div class="card-body">
     <%= line_chart charts_by_day_entry_notes_path,
       download: "Notas Entrantes por dia HSMA",
       label: "Cantidad",
@@ -30,14 +30,14 @@
   </div>
   <!--  Panel últimas notas entrantes -->
   <% if @last_entry_notes.present? %>
-    <div class="panel-heading">
-      <h3 class="panel-title">Últimas notas entrantes
+    <div class="card-header">
+      <h3 class="title">Últimas notas entrantes
         <%= link_to entry_notes_path, class: 'btn btn-default btn-xs pull-right' do %>
           Ver más
         <% end %>
       </h3>
     </div>
-    <div class="panel-body body-table">
+    <div class="card-body body-table">
       <table class="table table-hover">
         <thead>
           <tr>
