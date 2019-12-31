@@ -6,8 +6,8 @@
       <div class="card-header bg-primary text-white">
         <h3 class="card-title">
           <%= fa_icon "plus" %> Nueva nota entrante
-          <%= link_to entry_notes_path, class: 'btn pull-right close-btn' do %>
-            <%= content_tag(:span, '', class: 'glyphicon glyphicon-remove') %>
+          <%= link_to entry_notes_path, class: 'btn text-white float-right close-btn' do %>
+            <%= fa_icon "times" %>
           <% end %>
         </h3>
       </div>

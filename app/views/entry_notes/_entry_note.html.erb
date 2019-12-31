@@ -13,12 +13,12 @@
   <td>
     <% if entry_note.files.attached? %>
       <%= link_to show_image_entry_note_path(entry_note), remote: true,
-            class: 'btn btn-default btn-xs', title: 'Ver imagen adjunta',
+            class: 'btn btn-light btn-sm', title: 'Ver imagen adjunta',
             data: { toggle: 'tooltip', placement: 'top' }, style: "margin-left: -5px" do %>
-        <%= content_tag(:span, '', class: 'glyphicon glyphicon-ok') %>
+        <%= fa_icon "check" %>
       <% end %>
     <% else %>
-      <span class="glyphicon glyphicon-remove"></span>
+      <%= fa_icon "times" %>
     <% end %>
   </td>
   <td>
@@ -26,28 +26,28 @@
   </td>
   <td>
     <%= link_to entry_note_path(entry_note),
-          class: 'btn btn-default btn-xs', title: 'Ver detalles', data: { toggle: 'tooltip', placement: 'top' } do %>
-      <%= content_tag(:span, '', class: 'glyphicon glyphicon-eye-open') %>
+          class: 'btn btn-secondary btn-sm', title: 'Ver detalles', data: { toggle: 'tooltip', placement: 'top' } do %>
+      <%= fa_icon "eye" %>
     <% end %>
     <% if entry_note.nota?%>
       <% if policy(entry_note).edit? %>
         <%= link_to edit_entry_note_path(entry_note),
-              class: 'btn btn-warning btn-xs', title: 'Editar', data: { toggle: 'tooltip', placement: 'top' } do %>
-          <%= content_tag(:span, '', class: 'glyphicon glyphicon-edit') %>
+              class: 'btn btn-warning btn-sm', title: 'Editar', data: { toggle: 'tooltip', placement: 'top' } do %>
+          <%= fa_icon "edit" %>
         <% end %>
       <% end %>
     <% else %>
       <% if policy(entry_note).edit_pass? %>
         <%= link_to edit_pass_entry_note_path(entry_note),
-              class: 'btn btn-warning btn-xs', title: 'Editar', data: { toggle: 'tooltip', placement: 'top' } do %>
-          <%= content_tag(:span, '', class: 'glyphicon glyphicon-edit') %>
+              class: 'btn btn-warning btn-sm', title: 'Editar', data: { toggle: 'tooltip', placement: 'top' } do %>
+          <%= fa_icon "edit" %>
         <% end %>
       <% end %>
     <% end %>
     <% if policy(entry_note).delete? %>
       <%= link_to delete_entry_note_path(entry_note), remote: true,
-            class: 'btn btn-danger btn-xs', title: 'Borrar', data: { toggle: 'tooltip', placement: 'top' } do %>
-        <%= content_tag(:span, '', class: 'glyphicon glyphicon-trash') %>
+            class: 'btn btn-danger btn-sm', title: 'Borrar', data: { toggle: 'tooltip', placement: 'top' } do %>
+        <%= fa_icon "trash" %>
       <% end %>
     <% end %>
   </td>
