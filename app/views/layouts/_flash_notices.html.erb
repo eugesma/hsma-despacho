@@ -1,4 +1,4 @@
-<div class="col-md-6 pull-right">
+<div class="col-md-6 float-right position-absolute">
   <div id="flash_messages">
       <% flash.each do |type, message| %>
         <div class='alert <%= bootstrap_class_for(type) %> alert-dismissible' role='alert'><button class='close' data-dismiss='alert'>×</button><%= message.html_safe %></div>
