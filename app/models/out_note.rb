@@ -4,10 +4,8 @@ class OutNote < ApplicationRecord
   enum order_type: { nota: 0, pase: 1 }
   
   # Validaciones
-  validates_presence_of :author
-  validates_presence_of :reference
-  validates_presence_of :destination
-  validates_presence_of :origin
+  validates_presence_of :author, :reference, :origin, :destination, :origin, :out_date, :entry_date, :note_number
+  validates_uniqueness_of :note_number
 
   # Relaciones
   belongs_to :author, class_name: 'User'

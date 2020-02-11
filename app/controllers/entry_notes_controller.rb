@@ -79,7 +79,7 @@ class EntryNotesController < ApplicationController
     authorize @entry_note
 
     respond_to do |format|
-      if @entry_note.save!
+      if @entry_note.save
         begin
           if @entry_note.nota?
             flash[:success] = 'La nota se ha cargado correctamente'

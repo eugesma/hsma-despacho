@@ -77,7 +77,7 @@ class OutNotesController < ApplicationController
     authorize @out_note
 
     respond_to do |format|
-      if @out_note.save!
+      if @out_note.save
         begin
           if @out_note.nota?
             flash[:success] = 'La nota se ha cargado correctamente'

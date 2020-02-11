@@ -1,25 +1,21 @@
 <%= render 'header' %>
 
-<div class="row">
-  <div class="col-6 mx-auto">
-    <div class="card">
-      <div class="card-header bg-primary text-white">
-        <h3 class="card-title">
-          <%= fa_icon "plus" %> Nuevo pase entrante
-          <%= link_to entry_notes_path, class: 'btn text-white float-right close-btn' do %>
-            <%= fa_icon "times" %>
-          <% end %>
-        </h3>
-      </div>
-      <div class="card-body" id="panel-body-new">
-        <%= render 'pass_form', entry_note: @entry_note %>
-      </div>
-      <div class="card-footer text-right">
-        <%= link_to 'Volver', entry_notes_path, class: 'btn btn-light' %>
-        <button type='submit' name='commit' class='btn btn-primary' form='entry_note_form'>
-          <%= content_tag(:span, '', class: 'glyphicon glyphicon-check') %> Cargar pase
-        </button>
-      </div>
-    </div>
+<div class="card">
+  <div class="card-header bg-primary text-white">
+    <h3 class="card-title">
+      <%= fa_icon "plus" %> Nuevo pase entrante
+      <%= link_to entry_notes_path, class: 'btn text-white float-right close-btn' do %>
+        <%= fa_icon "times" %>
+      <% end %>
+    </h3>
+  </div>
+  <div class="card-body" id="panel-body-new">
+    <%= render 'pass_form', entry_note: @entry_note %>
+  </div>
+  <div class="card-footer text-right">
+    <%= link_to 'Volver', entry_notes_path, class: 'btn btn-light' %>
+    <button type='submit' name='commit' class='btn btn-primary' form='entry_note_form'>
+      <%= content_tag(:span, '', class: 'glyphicon glyphicon-check') %> Cargar pase
+    </button>
   </div>
 </div>

@@ -1,25 +1,21 @@
 <%= render 'header' %>
 
-<div class="row">
-  <div class="col-6 mx-auto">
-    <div class="card">
-      <div class="card-header bg-primary text-white">
-        <h3 class="card-title">
-          <%= fa_icon "plus" %> Nueva nota saliente
-          <%= link_to out_notes_path, class: 'btn text-white float-right close-btn' do %>
-            <%= fa_icon "times" %>
-          <% end %>
-        </h3>
-      </div>
-      <div class="card-body" id="panel-body-new">
-        <%= render 'form', out_note: @out_note %>
-      </div>
-      <div class="card-footer text-right">
-        <%= link_to 'Volver', out_notes_path, class: 'btn btn-light' %>
-        <button type='submit' name='commit' class='btn btn-primary' form='out_note_form'>
-          <%= content_tag(:span, '', class: 'glyphicon glyphicon-check') %> Cargar nota
-        </button>
-      </div>
-    </div>
+<div class="card">
+  <div class="card-header bg-primary text-white">
+    <h3 class="card-title">
+      <%= fa_icon "plus" %> Nueva nota saliente
+      <%= link_to out_notes_path, class: 'btn text-white float-right close-btn' do %>
+        <%= fa_icon "times" %>
+      <% end %>
+    </h3>
+  </div>
+  <div class="card-body" id="panel-body-new">
+    <%= render 'form', out_note: @out_note %>
+  </div>
+  <div class="card-footer text-right">
+    <%= link_to 'Volver', out_notes_path, class: 'btn btn-light' %>
+    <button type='submit' name='commit' class='btn btn-primary' form='out_note_form'>
+      <%= content_tag(:span, '', class: 'glyphicon glyphicon-check') %> Cargar nota
+    </button>
   </div>
 </div>
