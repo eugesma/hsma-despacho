@@ -2,20 +2,20 @@
 
 <div class="card">
   <div class="card-header bg-warning">
-    <h3 class="panel-title">
+    <h3 class="title">
       <%= fa_icon "edit" %> Editando nota entrante
-      <%= link_to entry_notes_path, class: 'btn pull-right close-btn' do %>
-        <%= content_tag(:span, '', class: 'glyphicon glyphicon-remove') %>
+      <%= link_to entry_notes_path, class: 'btn float-right close-btn' do %>
+        <%= fa_icon "times" %>
       <% end %>
     </h3>
   </div>
-  <div class="panel-body" id="panel-body-new">
+  <div class="card-body full-height">
     <%= render 'form', entry_note: @entry_note %>
   </div>
-  <div class="panel-footer text-right">
-    <%= link_to 'Volver', entry_notes_path, class: 'btn' %>
-    <button type='submit' name='commit' class='btn btn-primary' form='entry_note_form'>
-      <%= content_tag(:span, '', class: 'glyphicon glyphicon-check') %> Guardar cambios
+  <div class="card-footer text-right">
+    <%= link_to 'Volver', entry_notes_path, class: 'btn btn-light mr-2' %>
+    <button type='submit' name='commit' class='btn btn-success' form='entry_note_form'>
+      <%= fa_icon "save" %> Guardar cambios
     </button>
   </div>
 </div>

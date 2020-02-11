@@ -5,11 +5,11 @@
     <h3 class="panel-title">
       <%= content_tag(:span, '', class: 'glyphicon glyphicon-edit') %> Editando pase entrante
       <%= link_to entry_notes_path, class: 'btn pull-right close-btn' do %>
-        <%= content_tag(:span, '', class: 'glyphicon glyphicon-remove') %>
+        <%= fa_icon "times" %>
       <% end %>
     </h3>
   </div>
-  <div class="panel-body" id="panel-body-new">
+  <div class="panel-body full-height">
     <%= render 'pass_form', entry_note: @entry_note %>
   </div>
   <div class="panel-footer text-right">

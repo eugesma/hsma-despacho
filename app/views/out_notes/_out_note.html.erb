@@ -3,7 +3,7 @@
   <td><%= out_note.order_type.humanize %></td>
   <td class="ref-col"><%= out_note.origin.sector_name %></td>
   <td class="ref-col"><%= out_note.destination.sector_name %></td>
-  <td class="ref-col"><%= out_note.reference %></td>
+  <td class="ref-col cut-text"><%= out_note.reference %></td>
   <td>
     <%= out_note.out_date.strftime("%d/%m/%Y") %>
   </td>

@@ -1,0 +1,15 @@
+/* Hide long text in table */
+.cut-text { 
+  width : 200px;
+  overflow:hidden;
+  display:inline-block;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* Show full size card */
+.full-height {
+  /* height: 480px; */
+  height: calc(100vh - 226px);
+  overflow-y: auto; 
+}
