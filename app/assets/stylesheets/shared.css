@@ -1,10 +1,19 @@
 /* Hide long text in table */
-.cut-text { 
-  width : 200px;
-  overflow:hidden;
-  display:inline-block;
-  text-overflow: ellipsis;
+.table .cut-text {
+  position: relative;
+}
+
+.table .cut-text span {
+  overflow: hidden;
   white-space: nowrap;
+  text-overflow: ellipsis;
+  position: absolute;
+  width: 100%;
+}
+
+.cut-text:before {
+  content: '';
+  display: inline-block;
 }
 
 /* Show full size card */

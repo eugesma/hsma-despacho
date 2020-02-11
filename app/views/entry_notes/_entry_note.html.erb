@@ -1,9 +1,9 @@
 <tr id="entry_note_<%= entry_note.id %>">
   <td><%= entry_note.nota? ? entry_note.note_number : entry_note.zonal_pass %></td>
   <td><%= entry_note.order_type.humanize %></td>
-  <td class="ref-col"><%= entry_note.origin.sector_name %></td>
-  <td class="ref-col"><%= entry_note.destination.sector_name %></td>
-  <td class="cut-text"><%= entry_note.reference %></td>
+  <td class="ref-col cut-text"><span><%= entry_note.origin.sector_name %></span></td>
+  <td class="ref-col cut-text"><span><%= entry_note.destination.sector_name %></span></td>
+  <td class="cut-text"><span><%= entry_note.reference %></span></td>
   <td>
     <%= entry_note.entry_date.strftime("%d/%m/%Y") %>
   </td>

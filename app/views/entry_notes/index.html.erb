@@ -5,18 +5,18 @@
     <div class="card-body">
       <div class="row">
         <div class="col-2">
-          <label>Buscar</label>
+          <label>N° nota</label>
+          <%= f.number_field :with_note_number, placeholder: '1234', label: 'Número de nota',
+          min: '0', max:'9999', class: 'form-control filterrific-periodically-observed' %>
+        </div>
+        <div class="col-2">
+          <label>Referencia</label>
           <%# give the search field the 'filterrific-periodically-observed' class for live updates %>
           <%= f.text_field(
             :search_text,
             class: 'filterrific-periodically-observed form-control',
             placeholder: 'Un texto'
           ) %>
-        </div>
-        <div class="col-2">
-          <label>Buscar</label>
-          <%= f.number_field :with_note_number, placeholder: 'Número de nota', label: 'Número de nota',
-          min: '0', max:'9999', class: 'form-control filterrific-periodically-observed' %>
         </div>
         <div class="col-2">
           <label>Ordenar por</label>
