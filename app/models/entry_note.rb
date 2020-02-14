@@ -4,8 +4,11 @@ class EntryNote < ApplicationRecord
   enum order_type: { nota: 0, pase: 1 }
 
   # Validaciones
-  validates_presence_of :author, :reference, :destination, :origin, :out_date, :entry_date, :note_number
-  validates_uniqueness_of :note_number
+  validates_presence_of :author, :reference, :destination, :origin, :out_date, :entry_date
+  validates_uniqueness_of :note_number, if: :nota?
+  validates_uniqueness_of :zonal_pass, if: :pase?
+  validates_presence_of :note_number, if: :nota?
+  validates_presence_of :zonal_pass, if: :pase?
 
   # Relaciones
   belongs_to :author, class_name: 'User'

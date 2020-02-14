@@ -1,5 +1,9 @@
+// Style modal
+$('.modal-header').addClass('bg-secondary');
+$('.modal-header').addClass('text-white');
+
 // Add the dialog title
-$('#dialog h3').html("<i class='glyphicon glyphicon-eye-open'></i>  Viendo archivos adjuntos");
+$('#dialog h5').html("<i class='fa fa-eye'></i>  Viendo archivos adjuntos");
 
 // Render the image
 $('.modal-body').html(
@@ -23,3 +27,9 @@ $('.modal-footer').html(
 
 // Show the dynamic dialog
 $('#dialog').modal("show");
+
+// Remove style
+$('#dialog').on('hidden.bs.modal', function () {
+  $('.modal-header').removeClass('bg-secondary');
+  $('.modal-header').removeClass('text-white');
+});
