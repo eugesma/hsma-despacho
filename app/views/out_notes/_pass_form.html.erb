@@ -48,7 +48,6 @@
           class: "form-control",
           autocomplete: 'off',
           required: true,
-          value: "#{f.object.entry_date.strftime('%dd/%mm/%yyyy') unless f.object.new_record?}"
         },
         html5: false
         %>
@@ -61,7 +60,6 @@
           class: "form-control", 
           autocomplete: 'off', 
           required: true,
-          value: "#{f.object.out_date.strftime('%dd/%mm/%yyyy') unless f.object.new_record?}"
         },
         html5: false
         %>

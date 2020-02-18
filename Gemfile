@@ -21,9 +21,10 @@ gem 'image_processing', '~> 1.2'
 # Use will_paginate for limit the post per page
 gem 'will_paginate', '~> 3.1.0'
 gem 'will_paginate-bootstrap'
-# Use momentjs and bootstrap3-datettimepicker for datetimepicker
+# To datepickers
+gem 'datetime_picker_input' 
+gem 'bootstrap4-datetime-picker-rails'
 gem 'momentjs-rails', '>= 2.9.0'
-gem 'bootstrap3-datetimepicker-rails', '~> 4.17.47'
 # Use chosen-rails for autocomplete on select
 gem 'chosen-rails'
 # Use simple_form for do forms more easily

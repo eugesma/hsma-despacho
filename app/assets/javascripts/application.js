@@ -10,21 +10,23 @@
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
 //
-//= require rails-ujs
 //= require jquery3
 //= require jquery-ui
 //= require chosen-jquery
-//= require filterrific/filterrific-jquery
 //= require highcharts
 //= require Chart.bundle
 //= require chartkick
-//= require turbolinks
 //= require moment
-//= require font_awesome5
-//= require activestorage
-//= require bootstrap-datetimepicker
+//= require moment-timezone-with-data
+//= require tempusdominus-bootstrap-4
+//= require moment/es.js
 //= require popper
-//= require bootstrap-sprockets
+//= require bootstrap
+//= require font_awesome5
+//= require rails-ujs
+//= require filterrific/filterrific-jquery
+//= require activestorage
+//= require turbolinks
 //= require_tree .
 
 // Se oculta el flash message

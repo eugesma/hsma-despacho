@@ -12,29 +12,37 @@
   </head>
   <body>
     <main role="main">
+                <!-- Modal -->
+            <%= render "shared/dialog" %>
       <div class="d-flex" id="wrapper">
         <!-- Sidebar -->
         <% if user_signed_in? %>
           <%= render 'layouts/side_navigation' %>
         <% end %>
 
+        <% if user_signed_in? %>
+          <style>
+            body {
+              background-image: url("<%= asset_path('despacho-bg.jpg') %>");
+            }
+          </style>
+        <% end %>
+
+        
         <!-- Page Content -->
         <div id="page-content-wrapper">
           <% if user_signed_in? %>
             <%= render 'layouts/navigation' %>
           <% end %>
 
-          <% if user_signed_in? %>
-            <style>
-              body {
-                background-image: url("<%= asset_path('despacho-bg.jpg') %>");
-              }
-            </style>
-          <% end %>
-          <br>
-          <%= render "layouts/flash_notices" %>
-          <div class="container-fluid">
-            <%= render "shared/dialog" %>
+          <div class="mt-3 container-fluid">
+            
+            <!-- Flash message -->
+            <div id="flash_messages" class="mx-auto d-block">
+              <%= render "layouts/flash_notices" %>
+            </div>
+
+            <!-- Main yield -->
             <%= yield %>
           </div>
         </div>
