@@ -140,18 +140,14 @@ class OutNotesController < ApplicationController
     @order_type = @out_note.order_type
     @out_note.destroy
     respond_to do |format|
-      flash.now[:success] = @order_type.humanize+" saliente número "+@number.to_s+" se ha eliminado correctamente."
-      format.js
+      flash[:success] = @order_type.humanize+" saliente número "+@number.to_s+" se ha eliminado correctamente."
+      format.html { redirect_to action: "index" } 
     end
   end
 
   # GET /out_note/1/delete
   def delete
     authorize @out_note
-
-    respond_to do |format|
-      format.js
-    end
   end
 
   # GET /out_notes/1

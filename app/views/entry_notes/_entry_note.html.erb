@@ -45,7 +45,7 @@
       <% end %>
     <% end %>
     <% if policy(entry_note).delete? %>
-      <%= link_to delete_entry_note_path(entry_note), remote: true,
+      <%= link_to delete_entry_note_path(entry_note),
             class: 'btn btn-danger btn-sm', title: 'Borrar', data: { toggle: 'tooltip', placement: 'top' } do %>
         <%= fa_icon "trash" %>
       <% end %>

@@ -142,18 +142,14 @@ class EntryNotesController < ApplicationController
     @order_type = @entry_note.order_type
     @entry_note.destroy
     respond_to do |format|
-      flash.now[:success] = @order_type.humanize+" entrante número "+@number.to_s+" se ha eliminado correctamente."
-      format.js
+      flash[:success] = @order_type.humanize+" entrante número "+@number.to_s+" se ha eliminado correctamente."
+      format.html { redirect_to action: "index" } 
     end
   end
 
   # GET /entry_note/1/delete
   def delete
     authorize @entry_note
-
-    respond_to do |format|
-      format.js
-    end
   end
 
   # GET /entry_note/1/show_image
