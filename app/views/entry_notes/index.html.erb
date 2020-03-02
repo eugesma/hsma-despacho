@@ -5,31 +5,31 @@
     <div class="card-body">
       <div class="row">
         <div class="col-2">
-          <label>N° nota</label>
-          <%= f.number_field :with_note_number, placeholder: '1234', label: 'Número de nota',
-          min: '0', max:'9999', class: 'form-control filterrific-periodically-observed' %>
+          <label>N° nota o pase</label>
+          <%= f.number_field :search_number, placeholder: '1234',
+          min: '0', max:'9999', class: 'form-control' %>
         </div>
         <div class="col-2">
           <label>Referencia</label>
           <%# give the search field the 'filterrific-periodically-observed' class for live updates %>
           <%= f.text_field(
             :search_text,
-            class: 'filterrific-periodically-observed form-control',
+            class: 'form-control',
             placeholder: 'Un texto'
           ) %>
         </div>
         <div class="col-2">
           <label>Ordenar por</label>
-          <%= f.select(:sorted_by, @filterrific.select_options[:sorted_by],{}, {class: 'form-control filterrific-periodically-observed'}) %>
+          <%= f.select(:sorted_by, @filterrific.select_options[:sorted_by],{}, {class: 'form-control'}) %>
         </div>
         <div class="col-2">
           <label>Entradas desde</label>
-          <%= f.text_field(:entry_date_at, class: 'form-control filterrific-periodically-observed',
+          <%= f.text_field(:entry_date_at, class: 'form-control',
               id: "datepicker1", placeholder: "Una fecha", data: { date_format: 'DD/MM/YYYY'}) %>
         </div>
         <div class="col-2">
           <label>Salidas desde</label>
-          <%= f.text_field(:out_date_at, class: 'form-control filterrific-periodically-observed',
+          <%= f.text_field(:out_date_at, class: 'form-control',
               id: "datepicker2", placeholder: "Una fecha", data: { date_format: 'DD/MM/YYYY'}) %>
         </div>
         <div class="col-2">

@@ -23,20 +23,27 @@ class EntryNote < ApplicationRecord
       :search_text,
       :entry_date_at,
       :out_date_at,
-      :with_note_number,
+      :search_number,
     ]
   )
 
   pg_search_scope :search_text,
-  against: :reference,
-  :associated_against => {
-    :origin => :sector_name,
-    :destination => :sector_name
-  },
-  :using => {
-    :tsearch => {:prefix => true}
-  },
-  :ignoring => :accents
+    against: :reference,
+    :associated_against => {
+      :origin => :sector_name,
+      :destination => :sector_name
+    },
+    :using => {
+      :tsearch => {:prefix => true}
+    },
+    :ignoring => :accents
+
+  pg_search_scope :search_number,
+    against: [:note_number, :zonal_pass],
+    :using => {
+      :tsearch => {:prefix => true}
+    },
+    :ignoring => :accents
 
   scope :sorted_by, lambda { |sort_option|
     # extract the sort direction from the param value.

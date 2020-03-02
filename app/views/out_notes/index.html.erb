@@ -4,9 +4,9 @@
     <%= form_for_filterrific @filterrific, html: {id: "filterrific"} do |f| %>
       <div class="row">
         <div class="col-2">
-          <label>N° nota</label>
-          <%= f.number_field :with_note_number, placeholder: '1234', label: 'Número de nota',
-          min: '0', max:'9999', class: 'form-control' %>
+          <label>N° nota o pase</label>
+          <%= f.number_field :search_number, placeholder: '1234',
+            min: '0', max:'9999', class: 'form-control' %>
         </div>
         <div class="col-2">
           <label>Referencia</label>

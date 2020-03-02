@@ -17,7 +17,7 @@ class OutNotesController < ApplicationController
         :search_text,
         :entry_date_at,
         :out_date_at,
-        :with_note_number,
+        :search_number,
       ],
     ) or return
     @out_notes = @filterrific.find.page(params[:page]).per_page(10)
