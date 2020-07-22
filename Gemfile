@@ -30,7 +30,7 @@ gem 'chosen-rails'
 # Use simple_form for do forms more easily
 gem 'simple_form'
 # Styles
-gem 'bootstrap', '~> 4.1.3'
+gem 'bootstrap', '~> 4.3.1'
 gem 'jquery-rails'
 # Use Pundit for permissions in classes
 gem 'pundit'
