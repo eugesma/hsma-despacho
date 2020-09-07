@@ -1,0 +1,24 @@
+<div id="filterrific_results">
+  <div class="card card-body">
+    <table class="table table-hover table-striped">
+      <thead>
+        <tr>
+          <th>Origen</th>
+          <th>Destino</th>
+          <th>Referencia</th>
+          <th>Fecha entrada</th>
+          <th>Fecha salida</th>
+          <th><%= fa_icon "paperclip" %></th>
+          <th>Autor</th>
+          <th>Acciones</th>
+        </tr>
+      </thead>
+      <tbody id="internal_notes">
+        <%= render @internal_notes %>
+      </tbody>
+    </table>
+  </div>
+  <div id="page_links">
+    <%= paginate @internal_note %>
+  </div>
+</div>

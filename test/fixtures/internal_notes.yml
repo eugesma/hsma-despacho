@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  origin: one
+  destination: one
+  entry_date: 2020-09-03
+  out_date: 2020-09-03
+  reference: MyText
+  author: one
+
+two:
+  origin: two
+  destination: two
+  entry_date: 2020-09-03
+  out_date: 2020-09-03
+  reference: MyText
+  author: two

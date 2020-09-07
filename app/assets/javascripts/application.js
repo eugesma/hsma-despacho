@@ -13,6 +13,7 @@
 //= require jquery3
 //= require jquery-ui
 //= require chosen-jquery
+//= require bootstrap-select
 //= require highcharts
 //= require Chart.bundle
 //= require chartkick
@@ -36,9 +37,73 @@ $(document).on('turbolinks:load', function() {
           $(this).remove();
       });
   }, 2000);
+
+  $('.selectpicker').selectpicker({style: ''});
+
+  $("#internal_note_entry_date").on("dp.change", function (e) {
+    $('#datepicker2').data("DateTimePicker").minDate(e.date);
+  });
+
+  $(".datepicker2").on("dp.change", function (e) {
+    $('#datepicker1').data("DateTimePicker").maxDate(e.date);
+  });
+  
+  $('.datepicker1, .datepicker2').datepicker({
+    closeText: 'Cerrar',
+    prevText: '<Ant',
+    nextText: 'Sig>',
+    currentText: 'Hoy',
+    monthNames: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'],
+    monthNamesShort: ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic'],
+    dayNames: ['Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado'],
+    dayNamesShort: ['Dom', 'Lun', 'Mar', 'Mié', 'Juv', 'Vie', 'Sáb'],
+    dayNamesMin: ['Do', 'Lu', 'Ma', 'Mi', 'Ju', 'Vi', 'Sá'],
+    weekHeader: 'Sm',
+    dateFormat: 'dd/mm/yy',
+    firstDay: 1,
+    isRTL: false,
+    showMonthAfterYear: false,
+    yearSuffix: ''
+  });
 });
 
 $("#menu-toggle").click(function(e) {
   e.preventDefault();
   $("#wrapper").toggleClass("toggled");
+});
+
+$(function () {
+  $('.datepicker1, .datepicker2').datepicker({
+    closeText: 'Cerrar',
+    prevText: '<Ant',
+    nextText: 'Sig>',
+    currentText: 'Hoy',
+    monthNames: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'],
+    monthNamesShort: ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic'],
+    dayNames: ['Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado'],
+    dayNamesShort: ['Dom', 'Lun', 'Mar', 'Mié', 'Juv', 'Vie', 'Sáb'],
+    dayNamesMin: ['Do', 'Lu', 'Ma', 'Mi', 'Ju', 'Vi', 'Sá'],
+    weekHeader: 'Sm',
+    dateFormat: 'dd/mm/yy',
+    firstDay: 1,
+    isRTL: false,
+    showMonthAfterYear: false,
+    yearSuffix: ''
+  });
+
+  $('.selectpicker').selectpicker({style: ''});
+  
+  $(".datepicker1").on("dp.change", function (e) {
+    console.log("entró");
+    $('#datepicker2').data("DateTimePicker").minDate(e.date);
+  });
+
+  $('.chosen-select').chosen({
+    allow_single_deselect: true,
+    no_results_text: 'No se encontró el resultado',
+    width: '230px'});
+  
+  $(".datepicker2").on("dp.change", function (e) {
+    $('#datepicker1').data("DateTimePicker").maxDate(e.date);
+  });
 });

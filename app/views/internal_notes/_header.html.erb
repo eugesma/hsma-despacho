@@ -1,0 +1,16 @@
+<% content_for :page_nav do %>
+  <li class="nav-item <%= active_action('index') %> non-sel" id="page-title">
+    <%= link_to internal_notes_path, class: "nav-link" do %>
+      <%= fa_icon "inbox" %>
+      Notas internas
+    <% end %>
+  </li>
+  <% if policy(InternalNote).new? %>
+    <li class="nav-item <%= active_action('new') %>">
+      <%= link_to new_internal_note_path, class: "nav-link" do %>
+        <%= fa_icon "plus" %>
+        Nueva nota
+      <% end %>
+    </li>
+  <% end %>
+<% end %>

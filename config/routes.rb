@@ -21,6 +21,12 @@ Rails.application.routes.draw do
     get "new_pass"
     end 
   end
+  resources :internal_notes do
+    member do
+      get 'show_image'
+      get 'delete'
+    end
+  end
   resources :sectors do
     member do
       get 'delete'

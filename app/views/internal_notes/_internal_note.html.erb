@@ -1,0 +1,45 @@
+<tr id="internal_note_<%= internal_note.id %>">
+  <td class="ref-col cut-text"><span><%= internal_note.origin.sector_name %></span></td>
+  <td class="ref-col cut-text"><span><%= internal_note.destination.sector_name %></span></td>
+  <td class="cut-text"><span><%= internal_note.reference %></span></td>
+  <td>
+    <%= internal_note.entry_date.strftime("%d/%m/%Y") %>
+  </td>
+  <td>
+    <%= internal_note.out_date.strftime("%d/%m/%Y") %>
+  </td>
+  <td>
+    <% if internal_note.files.attached? %>
+      <%= link_to show_image_internal_note_path(internal_note), remote: true,
+            class: 'btn btn-light btn-sm', title: 'Ver imagen adjunta',
+            data: { toggle: 'tooltip', placement: 'top' }, style: "margin-left: -5px" do %>
+        <%= fa_icon "check" %>
+      <% end %>
+    <% else %>
+      <%= fa_icon "times" %>
+    <% end %>
+  </td>
+  <td>
+    <%= internal_note.author.username %>
+  </td>
+  <td>
+    <%= link_to internal_note_path(internal_note),
+          class: 'btn btn-secondary btn-sm', title: 'Ver detalles', data: { toggle: 'tooltip', placement: 'top' } do %>
+      <%= fa_icon "eye" %>
+    <% end %>
+    <% if internal_note.nota?%>
+      <% if policy(internal_note).edit? %>
+        <%= link_to edit_internal_note_path(internal_note),
+              class: 'btn btn-warning btn-sm', title: 'Editar', data: { toggle: 'tooltip', placement: 'top' } do %>
+          <%= fa_icon "edit" %>
+        <% end %>
+      <% end %>
+    <% end %>
+    <% if policy(internal_note).delete? %>
+      <%= link_to delete_internal_note_path(internal_note),
+            class: 'btn btn-danger btn-sm', title: 'Borrar', data: { toggle: 'tooltip', placement: 'top' } do %>
+        <%= fa_icon "trash" %>
+      <% end %>
+    <% end %>
+  </td>
+</tr>

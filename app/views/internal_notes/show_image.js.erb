@@ -1,0 +1,35 @@
+// Style modal
+$('.modal-header').addClass('bg-secondary');
+$('.modal-header').addClass('text-white');
+
+// Add the dialog title
+$('#dialog h5').html("<i class='fa fa-eye'></i>  Viendo archivos adjuntos");
+
+// Render the image
+$('.modal-body').html(
+  '<% @entry_note.files.each do |file| %>'+
+    '<% if file.variable? %>'+
+      '<%= link_to image_tag(file.variant(resize: "400x400")), rails_blob_path(file, disposition: :attachment) %>'+
+    '<% elsif file.previewable? %>'+
+      '<%= link_to image_tag(file.preview(resize: "400x400")), file, target: :_blank %>'+
+    '<% elsif file.image? %>'+
+      '<%= link_to image_tag(file), rails_blob_path(file, disposition: :attachment) %>'+
+    '<% else %>'+
+      '<%= link_to file.filename, rails_blob_path(file, disposition: :attachment) %>'+
+    '<% end %>'+
+  '<% end %>'
+);
+
+// Add form button
+$('.modal-footer').html(
+  "<button type='button' class='btn btn-default pull-left' data-dismiss='modal'>Volver</button>"
+);
+
+// Show the dynamic dialog
+$('#dialog').modal("show");
+
+// Remove style
+$('#dialog').on('hidden.bs.modal', function () {
+  $('.modal-header').removeClass('bg-secondary');
+  $('.modal-header').removeClass('text-white');
+});

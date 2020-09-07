@@ -1,0 +1,21 @@
+<%= render 'header' %>
+
+<div class="card">
+  <div class="card-header bg-warning">
+    <h5 class="title">
+      <%= fa_icon "edit" %> Editando nota interna
+      <%= link_to internal_notes_path, class: 'btn float-right close-btn' do %>
+        <%= fa_icon "times" %>
+      <% end %>
+    </h3>
+  </div>
+  <div class="card-body full-height">
+    <%= render 'form', internal_note: @internal_note %>
+  </div>
+  <div class="card-footer text-right">
+    <%= link_to 'Volver', internal_notes_path, class: 'btn btn-light mr-2' %>
+    <button type='submit' name='commit' class='btn btn-success' form='internal_note_form'>
+      <%= fa_icon "save" %> Guardar cambios
+    </button>
+  </div>
+</div>

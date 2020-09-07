@@ -51,6 +51,7 @@ body {
 .list-custom{
   color: #c9c9ca!important;
 }
+
 .list-custom.active{
   background-color: #495057!important;
   border: 0;

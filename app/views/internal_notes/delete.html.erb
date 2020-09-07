@@ -1,0 +1,72 @@
+<%= render 'header' %>
+
+<div class="card">
+  <div class="card-header bg-danger text-white">
+    <h3 class="card-title">
+      <%= fa_icon "trash" %> Borrando nota interna
+      <%= link_to internal_notes_path, class: 'btn text-white float-right close-btn' do %>
+        <%= fa_icon "times" %>
+      <% end %>
+    </h3>
+  </div>
+  <div class="card-body full-height">
+    Seguro desea eliminar la siguiente nota/pase?
+    <div class="row">
+      <div class="col-md-4">
+        <p>
+          <h5><strong>Referencia:</strong></h5>
+          <%= @internal_note.reference %>
+        </p>
+
+        <p>
+          <h5><strong>Autor:</strong></h5>
+          <%= @internal_note.author.username %>
+        </p>
+      </div>
+
+      <div class="col-md-4">
+        <p>
+          <h5><strong>Fecha de entrada:</strong></h5>
+          <%= @internal_note.entry_date.strftime("%d/%m/%Y") %>
+        </p>
+
+        <p>
+          <h5><strong>Fecha de salida:</strong></h5>
+          <%= @internal_note.out_date.strftime("%d/%m/%Y") %>
+        </p>
+
+        <p>
+          <h5><strong>Fecha creada:</strong></h5>
+          <%= @internal_note.created_at.strftime("%d/%m/%y %H:%M") %>
+        </p>
+
+        <p>
+          <h5><strong>Fecha modificada:</strong></h5>
+          <%= @internal_note.updated_at.strftime("%d/%m/%y %H:%M") %>
+        </p>
+      </div>
+      <div class="col-md-4">
+        <h5><strong>Archivos adjuntos:</strong></h5>
+        <% if @internal_note.files.attached? %>
+        <% @internal_note.files.each do |file| %>
+          <% if file.variable? %>
+            <%= link_to image_tag(file.variant(resize: "300x300")), rails_blob_path(file, disposition: :attachment) %>
+          <% elsif file.previewable? %>
+            <%= link_to image_tag(file.preview(resize: "300x300")), file, target: :_blank %>
+          <% elsif file.image? %>
+            <%= link_to image_tag(file), rails_blob_path(file, disposition: :attachment) %>
+          <% else %>
+            <%= link_to file.filename, rails_blob_path(file, disposition: :attachment) %>
+          <% end %>
+        <% end %>
+        <% else %>
+          <p>No se han adjuntado archivos</p>
+        <% end %>
+      </div>
+    </div>
+  </div>
+  <div class="card-footer text-right">
+    <%= link_to 'Volver', internal_notes_path, class: 'btn btn-light mr-2' %>
+    <a data-remote='true' data-method='delete' href='/internal_notes/<%= @internal_note.id %>>' data-dismiss='modal' class='btn commit btn-danger pull-right' rel='nofollow'>Confirmar</a>
+  </div>
+</div>

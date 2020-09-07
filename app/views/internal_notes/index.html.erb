@@ -1,0 +1,52 @@
+<%= render 'header' %>
+
+<div class="card">
+  <%= form_for_filterrific @filterrific, html: {id: "filterrific"} do |f| %>
+    <div class="card-body">
+      <div class="row">
+        <div class="col-2">
+          <label>Origen o destino</label>
+          <%# give the search field the 'filterrific-periodically-observed' class for live updates %>
+          <%= f.text_field(
+            :search_sector,
+            class: 'form-control',
+            placeholder: 'Un lugar'
+          ) %>
+        </div>
+        <div class="col-4">
+          <label>Referencia</label>
+          <%# give the search field the 'filterrific-periodically-observed' class for live updates %>
+          <%= f.text_field(
+            :search_reference,
+            class: 'form-control',
+            placeholder: 'Un texto'
+          ) %>
+        </div>
+        <div class="col-2">
+          <label>Entradas desde</label>
+          <%= f.text_field(:entry_date_at, class: 'form-control',
+              id: "datepicker1", placeholder: "Una fecha", data: { date_format: 'DD/MM/YYYY'}) %>
+        </div>
+        <div class="col-2">
+          <label>Salidas desde</label>
+          <%= f.text_field(:out_date_at, class: 'form-control',
+              id: "datepicker2", placeholder: "Una fecha", data: { date_format: 'DD/MM/YYYY'}) %>
+        </div>
+        <div class="col-2">
+          <%= link_to reset_filterrific_url, class: "btn btn-default btn-md pull-right" do %>
+            <%= fa_icon "redo" %>
+          <% end %>
+          <%= button_tag type: 'submit', class: "btn btn-info", id: "register-button", title: 'Filtrar', 
+            data: { toggle: 'tooltip', placement: 'top' }, 'data-disable-with' => "<i class='fa fa-spinner fa-spin'></i>".html_safe do %>
+            <%= fa_icon "filter" %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>
+<br>
+<%= render(
+  partial: 'internal_notes/list',
+  locals: { internal_notes: @internal_notes }
+) %>

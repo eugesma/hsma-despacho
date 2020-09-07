@@ -1,0 +1,20 @@
+$cblue: #00407A;
+$cblue2: #28ABE1;
+$cblue3: #27CEE0;
+$primary: $cblue2;
+
+$sidebar-width-visible: 250px;
+$sidebar-width-visible-bml: 210px;
+$sidebar-width-hidden: 40px;
+$sidebar-icon-position: 10%;
+$sidebar-bg-color: $cblue;
+$sidebar-bg-active-color: $cblue2;
+$sidebar-bg-hover-color: $cblue3;
+
+
+$min-height-list: calc(100vh - 274px);
+$min-height-index: calc(100vh - (109px + 63px + 2rem));
+
+// A tener en cuenta: tamaños del navbar
+$navbar-height: 60px; // default (1920 * 1080)
+$navbar-height-bml: 38px; // resolucion (1200 * 1480)

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_04_08_135325) do
+ActiveRecord::Schema.define(version: 2020_09_07_125301) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -54,6 +54,20 @@ ActiveRecord::Schema.define(version: 2019_04_08_135325) do
     t.index ["origin_id"], name: "index_entry_notes_on_origin_id"
   end
 
+  create_table "internal_notes", force: :cascade do |t|
+    t.bigint "origin_id"
+    t.bigint "destination_id"
+    t.date "entry_date"
+    t.date "out_date"
+    t.text "reference"
+    t.bigint "author_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["author_id"], name: "index_internal_notes_on_author_id"
+    t.index ["destination_id"], name: "index_internal_notes_on_destination_id"
+    t.index ["origin_id"], name: "index_internal_notes_on_origin_id"
+  end
+
   create_table "out_notes", force: :cascade do |t|
     t.integer "note_number"
     t.text "reference"
@@ -82,7 +96,7 @@ ActiveRecord::Schema.define(version: 2019_04_08_135325) do
   end
 
   create_table "sectors", force: :cascade do |t|
-    t.string "sector_name"
+    t.string "name"
     t.bigint "entry_note_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

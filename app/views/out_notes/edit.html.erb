@@ -2,12 +2,12 @@
 
 <div class="card">
   <div class="card-header bg-warning">
-    <h3 class="panel-title">
+    <h5 class="panel-title">
       <%= fa_icon "edit" %> Editando nota saliente
       <%= link_to out_notes_path, class: 'btn float-right close-btn' do %>
         <%= fa_icon "times" %>
       <% end %>
-    </h3>
+    </h5>
   </div>
   <div class="card-body full-height">
     <%= render 'form', out_note: @out_note %>

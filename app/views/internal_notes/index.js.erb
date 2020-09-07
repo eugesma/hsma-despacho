@@ -1,0 +1,5 @@
+<% js = escape_javascript(
+  render(partial: 'internal_notes/list', locals: { internal_notes: @internal_notes })
+) %>
+
+$("#filterrific_results").html("<%= js %>");

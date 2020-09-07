@@ -1,0 +1,43 @@
+@import 'variables';
+
+.fixed-custom-card, .card.fixed-custom-card{
+  height: calc(100vh - ( 1rem * 2 ) - #{$navbar-height});
+  @media(min-width: 1200px) and (max-width: 1480px){
+    height: calc(100vh - ( 1rem * 2 ) - #{$navbar-height-bml});
+  }
+  .card-body{
+    max-height: 100%;
+    overflow-y: auto;
+  }
+  /*Este es para las tablas listado*/
+  #filterrific_results{
+    height: 100%;
+    .card{
+      height: calc(100% - 50px);
+      overflow-y: auto;
+    }
+  }
+
+  /* plantillas */
+  .mh-custom-row{
+    height: calc(100% - 38px - 1rem);
+  }
+}
+
+.card{
+  .card-header{
+    @media(min-width: 1200px) and (max-width: 1480px){
+     padding: 0.1rem 1.25rem;
+    }
+  }
+  .card-body{
+    @media(min-width: 1200px) and (max-width: 1480px){
+      padding: 0.5rem 1.25rem;
+     }
+  }
+  .card-footer{
+    @media(min-width: 1200px) and (max-width: 1480px){
+      padding: 0.5rem 1.25rem;
+     }
+  }
+}

@@ -2,12 +2,12 @@
 
 <div class="card">
   <div class="card-header bg-warning">
-    <h3 class="title">
+    <h5 class="title">
       <%= fa_icon "edit" %> Editando nota entrante
       <%= link_to entry_notes_path, class: 'btn float-right close-btn' do %>
         <%= fa_icon "times" %>
       <% end %>
-    </h3>
+    </h5>
   </div>
   <div class="card-body full-height">
     <%= render 'form', entry_note: @entry_note %>

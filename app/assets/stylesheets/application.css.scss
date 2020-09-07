@@ -15,7 +15,9 @@
  *= require chosen
  */
 
-@import "jquery-ui";
+@import 'variables';
+
+@import 'jquery-ui';
 @import 'jquery-ui/datepicker';
 
 @import 'jquery-ui/core';
@@ -39,14 +41,15 @@
 @import 'jquery-ui/tabs';
 @import 'jquery-ui/tooltip';
 
-@import "bootstrap";
+@import 'bootstrap-select';
+@import 'bootstrap';
 @import 'font_awesome5.css';
-@import 'shared.css';
+@import 'shared';
 
 @import url('https://fonts.googleapis.com/css?family=Fira+Sans');
 @import url('https://fonts.googleapis.com/css?family=Lato');
 
- #flash_messages{
+#flash_messages{
   position: absolute;
   top: 10px;
   right: 0px;

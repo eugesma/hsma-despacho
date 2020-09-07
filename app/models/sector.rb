@@ -1,8 +1,8 @@
 class Sector < ApplicationRecord
   include PgSearch
   # Validaciones
-  validates_presence_of :sector_name
-  validates_uniqueness_of :sector_name
+  validates_presence_of :name
+  validates_uniqueness_of :name
 
   # Relaciones
   has_many :origin_entries, class_name: 'EntryNote', foreign_key: 'origin_id'
@@ -21,7 +21,7 @@ class Sector < ApplicationRecord
   )
 
   pg_search_scope :search_name,
-  against: :sector_name,
+  against: :name,
   :using => { :tsearch => {:prefix => true} },
   :ignoring => :accents
 
