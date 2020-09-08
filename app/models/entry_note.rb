@@ -4,7 +4,7 @@ class EntryNote < ApplicationRecord
   enum order_type: { nota: 0, pase: 1 }
 
   # Validaciones
-  validates_presence_of :author, :reference, :destination, :origin, :out_date, :entry_date
+  validates_presence_of :author, :reference, :destination_id, :origin_id, :out_date, :entry_date
   validates_uniqueness_of :note_number, if: :nota?
   validates_uniqueness_of :zonal_pass, if: :pase?
   validates_presence_of :note_number, if: :nota?
@@ -30,8 +30,8 @@ class EntryNote < ApplicationRecord
   pg_search_scope :search_text,
     against: :reference,
     :associated_against => {
-      :origin => :sector_name,
-      :destination => :sector_name
+      :origin => :name,
+      :destination => :name
     },
     :using => {
       :tsearch => {:prefix => true}

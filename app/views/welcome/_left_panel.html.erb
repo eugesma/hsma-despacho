@@ -53,8 +53,8 @@
           <% @last_entry_notes.each do |len|%>
             <tr>
               <td><%= len.note_number %></td>
-              <td><%= len.origin.sector_name %></td>
-              <td><%= len.destination.sector_name %></td>
+              <td><%= len.origin.name %></td>
+              <td><%= len.destination.name %></td>
               <td><%= len.entry_date.strftime("%d/%m/%y %H:%M") %></td>
               <td><%= len.out_date.strftime("%d/%m/%y %H:%M") %></td>
               <td>

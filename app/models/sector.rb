@@ -43,7 +43,7 @@ class Sector < ApplicationRecord
       order("sectors.out_notes_count #{ direction }")
     when /^nombre_/
       # Ordenamiento por nombre de sector
-      order("LOWER(sectors.sector_name) #{ direction }")
+      order("LOWER(sectors.name) #{ direction }")
     else
       # Si no existe la opcion de ordenamiento se levanta la excepción
       raise(ArgumentError, "Invalid sort option: #{ sort_option.inspect }")

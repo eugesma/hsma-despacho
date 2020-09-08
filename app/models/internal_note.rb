@@ -21,8 +21,8 @@ class InternalNote < ApplicationRecord
 
   pg_search_scope :search_sector,
     :associated_against => {
-      :origin => :sector_name,
-      :destination => :sector_name
+      :origin => :name,
+      :destination => :name
     },
     :using => {
       :tsearch => {:prefix => true}
