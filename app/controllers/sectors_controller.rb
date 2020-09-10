@@ -60,10 +60,10 @@ class SectorsController < ApplicationController
 
     respond_to do |format|
       if @sector.save!
-        flash.now[:success] = "El sector "+@sector.sector_name+" se ha creado correctamente."
+        flash.now[:success] = "El sector "+@sector.name+" se ha creado correctamente."
         format.js
       else
-        flash.now[:error] = "El sector "+@sector.sector_name+"no se ha podido crear."
+        flash.now[:error] = "El sector "+@sector.name+"no se ha podido crear."
         format.js
       end
     end
@@ -76,10 +76,10 @@ class SectorsController < ApplicationController
 
     respond_to do |format|
       if @sector.update_attributes(sector_params)
-        flash.now[:success] = "El sector "+@sector.sector_name+" se ha modificado correctamente."
+        flash.now[:success] = "El sector "+@sector.name+" se ha modificado correctamente."
         format.js
       else
-        flash.now[:error] = "El sector "+@sector.sector_name+" no se ha podido modificar."
+        flash.now[:error] = "El sector "+@sector.name+" no se ha podido modificar."
         format.js
       end
     end
@@ -89,10 +89,10 @@ class SectorsController < ApplicationController
   # DELETE /sectors/1.json
   def destroy
     authorize @sector
-    @sector_name = @sector.sector_name
+    @name = @sector.name
     @sector.destroy
     respond_to do |format|
-      flash.now[:success] = "La nota entrante número "+@sector_name+" se ha eliminado correctamente."
+      flash.now[:success] = "La nota entrante número "+@name+" se ha eliminado correctamente."
       format.js
     end
   end
@@ -114,6 +114,6 @@ class SectorsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def sector_params
-      params.require(:sector).permit(:sector_name, :professional_id, :entry_note_id)
+      params.require(:sector).permit(:name, :professional_id, :entry_note_id)
     end
 end

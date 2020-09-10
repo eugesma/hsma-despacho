@@ -1,6 +1,6 @@
 <%= simple_form_for @sector, remote: true, html: {class: "form-inline"} do |f| %>
   <%= f.error_notification %>
   <div class='container-fluid'>
-      <%= f.input :sector_name, required: true, label: 'Nombre' %>
+      <%= f.input :name, required: true, label: 'Nombre' %>
   </div>
 <% end %>

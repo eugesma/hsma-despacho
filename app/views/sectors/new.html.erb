@@ -3,13 +3,13 @@
 <div class="row">
   <div class="col-6 mx-auto">
     <div class="card">
-      <div class="card-header bg-primary text-white">
-        <h3 class="card-title">
+      <div class="card-header bg-primary text-white d-flex align-items-center justify-content-between">
+        <h6 class="card-title mb-0 pl-2">
           <%= fa_icon "plus" %> Nuevo sector
-          <%= link_to sectors_path, class: 'btn pull-right close-btn' do %>
-            <%= content_tag(:span, '', class: 'glyphicon glyphicon-remove') %>
-          <% end %>
-        </h3>
+        </h6>
+        <%= link_to sectors_path, class: 'btn close-btn text-white' do %>
+          <%= fa_icon "times" %>
+        <% end %>
       </div>
       <div class="card-body" id="panel-body-new">
         <%= render 'form', sector: @sector %>
