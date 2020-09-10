@@ -1,13 +1,13 @@
 <%= render 'header' %>
 
 <div class="card">
-  <div class="card-header">
-    <h5 class="title">
+  <div class="card-header d-flex justify-content-between align-items-center">
+    <h6 class="card-title mb-0 pl-2">
       <%= fa_icon "eye" %> Viendo <%= @out_note.order_type %> entrante
-      <%= link_to out_notes_path, class: 'btn btn-light float-right close-btn' do %>
-        <%= fa_icon "times" %>
-      <% end %>
-    </h5>
+    </h6>
+    <%= link_to out_notes_path, class: 'btn btn-light close-btn' do %>
+      <%= fa_icon "times" %>
+    <% end %>
   </div>
   <div class="card-body full-height">
     <div class="row">

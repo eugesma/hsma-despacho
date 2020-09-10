@@ -47,6 +47,7 @@ es:
         reference: "Referencia"
         entry_date: "Fecha de entrada"
         out_date: "Fecha de salida"
+        zonal_pass: "N° pase zonal"
       out_note:
         note_number: "N° de nota"
         origin_id: "Origen"
@@ -54,7 +55,13 @@ es:
         reference: "Referencia"
         entry_date: "Fecha de entrada"
         out_date: "Fecha de salida"
-
+      internal_note:
+        note_number: "N° de nota"
+        origin_id: "Origen"
+        destination_id: "Destino"
+        reference: "Referencia"
+        entry_date: "Fecha de entrada"
+        out_date: "Fecha de salida"
   date:
     abbr_day_names:
     - dom

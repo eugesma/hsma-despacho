@@ -1,13 +1,13 @@
 <%= render 'header' %>
 
 <div class="card">
-  <div class="card-header bg-warning">
-    <h5 class="panel-title">
-      <%= fa_icon "edit" %> Editando nota saliente
-      <%= link_to out_notes_path, class: 'btn float-right close-btn' do %>
-        <%= fa_icon "times" %>
-      <% end %>
-    </h5>
+  <div class="card-header bg-warning d-flex justify-content-between align-items-center">
+    <h6 class="card-title mb-0 pl-2">
+      <%= fa_icon "pen" %> Editando nota saliente
+    </h6>
+    <%= link_to out_notes_path, class: 'btn close-btn' do %>
+      <%= fa_icon "times" %>
+    <% end %>
   </div>
   <div class="card-body full-height">
     <%= render 'form', out_note: @out_note %>

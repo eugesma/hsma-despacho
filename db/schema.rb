@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_09_07_125301) do
+ActiveRecord::Schema.define(version: 2020_09_08_154941) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -102,6 +102,7 @@ ActiveRecord::Schema.define(version: 2020_09_07_125301) do
     t.datetime "updated_at", null: false
     t.integer "entry_notes_count", default: 0
     t.integer "out_notes_count", default: 0
+    t.integer "internal_notes_count", default: 0
     t.index ["entry_note_id"], name: "index_sectors_on_entry_note_id"
   end
 

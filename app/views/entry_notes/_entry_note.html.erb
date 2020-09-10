@@ -33,14 +33,14 @@
       <% if policy(entry_note).edit? %>
         <%= link_to edit_entry_note_path(entry_note),
               class: 'btn btn-warning btn-sm', title: 'Editar', data: { toggle: 'tooltip', placement: 'top' } do %>
-          <%= fa_icon "edit" %>
+          <%= fa_icon "pen" %>
         <% end %>
       <% end %>
     <% else %>
       <% if policy(entry_note).edit_pass? %>
         <%= link_to edit_pass_entry_note_path(entry_note),
               class: 'btn btn-warning btn-sm', title: 'Editar', data: { toggle: 'tooltip', placement: 'top' } do %>
-          <%= fa_icon "edit" %>
+          <%= fa_icon "pen" %>
         <% end %>
       <% end %>
     <% end %>

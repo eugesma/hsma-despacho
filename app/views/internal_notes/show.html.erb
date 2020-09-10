@@ -1,86 +1,55 @@
 <%= render 'header' %>
-<div class="row">
-  <div class="col-md-6">
-    <div class="card">
-      <div class="card-header">
-        <h3 class="title">
-          <%= fa_icon "eye" %> Viendo nota interna
-          <%= link_to internal_notes_path, class: 'btn btn-light float-right close-btn' do %>
-            <%= fa_icon "times" %>
-          <% end %>
-        </h3>
-      </div>
-      <div class="card-body full-height">
-        <div class="row">
+
+<div class="card">
+  <div class="card-header d-flex justify-content-between align-items-center">
+    <h6 class="card-title mb-0 pl-2">
+      <%= fa_icon "eye" %> Viendo nota interna
+    </h6>
+    <%= link_to internal_notes_path, class: 'btn btn-light' do %>
+      <%= fa_icon "times" %>
+    <% end %>
+  </div>
+  <div class="card-body full-height">
+    <div class="row">
+      <div class="col-9">
+        <div class="row border-bottom p-2">
           <div class="col-6">
-            <p>
-              <h5><strong>Referencia:</strong></h5>
-              <%= @internal_note.reference %>
-            </p>
-
-            <p>
-              <h5><strong>Autor:</strong></h5>
-              <%= @internal_note.author.username %>
-            </p>
+            <h6 class="font-weight-bold">Referencia:</h6>
+            <%= @internal_note.reference %>
           </div>
-          <div class="col-md-6">
-            <% if @internal_note.pase? %>
-              <p>
-                <h5><strong>Número de pase:</strong></h5>
-                <%= @internal_note.zonal_pass %>
-              </p>
-            <% else %>
-              <p>
-                <h5><strong>Numero de nota:</strong></h5>
-                <%= @internal_note.note_number %>
-              </p>
+        
+          <div class="col-6">
+            <h6 class="font-weight-bold">Autor:</h6>
+            <%= @internal_note.author.username %>
+          </div>
+        </div>
+        <div class="row border-bottom p-2">
+          <div class="col-3">
+            <h6 class="font-weight-bold">Fecha de entrada:</h6>
+            <%= @internal_note.entry_date.strftime("%d/%m/%Y") %>
+          </div>
 
-              <p>
-                <h5><strong>Pase zonal:</strong></h5>
-                <%= @internal_note.zonal_pass %>
-              </p>
+          <div class="col-3">
+            <h6 class="font-weight-bold">Fecha de salida:</h6>
+            <%= @internal_note.out_date.strftime("%d/%m/%Y") %>
+          </div>
 
-              <p>
-                <h5><strong>Número de subsecretaría:</strong></h5>
-                <%= @internal_note.subse_number %>
-              </p>
-            <% end %>
-            <p>
-              <h5><strong>Fecha de entrada:</strong></h5>
-              <%= @internal_note.internal_date.strftime("%d/%m/%Y") %>
-            </p>
+          <div class="col-3">
+            <h6 class="font-weight-bold">Fecha creada:</h6>
+            <%= @internal_note.created_at.strftime("%d/%m/%y %H:%M") %>
+          </div>
 
-            <p>
-              <h5><strong>Fecha de salida:</strong></h5>
-              <%= @internal_note.out_date.strftime("%d/%m/%Y") %>
-            </p>
-
-            <p>
-              <h5><strong>Fecha creada:</strong></h5>
-              <%= @internal_note.created_at.strftime("%d/%m/%y %H:%M") %>
-            </p>
-
-            <p>
-              <h5><strong>Fecha modificada:</strong></h5>
-              <%= @internal_note.updated_at.strftime("%d/%m/%y %H:%M") %>
-            </p>
+          <div class="col-3">
+            <h6 class="font-weight-bold">Fecha modificada:</h6>
+            <%= @internal_note.updated_at.strftime("%d/%m/%y %H:%M") %>
           </div>
         </div>
       </div>
-      <div class="card-footer text-right">
-        <%= link_to 'Volver', internal_notes_path, class: 'btn btn-light' %>
-      </div>
-    </div>
-  </div>
-  <div class="col-md-6">
-    <div class="card">
-      <div class="card-header">
-        <h3 class="title">
+      <div class="col-3">
+        <h6 class="font-weight-bold">
           <%= fa_icon "file-pdf" %>
           Archivos adjuntos
-        </h3>
-      </div>
-      <div class="card-body full-height text-center">
+        </h6>
         <% @internal_note.files.each do |file| %>
           <% if file.variable? %>
             <%= link_to image_tag(file.variant(resize: "300x300")), rails_blob_path(file, disposition: :attachment) %>
@@ -94,5 +63,8 @@
         <% end %>
       </div>
     </div>
+  </div>
+  <div class="card-footer text-right">
+    <%= link_to 'Volver', internal_notes_path, class: 'btn btn-light' %>
   </div>
 </div>

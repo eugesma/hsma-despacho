@@ -14,7 +14,7 @@
         <%= f.label 'Origen' %>
         <%= f.input :origin_id,
           label: false,
-          label_method: :sector_name,
+          label_method: :name,
           value_method: :id,
           collection: @sectors,
           include_blank: false,
@@ -26,7 +26,7 @@
       <%= f.label 'Destino' %>
       <%= f.input :destination_id,
         label: false,
-        label_method: :sector_name,
+        label_method: :name,
         value_method: :id,
         collection: @sectors,
         include_blank: false,
@@ -36,7 +36,7 @@
     </div>
     <div class='col-md-12'>
     <%= f.input :reference, required: true, label: 'Referencia', as: :text,
-        :input_html => { :cols => 46  , :rows => 3 } %>
+        :input_html => { :cols => 46  , :rows => 1 } %>
     </div>
   </div>
   <div class='row'>

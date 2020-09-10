@@ -22,7 +22,7 @@ gem 'filterrific'
 gem 'image_processing', '~> 1.2'
 # Use will_paginate for limit the post per page
 gem 'will_paginate', '~> 3.1.0'
-gem 'will_paginate-bootstrap'
+gem 'will_paginate-bootstrap4'
 # To datepickers
 gem 'datetime_picker_input' 
 gem 'momentjs-rails'

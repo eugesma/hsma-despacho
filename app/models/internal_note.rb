@@ -4,10 +4,10 @@ class InternalNote < ApplicationRecord
   # Relations
   belongs_to :author, class_name: 'User'
   belongs_to :origin, class_name: 'Sector', foreign_key: 'origin_id', counter_cache: true
-  belongs_to :destination, class_name: 'Sector', foreign_key: 'destination_id', counter_cache: true
+  belongs_to :destination, class_name: 'Sector', foreign_key: 'destination_id', counter_cache: true, optional: true
   has_many_attached :files
 
-  validates_presence_of :entry_date, :out_date
+  validates_presence_of :entry_date, :out_date, :origin_id, :reference
   
   filterrific(
     available_filters: [

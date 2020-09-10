@@ -5,11 +5,11 @@
         <%= f.label 'Origen' %>
         <%= f.input :origin_id,
           label: false,
-          label_method: :sector_name,
+          label_method: :name,
           value_method: :id,
           collection: @sectors,
           include_blank: false,
-          input_html: { class: 'chosen-select', id: 'origin_id' },
+          input_html: { class: 'chosen-select datepicker1', id: 'origin_id' },
           prompt: 'Seleccione un sector o cree uno'
         %>
       </div>
@@ -17,11 +17,11 @@
       <%= f.label 'Destino' %>
       <%= f.input :destination_id,
         label: false,
-        label_method: :sector_name,
+        label_method: :name,
         value_method: :id,
         collection: @sectors,
         include_blank: false,
-        input_html: { class: 'chosen-select', id: 'destination_id' },
+        input_html: { class: 'chosen-select datepicker2', id: 'destination_id' },
         prompt: 'Seleccione un sector o cree uno'
       %>
     </div>

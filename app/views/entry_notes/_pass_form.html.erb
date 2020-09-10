@@ -14,7 +14,7 @@
         <%= f.label 'Origen' %>
         <%= f.input :origin_id,
           label: false,
-          label_method: :sector_name,
+          label_method: :name,
           value_method: :id,
           collection: @sectors,
           include_blank: false,
@@ -26,7 +26,7 @@
       <%= f.label 'Destino' %>
       <%= f.input :destination_id,
         label: false,
-        label_method: :sector_name,
+        label_method: :name,
         value_method: :id,
         collection: @sectors,
         include_blank: false,
@@ -36,7 +36,7 @@
     </div>
     <div class='form-group col-md-12'>
     <%= f.input :reference, label: 'Referencia', as: :text,
-        :input_html => { class: "form-control", :cols => 60, :rows => 3 } %>
+        :input_html => { class: "form-control", :cols => 60, :rows => 1 } %>
     </div>
   </div>
   <div class='row'>
@@ -45,7 +45,7 @@
         as: :string,
         :placeholder => "Seleccionar fecha",
         input_html: { 
-          class: "form-control", 
+          class: "form-control datepicker1", 
           autocomplete: 'off', 
           required: true,
           value: "#{f.object.entry_date.strftime('%dd/%mm/%yyyy') unless f.object.new_record?}"
@@ -58,7 +58,7 @@
         as: :string,
         :placeholder => "Seleccionar fecha",
         input_html: {  
-          class: "form-control", 
+          class: "form-control datepicker2", 
           autocomplete: 'off', 
           required: true,
           value: "#{f.object.out_date.strftime('%dd/%mm/%yyyy') unless f.object.new_record?}"

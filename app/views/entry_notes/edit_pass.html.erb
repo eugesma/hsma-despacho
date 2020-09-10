@@ -1,21 +1,21 @@
 <%= render 'header' %>
 
-<div class="panel panel-warning">
-  <div class="panel-heading">
-    <h5 class="panel-title">
-      <%= content_tag(:span, '', class: 'glyphicon glyphicon-edit') %> Editando pase entrante
-      <%= link_to entry_notes_path, class: 'btn pull-right close-btn' do %>
-        <%= fa_icon "times" %>
-      <% end %>
-    </h5>
+<div class="card">
+  <div class="card-header bg-warning d-flex justify-content-between align-items-center">
+    <h6 class="card-title mb-0 pl-2">
+      <%= fa_icon "pen" %> Editando pase entrante
+    </h6>
+    <%= link_to entry_notes_path, class: 'btn close-btn' do %>
+      <%= fa_icon "times" %>
+    <% end %>
   </div>
-  <div class="panel-body full-height">
+  <div class="card-body full-height">
     <%= render 'pass_form', entry_note: @entry_note %>
   </div>
-  <div class="panel-footer text-right">
+  <div class="card-footer text-right">
     <%= link_to 'Volver', entry_notes_path, class: 'btn' %>
     <button type='submit' name='commit' class='btn btn-primary' form='entry_note_form'>
-      <%= content_tag(:span, '', class: 'glyphicon glyphicon-check') %> Guardar cambios
+      <%= fa_icon "save" %> Guardar cambios
     </button>
   </div>
 </div>

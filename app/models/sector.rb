@@ -9,6 +9,7 @@ class Sector < ApplicationRecord
   has_many :destination_entries, class_name: 'EntryNote', foreign_key: 'destination_id'
   has_many :origin_outs, class_name: 'OutNote', foreign_key: 'origin_id', :dependent => :destroy
   has_many :destination_outs, class_name: 'OutNote', foreign_key: 'destination_id', :dependent => :delete_all
+  has_many :origin_internal_notes, class_name: 'InternaNote', foreign_key: 'origin_id'
 
   filterrific(
     default_filter_params: { sorted_by: 'created_at_desc' },

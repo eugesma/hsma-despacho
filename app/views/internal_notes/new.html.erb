@@ -1,13 +1,13 @@
 <%= render 'header' %>
 
 <div class="card">
-  <div class="card-header bg-primary text-white">
-    <h5 class="card-title">
+  <div class="card-header bg-primary text-white d-flex justify-content-between align-items-center">
+    <h6 class="card-title mb-0 pl-2">
       <%= fa_icon "plus" %> Nueva nota interna
-      <%= link_to internal_notes_path, class: 'btn text-white float-right close-btn' do %>
-        <%= fa_icon "times" %>
-      <% end %>
-    </h3>
+    </h6>
+    <%= link_to internal_notes_path, class: 'btn text-white close-btn' do %>
+      <%= fa_icon "times" %>
+    <% end %>
   </div>
   <div class="card-body full-height">
     <%= render 'form', internal_note: @internal_note %>

@@ -1,6 +1,6 @@
 <div id="filterrific_results">
-  <div class="card card-body">
-    <table class="table table-hover table-striped">
+  <div class="card">
+    <table class="table table-hover table-striped table-sm mb-0">
       <thead>
         <tr>
           <th><%= filterrific_sorting_link(@filterrific, :numero) %></th>
@@ -20,7 +20,7 @@
       </tbody>
     </table>
   </div>
-  <div id="page_links">
-    <%= paginate @out_note %>
+  <div class="d-flex align-items-center justify-content-center" style="height: 50px">
+    <%= will_paginate @out_notes, list_classes: %w(pagination mb-0), renderer: WillPaginate::ActionView::BootstrapLinkRenderer %>
   </div>
 </div>

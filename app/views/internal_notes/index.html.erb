@@ -1,6 +1,6 @@
 <%= render 'header' %>
 
-<div class="card">
+<div class="card mb-2">
   <%= form_for_filterrific @filterrific, html: {id: "filterrific"} do |f| %>
     <div class="card-body">
       <div class="row">
@@ -45,7 +45,7 @@
     </div>
   <% end %>
 </div>
-<br>
+
 <%= render(
   partial: 'internal_notes/list',
   locals: { internal_notes: @internal_notes }
