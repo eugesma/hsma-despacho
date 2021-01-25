@@ -7,8 +7,8 @@ class OutNote < ApplicationRecord
   validates_presence_of :author, :reference, :origin, :destination_id, :origin_id, :out_date, :entry_date
   validates_uniqueness_of :note_number, if: :nota?
   validates_uniqueness_of :zonal_pass, if: :pase?
-  validates_presence_of :note_number, if: :nota?
-  validates_presence_of :zonal_pass, if: :pase?
+  validate :unique_note_number, if: :nota?
+  validate :unique_zonal_pass, if: :pase?
 
   # Relaciones
   belongs_to :author, class_name: 'User'
@@ -96,5 +96,23 @@ class OutNote < ApplicationRecord
       ['Fecha entrada(asc)', 'fecha_entrada_asc'],
       ['Fecha salida(asc)', 'fecha_salida_asc']
     ]
+  end
+
+  private
+
+  def unique_note_number
+    if self.nota?
+      range = Time.now.beginning_of_year..Time.now.end_of_year
+      return unless OutNote.exists?(note_number: note_number, created_at: range)
+      errors.add(:note_number, "ya existe "+note_number.to_s+" en el año "+DateTime.now.beginning_of_year.strftime("%Y"))
+    end
+  end
+
+  def unique_zonal_pass
+    if self.pase?
+      range = Time.now.beginning_of_year..Time.now.end_of_year
+      return unless OutNote.exists?(zonal_pass: zonal_pass, created_at: range)
+      errors.add(:zonal_pass, "ya existe "+zonal_pass.to_s+" en el año "+DateTime.now.beginning_of_year.strftime("%Y"))
+    end
   end
 end
