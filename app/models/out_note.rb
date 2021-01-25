@@ -5,8 +5,8 @@ class OutNote < ApplicationRecord
   
   # Validaciones
   validates_presence_of :author, :reference, :origin, :destination_id, :origin_id, :out_date, :entry_date
-  validates_uniqueness_of :note_number, if: :nota?
-  validates_uniqueness_of :zonal_pass, if: :pase?
+  validates_presence_of :note_number, if: :nota?
+  validates_presence_of :zonal_pass, if: :pase?
   validate :unique_note_number, if: :nota?
   validate :unique_zonal_pass, if: :pase?
 
