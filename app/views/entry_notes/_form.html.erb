@@ -2,19 +2,20 @@
   <%= f.error_notification %>
   <%= f.input :order_type, :as => :hidden, :input_html => { value: 'nota' } %>
   <div class="row">
-      <div class="col-4">
-        <%= f.input :note_number, label: 'N° de nota', required: true,
-          input_html: { min: '0', max:'9999' } %>
-      </div>
-      <div class="col-4">  
-        <%= f.input :zonal_pass, required: false, label: 'N° de pase zonal',
-          input_html: { min: '0', max:'9999' } %>
-      </div>
-      <div class="col-4">
-        <%= f.input :subse_number, required: false, label: 'N° de subse',
-          input_html: { min: '0', max:'99999' } %>
-      </div>
+    <div class="col-4">
+      <%= f.input :note_number, label: 'N° de nota', required: true,
+        input_html: { min: '0', max:'9999' } %>
+    </div>
+    <div class="col-4">  
+      <%= f.input :zonal_pass, required: false, label: 'N° de pase zonal',
+        input_html: { min: '0', max:'9999' } %>
+    </div>
+    <div class="col-4">
+      <%= f.input :subse_number, required: false, label: 'N° de subse',
+        input_html: { min: '0', max:'99999' } %>
+    </div>
   </div>
+  <hr>
   <div class='row'>
       <div class='col-6'>
         <%= f.label 'Origen' %>
@@ -40,10 +41,12 @@
       %>
     </div>
     <div class='form-group col-12'>
+    <hr>
     <%= f.input :reference, label: 'Referencia', as: :text,
         :input_html => { class: "form-control", :cols => 60, :rows => 1 } %>
     </div>
   </div>
+  <hr>
   <div class='row'>
     <div class='col-6'>
       <%= f.input :entry_date, label: 'Fecha de entrada',
@@ -52,7 +55,8 @@
         input_html: { 
           class: "form-control datepicker1",
           autocomplete: 'off', 
-          required: true
+          required: true,
+          value: f.object.entry_date.present? ? f.object.entry_date.strftime("%d/%m/%Y") : ''
         },
         html5: false
       %>
@@ -64,12 +68,14 @@
         input_html: {
           class: "form-control datepicker2",
           autocomplete: 'off',
-          required: true
+          required: true,
+          value: f.object.out_date.present? ? f.object.out_date.strftime("%d/%m/%Y") : ''
         },
         html5: false
       %>
     </div>
   </div>
+  <hr>
   <% if !@entry_note.new_record? %>
     <% if @entry_note.files.attached? %>
       <p>

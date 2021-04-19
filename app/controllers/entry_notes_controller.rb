@@ -111,12 +111,8 @@ class EntryNotesController < ApplicationController
   def update
     authorize @entry_note
     respond_to do |format|
-      if @entry_note.update(entry_note_params)
-        if @entry_note.nota?
-          flash[:success] = 'La nota se ha modificado correctamente'
-        elsif @entry_note.pase?
-          flash[:success] = 'El pase se ha modificado correctamente'
-        end
+      if @entry_note.update!(entry_note_params)
+        flash[:success] = @entry_note.nota? ? 'La nota' : 'El pase' + "La nota se ha modificado correctamente"
         format.html { redirect_to @entry_note }
       else
         if @entry_note.nota?

@@ -103,7 +103,11 @@ class OutNote < ApplicationRecord
   def unique_note_number
     if self.nota?
       range = Time.now.beginning_of_year..Time.now.end_of_year
-      return unless OutNote.exists?(note_number: note_number, created_at: range)
+      if self.new_record?
+        return unless OutNote.exists?(note_number: note_number, created_at: range)
+      else
+        return unless OutNote.where.not(id: self.id).exists?(note_number: note_number, created_at: range)
+      end
       errors.add(:note_number, "ya existe "+note_number.to_s+" en el año "+DateTime.now.beginning_of_year.strftime("%Y"))
     end
   end
@@ -111,7 +115,11 @@ class OutNote < ApplicationRecord
   def unique_zonal_pass
     if self.pase?
       range = Time.now.beginning_of_year..Time.now.end_of_year
-      return unless OutNote.exists?(zonal_pass: zonal_pass, created_at: range)
+      if self.new_record?
+        return unless OutNote.exists?(zonal_pass: zonal_pass, created_at: range)
+      else
+        return unless OutNote.where.not(id: self.id).exists?(zonal_pass: zonal_pass, created_at: range)
+      end
       errors.add(:zonal_pass, "ya existe "+zonal_pass.to_s+" en el año "+DateTime.now.beginning_of_year.strftime("%Y"))
     end
   end

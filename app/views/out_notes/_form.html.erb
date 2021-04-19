@@ -11,6 +11,7 @@
           input_html: { min: '0', max:'9999' } %>
       </div>
   </div>
+  <hr>
   <div class='row'>
       <div class='col-md-6'>
         <%= f.label 'Origen' %>
@@ -37,16 +38,23 @@
       %>
     </div>
     <div class='col-md-12'>
-    <%= f.input :reference, required: true, label: 'Referencia', as: :text,
-        :input_html => { :cols => 46  , :rows => 1 } %>
+      <hr>
+      <%= f.input :reference, required: true, label: 'Referencia', as: :text,
+          :input_html => { :cols => 46  , :rows => 1 } %>
     </div>
   </div>
+  <hr>
   <div class='row'>
     <div class='col-md-6'>
       <%= f.input :entry_date, label: 'Fecha de entrada',
         as: :string,
         :placeholder => "Seleccionar fecha",
-        input_html: {class: "form-control datepicker1", autocomplete: 'off', required: true},
+        input_html: {
+          class: "form-control datepicker1", 
+          autocomplete: 'off', 
+          required: true,
+          value: f.object.entry_date.present? ? f.object.entry_date.strftime("%d/%m/%Y") : ''
+        },
         html5: false
         %>
     </div>
@@ -54,11 +62,17 @@
       <%= f.input :out_date, label: 'Fecha de salida',
         as: :string,
         :placeholder => "Seleccionar fecha",
-        input_html: {class: "form-control datepicker2", autocomplete: 'off', required: true},
+        input_html: {
+          class: "form-control datepicker2", 
+          autocomplete: 'off', 
+          required: true,
+          value: f.object.out_date.present? ? f.object.out_date.strftime("%d/%m/%Y") : ''
+        },
         html5: false
         %>
     </div>
   </div>
+  <hr>
   <% if !@out_note.new_record? %>
     <% if @out_note.files.attached? %>
       <p>

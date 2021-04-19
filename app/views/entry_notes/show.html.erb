@@ -90,5 +90,11 @@
   </div>
   <div class="card-footer text-right">
     <%= link_to 'Volver', entry_notes_path, class: 'btn btn-light' %>
+    <% if policy(@entry_note).edit? %>
+      <%= link_to edit_entry_note_path(@entry_note), class: 'btn btn-warning' do %>
+        <%= fa_icon 'pen' %>
+        Editar
+      <% end %>
+    <% end %>
   </div>
 </div>
