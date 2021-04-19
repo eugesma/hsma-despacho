@@ -81,27 +81,15 @@ class EntryNotesController < ApplicationController
     respond_to do |format|
       if @entry_note.save
         begin
-          if @entry_note.nota?
-            flash[:success] = 'La nota se ha cargado correctamente'
-          elsif @entry_note.pase?
-            flash[:success] = 'El pase se ha cargado correctamente'
-          end
+          flash[:success] = @entry_note.nota? ? 'La nota' : 'El pase' + " se ha creado correctamente"
         rescue ArgumentError => e
           flash[:alert] = e.message
         end
         format.html { redirect_to @entry_note }
       else
-        if entry_note_params[:order_type] == 'nota'
-          @order_type = 'nota'
-          @sectors = Sector.all
-          flash[:error] = "La nota no se ha podido cargar."
-          format.html { render :new }
-        elsif entry_note_params[:order_type] == 'pase'
-          @order_type = 'pase'
-          @sectors = Sector.all
-          flash[:error] = "El pase no se ha podido cargar."
-          format.html { render :new_pass }
-        end
+        flash[:error] = @entry_note.nota? ? 'La nota' : 'El pase' + " no se ha podido cargar"
+        @order_type = @entry_note.nota? ? 'nota' : 'pase'
+        entry_note_params[:order_type] == 'nota' ? format.html { render :new } : format.html { render :new_pass }
       end
     end
   end
@@ -110,22 +98,15 @@ class EntryNotesController < ApplicationController
   # PATCH/PUT /entry_notes/1.json
   def update
     authorize @entry_note
+
     respond_to do |format|
-      if @entry_note.update!(entry_note_params)
-        flash[:success] = @entry_note.nota? ? 'La nota' : 'El pase' + "La nota se ha modificado correctamente"
+      if @entry_note.update(entry_note_params)
+        flash[:success] = @entry_note.nota? ? 'La nota' : 'El pase' + " se ha modificado correctamente"
         format.html { redirect_to @entry_note }
       else
-        if @entry_note.nota?
-          @order_type = 'nota'
-          @sectors = Sector.all
-          flash[:error] = "La nota no se ha podido modificar."
-          format.html { render :edit }
-        elsif @entry_note.pase?
-          @sectors = Sector.all
-          @order_type = 'pase'
-          flash[:error] = "El pase no se ha podido modificar."
-          format.html { render :edit_pass }
-        end
+        flash[:error] = @entry_note.nota? ? 'La nota' : 'El pase' + " no se ha podido modificar"
+        @order_type = @entry_note.nota? ? 'nota' : 'pase'
+        @entry_note.nota? ? format.html { render :edit } : format.html { render :edit_pass }
       end
     end
   end
@@ -134,6 +115,7 @@ class EntryNotesController < ApplicationController
   # DELETE /entry_notes/1.json
   def destroy
     authorize @entry_note
+
     @number = @entry_note.note_number
     @order_type = @entry_note.order_type
     @entry_note.destroy
