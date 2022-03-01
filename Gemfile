@@ -19,7 +19,7 @@ gem 'highcharts-rails'
 # Use filterrific to search, filter and sort lists
 gem 'filterrific'
 # Use tu rezize images
-gem 'image_processing', '~> 1.2'
+gem 'image_processing', '~> 1.12'
 # Use will_paginate for limit the post per page
 gem 'will_paginate', '~> 3.1.0'
 gem 'will_paginate-bootstrap4'
